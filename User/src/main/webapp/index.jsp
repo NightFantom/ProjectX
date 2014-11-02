@@ -2,5 +2,5 @@
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
 <tiles:definition name="main">
-    <tiles:putAttribute name="title" value="Привет"/>
+    <tiles:putAttribute name="title" value="Nfgfg"/>
 </tiles:definition>
