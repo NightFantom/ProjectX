@@ -1,0 +1,243 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: #52aa52;
+}
+
+@font-face {
+    font-family: Intro;
+    src: url("../fonts/Intro.otf");
+}
+
+a {
+    text-decoration: none;
+}
+
+
+body {
+    background: #52aa52;
+    height: 100%;
+    min-height: 850px;
+    min-width: 1024px;
+    padding: 20px;
+}
+
+#fon {
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    background: #feb772;
+    border-radius: 10px;
+    padding: 20px 3px 20px;
+}
+
+#basis {
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    background: white;
+    box-sizing: border-box;
+}
+
+#wrapper {
+    width: 100%;
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto 0;
+}
+
+#logo {
+    width: 300px;
+    float: left;
+}
+
+.item {
+    height: 90px;
+    width: 90px;
+    text-align: center;
+    font-size: 9pt;
+    font-family: Intro;
+}
+
+.item:hover {
+    background: #feb772;
+    border-radius: 10px;
+}
+
+.item:hover p {
+    color: white;
+}
+
+.itemActive {
+    height: 90px;
+    width: 90px;
+    text-align: center;
+    font-size: 10pt;
+    font-family: Intro;
+    background: #feb772;
+    border-radius: 10px;
+}
+
+.itemActive p {
+    color: white;
+}
+
+#headerMenu {
+    float: left;
+
+}
+
+#selectCityArea {
+    text-align: right;
+    padding: 0 30px 0 0;
+    font-family: Intro;
+}
+
+#selectCityArea > div {
+    display: inline-block;
+}
+
+.introFamily{
+    font-family: Intro;
+}
+
+
+.orangeText {
+    color: #feb772;
+    font-family: inherit;
+}
+
+#content {
+    margin: 100px auto 0;
+    align-content: center;
+    padding: 0 0 10px;
+    height: 100%;
+}
+
+.clear {
+    clear: left;
+}
+
+.doubleOrange {
+    color: #ff7e00;
+    font-family: inherit;
+}
+
+.floatLeft {
+    float: left;
+}
+
+
+#workAreaSearch  {
+   padding: 40px 0 0;
+}
+
+.inputTextSearch {
+    width: 520px;
+    border: 3px solid #ff7e00;
+    padding-left: 20px;
+    height: 34px;
+}
+
+#searchButton {
+    cursor: pointer;
+}
+
+#iconSearch {
+    position: relative;
+    top:18px;
+    left:20px;
+    float: left;
+}
+
+#fieldSearch {
+    width:720px;
+    text-align: left;
+    margin: 0 auto;
+}
+
+.smallItalicText {
+    font-size: 9pt;
+    font-style: italic;
+    font-family: Arial;
+}
+
+.additionText{
+    padding: 0 0 0 90px;
+    margin: 10px 0;
+
+}
+
+.bigText {
+    font-size: 18pt;
+    font-family: Intro;
+}
+
+.marginBottom10{
+    margin: 0 0 10px;
+}
+
+#startSearch td{
+    vertical-align: bottom;
+}
+
+#startSearch{
+    margin: 0 auto 0;
+}
+
+#tableResult {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 14pt;
+    border-left:3px solid #feb772;
+    border-right:3px solid #feb772;
+    border-spacing:0;
+    border-collapse: collapse;
+}
+
+#tableResult td{
+    border:1px solid #b6d79f;
+    height: 15pt;
+}
+
+.row2 {
+
+}
+
+.row1 {
+    background: #e2efd9;
+}
+
+.highlightLink:hover{
+    color: #feb772;
+    cursor: pointer;
+}
+
+.blockResult{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.headerTable{
+    height: 30px;
+    font-weight: bold;
+    font-size: 16pt;
+}
+
+#popUpSelectCity{
+   position: relative;
+   display: none;
+   width: 130px;
+}
+
+#selectCity {
+    cursor: pointer;
+    text-align: left;
+    width: 130px;
+}
+
+#selectCity:hover div{
+    display: block;
+}

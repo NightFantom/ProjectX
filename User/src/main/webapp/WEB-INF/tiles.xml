@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+    <definition name="search" template="template/search.jsp">
+    </definition>
+    <definition name="menuItem" template="template/itemMenu.jsp">
+        <put-attribute name="status" type="string"/>
+        <put-attribute name="link"  type="string"/>
+        <put-attribute name="imagePath" type="string"/>
+        <put-attribute name="text" type="string"/>
+    </definition>
+    <definition name="main" template="template/main.jsp">
+        <put-attribute name="title" type="string"/>
+    </definition>
+</tiles-definitions>
