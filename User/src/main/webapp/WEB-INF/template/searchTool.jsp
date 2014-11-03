@@ -1,0 +1,24 @@
+<%--
+    Created: Денис 
+    Date: 02.11.14.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<c:set var="action">
+    <tiles:insertAttribute name="actionT"/>
+</c:set>
+
+<div id="searchTool">
+    <table id="startSearch">
+        <tr>
+            <td><img src="images/bigArrow.png"></td>
+            <td style="width: 720px;">
+               <tiles:insertDefinition name="search">
+                   <tiles:putAttribute name="action" value="${action}"/>
+               </tiles:insertDefinition>
+            </td>
+        </tr>
+    </table>
+</div>

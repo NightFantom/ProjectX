@@ -16,12 +16,26 @@
 	
 	<dependencyManagement>
 		<dependencies>
-			
-			<dependency>
-				<groupId>org.apache.struts</groupId>
-				<artifactId>struts-core</artifactId>
-				<version>1.3.10</version>
-			</dependency>
+
+            <dependency>
+                <groupId>${myapp.groupid}</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>1.0.0</version>
+                <scope>system</scope>
+                <systemPath>c:\My program\Tomcat 8\apache-tomcat-8.0.12\lib\servlet-api.jar</systemPath>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.struts</groupId>
+                <artifactId>struts-core</artifactId>
+                <version>1.3.10</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.struts</groupId>
+                <artifactId>struts-tiles</artifactId>
+                <version>1.3.10</version>
+            </dependency>
 			
 			<dependency>
 				<groupId>org.hibernate</groupId>
@@ -31,7 +45,7 @@
 
             <dependency>
                 <groupId>org.apache.tiles</groupId>
-                <artifactId>tiles-extras</artifactId>
+                <artifactId>tiles-jsp</artifactId>
                 <version>3.0.5</version>
             </dependency>
 
@@ -45,6 +59,22 @@
                 <groupId>jstl</groupId>
                 <artifactId>jstl</artifactId>
                 <version>1.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>displaytag</groupId>
+                <artifactId>displaytag</artifactId>
+                <version>1.1.1</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-jdk14</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
 		</dependencies>

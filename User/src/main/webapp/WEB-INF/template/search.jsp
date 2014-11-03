@@ -3,9 +3,19 @@
     Date: 02.11.14.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%--
+    action - ссылка для отправки данных с формы. Все прификсы и постфиксы уже указаны
+--%>
+
+<c:set var="action">
+    ${pageContext.servletContext.contextPath}/<tiles:insertAttribute name="action"/>.do
+</c:set>
 
 <div id="fieldSearch">
-    <form>
+    <form action="${action}">
         <img id = "iconSearch" src="images/iconSearch.png">
         <div id="searchLine">
             <p class="additionText bigText">поиск <span class="doubleOrange">лекарств</span></p>

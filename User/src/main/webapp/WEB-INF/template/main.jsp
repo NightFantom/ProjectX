@@ -6,6 +6,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
+<%--
+    title - заголовок страницы
+    content - контент
+--%>
 <tiles:importAttribute/>
 
 <!DOCTYPE html>
@@ -22,53 +26,22 @@
         <div id="wrapper">
             <header>
                 <div id="logo">
-                    <a href="#">
+                    <a href="${pageContext.servletContext.contextPath}/index.do">
                         <img src="images/logo.png">
                     </a>
                 </div>
-                <div id="headerMenu">
-                    <table>
-                        <tr>
-                            <tiles:definition name="menuItem">
-                                <tiles:putAttribute name="link" value=""/>
-                                <tiles:putAttribute name="imagePath" value="images/hederMenu/icon1.png"/>
-                                <tiles:putAttribute name="text" value="поиск лекарств"/>
-                            </tiles:definition>
-                            <tiles:definition name="menuItem">
-                                <tiles:putAttribute name="link" value=""/>
-                                <tiles:putAttribute name="imagePath" value="images/hederMenu/icon2.png"/>
-                                <tiles:putAttribute name="text" value="список аптек"/>
-                            </tiles:definition>
-                            <tiles:definition name="menuItem">
-                                <tiles:putAttribute name="link" value=""/>
-                                <tiles:putAttribute name="imagePath" value="images/hederMenu/icon3.png"/>
-                                <tiles:putAttribute name="text" value="наши контакты"/>
-                            </tiles:definition>
-                        </tr>
-                    </table>
-                </div>
+                <tiles:insertDefinition name="menu"/>
                 <div id="selectCityArea">
                     <div>Город:</div>
                     <div id="selectCity"><span class="orangeText">Вологда</span>
                         <div id="popUpSelectCity">
-                            <table>
-                                <tr>
-                                    <td><a href="#" class="highlightLink">Череповец</a></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#" class="highlightLink">Архангельск</a></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#" class="highlightLink">Киров</a></td>
-                                </tr>
-                            </table>
                         </div>
                     </div>
                 </div>
                 <div class="clear"></div>
             </header>
             <div id="content">
-
+                ${content}
             </div>
         </div>
     </div>
