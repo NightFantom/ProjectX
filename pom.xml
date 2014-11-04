@@ -12,32 +12,20 @@
 		<module>Admin</module>
 		<module>Client</module>
 		<module>User</module>
+        <module>DataLoader</module>
 	</modules>
 	
 	<dependencyManagement>
 		<dependencies>
 
             <dependency>
-                <groupId>${myapp.groupid}</groupId>
-                <artifactId>servlet-api</artifactId>
-                <version>1.0.0</version>
-                <scope>system</scope>
-                <systemPath>c:\My program\Tomcat 8\apache-tomcat-8.0.12\lib\servlet-api.jar</systemPath>
+                <groupId>struts</groupId>
+                <artifactId>struts</artifactId>
+                <version>1.2.9</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.apache.struts</groupId>
-                <artifactId>struts-core</artifactId>
-                <version>1.3.10</version>
-            </dependency>
 
             <dependency>
-                <groupId>org.apache.struts</groupId>
-                <artifactId>struts-tiles</artifactId>
-                <version>1.3.10</version>
-            </dependency>
-			
-			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-core</artifactId>
 				<version>4.3.6.Final</version>
@@ -45,7 +33,7 @@
 
             <dependency>
                 <groupId>org.apache.tiles</groupId>
-                <artifactId>tiles-jsp</artifactId>
+                <artifactId>tiles-extras</artifactId>
                 <version>3.0.5</version>
             </dependency>
 
@@ -61,23 +49,9 @@
                 <version>1.2</version>
             </dependency>
 
-            <dependency>
-                <groupId>displaytag</groupId>
-                <artifactId>displaytag</artifactId>
-                <version>1.1.1</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-jdk14</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-api</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
 
-		</dependencies>
+
+         </dependencies>
 	</dependencyManagement>
 	
 	<build>
