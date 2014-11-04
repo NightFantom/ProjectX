@@ -6,9 +6,9 @@
          version="3.0">
 
     <listener>
-        <listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>
+        <listener-class>org.apache.tiles.web.startup.simple.SimpleTilesListener</listener-class>
     </listener>
-    
+
     <servlet>
         <servlet-name>Action</servlet-name>
         <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>

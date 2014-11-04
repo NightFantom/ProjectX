@@ -186,7 +186,7 @@ body {
     margin: 0 auto 0;
 }
 
-#tableResult {
+.tableResult {
     width: 100%;
     margin: 0 auto;
     text-align: center;
@@ -197,9 +197,16 @@ body {
     border-collapse: collapse;
 }
 
-#tableResult td{
+.tableResult td{
     border:1px solid #b6d79f;
     height: 15pt;
+}
+
+.tableResult th {
+    border:1px solid #b6d79f;
+    height: 30px;
+    font-weight: bold;
+    font-size: 16pt;
 }
 
 .row2 {
@@ -218,12 +225,6 @@ body {
 .blockResult{
     width: 90%;
     margin: 0 auto;
-}
-
-.headerTable{
-    height: 30px;
-    font-weight: bold;
-    font-size: 16pt;
 }
 
 #popUpSelectCity{

@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE tiles-definitions PUBLIC
-        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
-        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 
-    <definition name="search" template="template/search.jsp">
+    <definition name="main" template="/WEB-INF/template/main.jsp">
+        <put-attribute name="title" type="string"/>
+        <put-attribute name="content" type="definition"/>
     </definition>
-    <definition name="menuItem" template="template/itemMenu.jsp">
-        <put-attribute name="status" type="string"/>
+
+    <definition name="search" template="/WEB-INF/template/search.jsp">
+        <put-attribute name="action" type="string" value=""/>
+    </definition>
+
+    <definition name="menu" template="/WEB-INF/template/menu.jsp"/>
+
+    <definition name="menuItem" template="/WEB-INF/template/itemMenu.jsp">
+        <put-attribute name="status" type="string" value=""/>
         <put-attribute name="link"  type="string"/>
         <put-attribute name="imagePath" type="string"/>
         <put-attribute name="text" type="string"/>
     </definition>
-    <definition name="main" template="template/main.jsp">
-        <put-attribute name="title" type="string"/>
+
+    <definition name="searchTool" template="/WEB-INF/template/searchTool.jsp">
+        <put-attribute name="actionT" type="string" value=""/>
     </definition>
+
+    <definition name="resultTable" template="/WEB-INF/template/resultTable.jsp">
+        <put-attribute name="medicament" type="string"/>
+        <put-attribute name="grid" type="definition"/>
+        <put-attribute name="count" type="string"/>
+    </definition>
+
+
+
 </tiles-definitions>
