@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="forms.Medicament" table="MEDICAMENT">
+        <id column="ID_MEDICAMENT" name="id" type="java.lang.Integer">
+            <generator class="sequence">
+                <param name="sequence">S_ID_MEDICAMENT</param>
+            </generator>
+        </id>
+
+        <property name="name" column="NAME" type="java.lang.String"/>
+        <property name="description" column="DESCRIPTION" type="java.lang.String"/>
+
+        <query name="getByName">
+            select medicament from forms.Medicament as medicament where medicament.name = :name
+        </query>
+    </class>
+</hibernate-mapping>

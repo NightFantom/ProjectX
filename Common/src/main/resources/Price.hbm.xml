@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="forms.Price" table="LIST_MEDICAMENTS">
+        <id name="id" column="ID">
+            <generator class="sequence">
+                <param name="sequence">S_ID_PRICE</param>
+            </generator>
+        </id>
+        <property name="idPharmacy" column="ID_PHARMACY" type="java.lang.Integer"/>
+        <property name="pharmacyName" column="PHARMACY_NAME" type="java.lang.String"/>
+        <property name="idCity" column="ID_CITY" type="java.lang.Integer"/>
+        <property name="idMedicine" column="ID_MEDICAMENT" type="java.lang.Integer"/>
+        <property name="count" column="COUNT" type="java.lang.Integer"/>
+        <property name="cost" column="COSTS" type="java.lang.Double"/>
+        <property name="dateUpdate" column="DATE_UPDATE" type="java.util.Date"/>
+
+        <query name="getPrice">
+            select price from forms.Price as price where price.idMedicine = :idMedicine and price.idCity = :idCity
+        </query>
+    </class>
+</hibernate-mapping>
