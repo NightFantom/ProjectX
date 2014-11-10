@@ -6,7 +6,11 @@
          version="3.0">
 
     <listener>
-        <listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>
+        <listener-class>org.apache.tiles.web.startup.simple.SimpleTilesListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>hibernateService.HibernateListener</listener-class>
     </listener>
 
     <servlet>

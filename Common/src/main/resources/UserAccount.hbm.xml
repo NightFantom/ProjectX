@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="forms.UserAccount" table="USER_ACCOUNT">
+        <id name="id" column="ID">
+            <generator class="sequence">
+                <param name="sequence">S_ID_USER_ACCOUNT</param>
+            </generator>
+        </id>
+
+        <property name="firstName" column="FIRST_NAME" type="java.lang.String"/>
+        <property name="secondName" column="SECOND_NAME" type="java.lang.String"/>
+        <property name="fatherName" column="FATHER_NAME" type="java.lang.String"/>
+        <property name="codeNetwork" column="CODE_NETWORK" type="java.lang.Integer"/>
+        <property name="phone" column="PHONE" type="java.lang.String"/>
+        <property name="email" column="EMAIL" type="java.lang.String"/>
+        <property name="login" column="LOGIN" type="java.lang.String"/>
+        <property name="password" column="PASSWORD" type="java.lang.String"/>
+
+        <query name="getByLogin">
+            select userAccount from forms.UserAccount as userAccount where userAccount.login = :login
+        </query>
+    </class>
+</hibernate-mapping>

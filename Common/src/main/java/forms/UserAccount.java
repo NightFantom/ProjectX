@@ -12,9 +12,27 @@ public class UserAccount extends ActionForm {
     private String firstName;
     private String secondName;
     private String fatherName;
-    private String codeNetwork;
+    private Integer codeNetwork;
     private String phone;
     private String email;
+    private String login;
+    private String password;
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public Integer getId() {
         return id;
@@ -48,11 +66,11 @@ public class UserAccount extends ActionForm {
         this.fatherName = fatherName;
     }
 
-    public String getCodeNetwork() {
+    public Integer getCodeNetwork() {
         return codeNetwork;
     }
 
-    public void setCodeNetwork(String codeNetwork) {
+    public void setCodeNetwork(Integer codeNetwork) {
         this.codeNetwork = codeNetwork;
     }
 
