@@ -12,9 +12,9 @@
     <action-mappings>
         <action path="/save"
                 type="action.FileUploadAction"
-                parameter="execute"
+                parameter="parseRequest"
                 scope="request">
-            <forward name="successful" path="suc.jsp"/>
+            <forward name="successful" path="/suc.jsp"/>
          </action>
     </action-mappings>
 

@@ -5,23 +5,22 @@
 package action;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.util.Iterator;
 import java.util.List;
 
 import form.FileUploadForm;
+import form.Record;
+import form.FormHandler;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
-import org.apache.commons.fileupload.FileUpload;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
-import org.apache.struts.upload.FormFile;
+import queueService.QueueManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,91 +28,48 @@ import javax.servlet.http.HttpServletResponse;
 public class FileUploadAction extends DispatchAction {
 
     @Override
-    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
+    protected String getMethodName(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response, String parameter) throws Exception {
+        return parameter;
+    }
+
+
+    public ActionForward parseRequest(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
-//        FileUploadForm fileUploadForm = (FileUploadForm) form;
-//        FormFile file = fileUploadForm.getFile();
-//        String filePath = getServlet().getServletContext().getRealPath("/") +"upload";
-//        File folder = new File(filePath);
-//        if(!folder.exists()){
-//            folder.mkdir();
-//        }
-//
-//        String fileName = file.getFileName();
-//
-//        if(!("").equals(fileName)){
-//
-//            System.out.println("Server path:" +filePath);
-//            File newFile = new File(filePath, fileName);
-//
-//            if(!newFile.exists()){
-//                FileOutputStream fos = new FileOutputStream(newFile);
-//                fos.write(file.getFileData());
-//                fos.flush();
-//                fos.close();
-//            }
-//
-//            request.setAttribute("uploadedFilePath",newFile.getAbsoluteFile());
-//            request.setAttribute("uploadedFileName",newFile.getName());
-//        }
-//
-//
-//        FileUploadForm uploadForm = (FileUploadForm) form;
-//        FileOutputStream outputStream = null;
-//        FormFile formFile = null;
-//        try {
-//           formFile = uploadForm.getFile();
-//            String path = getServlet().getServletContext().getRealPath("")+"/"+
-//                    formFile.getFileName();
-//            outputStream = new FileOutputStream(new File(path));
-//            outputStream.write(formFile.getFileData());
-//            }
-//        finally {
-//            if (outputStream != null) {
-//                outputStream.close();
-//                }
-//            }
-        //uploadForm.setMessage("The file "+formFile.getFileName()+" is uploaded successfully.");
-
-        boolean isMultipart = FileUpload.isMultipartContent(request);
-
-        if (isMultipart) {
-            // Create a factory for disk-based file items
+        FileUploadForm fileUploadForm = (FileUploadForm) form;
+        FormHandler client = new FormHandler();   //???????????????
+        if (!client.isExist(fileUploadForm.getLogin(), fileUploadForm.getPassword())) {
+            return mapping.findForward("userIsNotExist");
+        }
+        Record record = new Record();
+        record.setLogin(fileUploadForm.getLogin());
+        if (ServletFileUpload.isMultipartContent(request)) {                    // если нам пришел реквест с файлом
             FileItemFactory factory = new DiskFileItemFactory();
-
-            // Create a new file upload handler
-            FileUpload upload = new FileUpload(factory);
-
+            ServletFileUpload upload = new ServletFileUpload(factory);
             try {
-                // Parse the request
-                List /* FileItem */ items = upload.parseRequest(request);
+                List items = upload.parseRequest(request);                      //получение листа из элементов формы
                 Iterator iterator = items.iterator();
                 while (iterator.hasNext()) {
-                    FileItem item = (FileItem) iterator.next();
-                    if (!item.isFormField()) {
-                        String fileName = item.getName();
-                        String root = getServlet().getServletContext().getRealPath("/");
-                        File path = new File(root + "/uploads");
+                    FileItem item = (FileItem) iterator.next();                 //получение элемента формы (поля или файла)
+                    if (!item.isFormField()) {                                  //если элемент не является полем формы, т.е. является файлом
+                        String fileName = item.getName();                       //получаем имя файла
+                        String root = getServlet().getServletContext().getRealPath("/");    //получаем путь сервлета
+                        File path = new File(root + "/" + client.getOrganization());                //создаем там папку в которую будем загружать
                         if (!path.exists()) {
                             boolean status = path.mkdirs();
                         }
-
                         File uploadedFile = new File(path + "/" + fileName);
-
-                        System.out.println(uploadedFile.getAbsolutePath());
-                        System.out.println(item.getString());
-                        item.write(uploadedFile);
+                        item.write(uploadedFile);                               //записываем файл
+                        record.setPathToFile(uploadedFile.getAbsolutePath());
                     }
                 }
             } catch (FileUploadException e) {
                 e.printStackTrace();
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         }
-
-
+        if (record.getPathToFile() != null) {
+            QueueManager.getQueue().add(record);
+        }
         return mapping.findForward("success");
     }
 }
