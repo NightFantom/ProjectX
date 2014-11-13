@@ -14,16 +14,37 @@
     <name>Common</name>
 
     <dependencies>
+
+        <dependency>
+            <groupId>${myapp.groupid}</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>c:\My program\Tomcat 8\apache-tomcat-8.0.12\lib\servlet-api.jar</systemPath>
+        </dependency>
+
         <dependency>
             <groupId>struts</groupId>
             <artifactId>struts</artifactId>
             <version>1.2.9</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>antlr</artifactId>
+                    <groupId>antlr</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts-tiles</artifactId>
+            <version>1.3.10</version>
+        </dependency>
 
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
+            <version>4.3.7.Final</version>
         </dependency>
 
         <dependency>
@@ -40,11 +61,33 @@
 
         <dependency>
             <groupId>org.apache.tiles</groupId>
-            <artifactId>tiles-extras</artifactId>
+            <artifactId>tiles-jsp</artifactId>
             <version>3.0.5</version>
         </dependency>
 
-
+        <dependency>
+            <groupId>displaytag</groupId>
+            <artifactId>displaytag</artifactId>
+            <version>1.1.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-jdk14</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>jcl104-over-slf4j</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
     </dependencies>
 
