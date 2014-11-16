@@ -7,7 +7,7 @@ package forms;
 import org.apache.struts.action.ActionForm;
 import java.util.Date;
 
-public class Price extends ActionForm {
+public class Price {
     private Integer id;
     private Integer idCity;
     private String pharmacyName;

@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="forms.UserAccount" table="USER_ACCOUNT">
+    <class name="forms.UserAccount" table="USERS_ACCOUNT">
         <id name="id" column="ID">
             <generator class="sequence">
                 <param name="sequence">S_ID_USER_ACCOUNT</param>

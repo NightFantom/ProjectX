@@ -10,6 +10,10 @@ public class Listener implements ServletContextListener {
     private QueueHandler queueHandler;
     private Thread queueHandlerThread;
 
+    /**
+     * Старт потока для обработки очереди
+     * @param servletContextEvent
+     */
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         queueHandler = new QueueHandler();
         queueHandler.setRunning(true);
@@ -17,6 +21,10 @@ public class Listener implements ServletContextListener {
         queueHandlerThread.start();
     }
 
+    /**
+     * Блокировка возможности добавление в очередь и прекращение работы потока, после того как последние данные из очереди будут изъяты
+     * @param servletContextEvent
+     */
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
 
         if(queueHandlerThread.isAlive() && queueHandler.isRunning()){
@@ -27,7 +35,7 @@ public class Listener implements ServletContextListener {
         try {
             queueHandlerThread.join();
         }catch (InterruptedException e){
-            System.out.println(e);
+            e.printStackTrace();
         }
 
     }

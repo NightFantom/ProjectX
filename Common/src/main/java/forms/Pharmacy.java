@@ -7,7 +7,7 @@ package forms;
 import org.apache.struts.action.ActionForm;
 
 
-public class Pharmacy extends ActionForm {
+public class Pharmacy {
     private Integer id;
     private String address;
     private String name;

@@ -4,72 +4,65 @@
 
 package action;
 
-import java.io.File;
-import java.util.Iterator;
-import java.util.List;
-
+import fileService.FileManager;
+import form.LodedData;
 import form.FileUploadForm;
-import form.Record;
-import form.FormHandler;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileItemFactory;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import form.Mapper;
+import forms.Pharmacy;
+import hibernateService.HibernateService;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
+import org.apache.struts.upload.FormFile;
 import queueService.QueueManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 public class FileUploadAction extends DispatchAction {
 
-    @Override
+    private final String SUCCESS = "success";
+    private final String USER_IS_NOT_EXIST = "userIsNotExist";
+    private final String IS_NOT_MULTIPART_CONTENT = "isNotMultipartContent";
+
     protected String getMethodName(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response, String parameter) throws Exception {
         return parameter;
     }
 
-
-    public ActionForward parseRequest(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
-            throws Exception {
+    /**
+     * Загрузка файла, логина, пароля
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward loadMultipartContent(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         FileUploadForm fileUploadForm = (FileUploadForm) form;
-        FormHandler client = new FormHandler();   //???????????????
-        if (!client.isExist(fileUploadForm.getLogin(), fileUploadForm.getPassword())) {
-            return mapping.findForward("userIsNotExist");
-        }
-        Record record = new Record();
-        record.setLogin(fileUploadForm.getLogin());
+        LodedData lodedData = new LodedData();
         if (ServletFileUpload.isMultipartContent(request)) {                    // если нам пришел реквест с файлом
-            FileItemFactory factory = new DiskFileItemFactory();
-            ServletFileUpload upload = new ServletFileUpload(factory);
-            try {
-                List items = upload.parseRequest(request);                      //получение листа из элементов формы
-                Iterator iterator = items.iterator();
-                while (iterator.hasNext()) {
-                    FileItem item = (FileItem) iterator.next();                 //получение элемента формы (поля или файла)
-                    if (!item.isFormField()) {                                  //если элемент не является полем формы, т.е. является файлом
-                        String fileName = item.getName();                       //получаем имя файла
-                        String root = getServlet().getServletContext().getRealPath("/");    //получаем путь сервлета
-                        File path = new File(root + "/" + client.getOrganization());                //создаем там папку в которую будем загружать
-                        if (!path.exists()) {
-                            boolean status = path.mkdirs();
-                        }
-                        File uploadedFile = new File(path + "/" + fileName);
-                        item.write(uploadedFile);                               //записываем файл
-                        record.setPathToFile(uploadedFile.getAbsolutePath());
-                    }
+            List<Pharmacy> pharmaciesList = new HibernateService<Pharmacy>(Pharmacy.class).getList(new Mapper().getMap("login", fileUploadForm.getLogin()), "getByLogin");
+            if (!pharmaciesList.isEmpty()) {
+                Pharmacy pharmacy = pharmaciesList.get(0);
+                if (pharmacy.getPassword().equals(fileUploadForm.getPassword())) {
+                    FormFile file = (FormFile) fileUploadForm.getMultipartRequestHandler().getFileElements().get("upfile");
+                    String filePath = getServlet().getServletContext().getRealPath("/") + pharmacy.getLogin();
+                    lodedData.setPathToFile(new FileManager(filePath).loadFile(file).getAbsolutePath());
+                    lodedData.setPharmacy(pharmacy);
                 }
-            } catch (FileUploadException e) {
-                e.printStackTrace();
+            } else {
+                mapping.findForward(USER_IS_NOT_EXIST);
             }
+        } else {
+            return mapping.findForward(IS_NOT_MULTIPART_CONTENT);
         }
-        if (record.getPathToFile() != null) {
-            QueueManager.getQueue().add(record);
-        }
-        return mapping.findForward("success");
+        QueueManager.getQueue().add(lodedData);
+
+        return mapping.findForward(SUCCESS);
     }
 }

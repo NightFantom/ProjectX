@@ -1,62 +1,76 @@
 package queueService;
-
-import form.ParseRecord;
-import form.Record;
-import handler.DataHandler;
-import parsers.ParserTXT;
-
-import java.util.LinkedList;
-import java.util.List;
-
 /**
  * Created by Виктор on 06.11.2014.
+ */
+import form.LodedData;
+import forms.Parser;
+import handler.UpdateData;
+import hibernateService.HibernateService;
+import parsers.ParserFactory;
+
+/**
+ * Обработчик очереди
  */
 public class QueueHandler implements Runnable {
 
     private boolean running;
     private final int SLEEP_TIME = 5000;
-    private ParserTXT parserTXT = new ParserTXT();
-    private DataHandler dataHandler = new DataHandler();
-
+    private UpdateData updateData = new UpdateData();
+    /**
+     * проверка на дестрой из лисенера
+     * @return
+     */
     public boolean isRunning() {
         return running;
     }
 
+    /**
+     *
+     * @param running
+     */
     public void setRunning(boolean running) {
         this.running = running;
     }
 
+    /**
+     * извлечение,обработка и обновление в бд данных пришедших из очереди
+     * @param queue
+     */
     private void processData(Queue queue){
-        Record record = (Record) queue.poll(); //Достаем данные
-        List<ParseRecord> linkedList = parserTXT.getRecords(record.getPathToFile()); //Парсим файл
-        dataHandler.handData(record.getLogin(),linkedList); //Обработка полученного листа (поиск конкретных записей и их обновление в бд)
+        LodedData lodedData = (LodedData) queue.poll();
+        //TODO:переименовать
+        Parser parser =(Parser) new HibernateService<Parser>(Parser.class).getById(lodedData.pharmacy.getId());
+        updateData.updateData( new ParserFactory().getParser(parser.getParser()).getRecords(lodedData.getPathToFile()),lodedData);
     }
 
+    /**
+     * процес работы с очередью
+     */
     public void process() {
 
         Queue<Object> queue = QueueManager.getQueue();
         while (running) {
-            while (!queue.isEmpty()) {
-                processData(queue);     //Обработка очереди если она не пуста
+            if (!queue.isEmpty()) {
+                processData(queue);
+            }else{
+                try {
+                    Thread.currentThread().sleep(SLEEP_TIME);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-            try {
-                Thread.currentThread().sleep(SLEEP_TIME);
-            } catch (InterruptedException e) {
-                System.out.println(e);
-            }
-
         }
         if (!running && queue.isBlockAdd()) {
             while (!queue.isEmpty()) {
                 processData(queue);
             }
         }
-
     }
 
+    /**
+     * старт процесса работы с очередью
+     */
     public void run() {
         process();
     }
-
-
 }

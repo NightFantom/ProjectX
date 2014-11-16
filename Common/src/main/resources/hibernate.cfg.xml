@@ -13,6 +13,11 @@
         <property name="hibernate.show_sql">true</property>
 
         <mapping resource="Medicament.hbm.xml"/>
+        <mapping resource="City.hbm.xml"/>
+        <mapping resource="Pharmacy.hbm.xml"/>
+        <mapping resource="Price.hbm.xml"/>
+        <mapping resource="UserAccount.hbm.xml"/>
+        <mapping resource="Parser.hbm.xml"/>
     </session-factory>
 
 </hibernate-configuration>

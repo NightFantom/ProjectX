@@ -5,16 +5,19 @@
 <struts-config>
 
     <form-beans>
-
+        <form-bean name="fileForm" type="form.FileUploadForm"/>
     </form-beans>
 
 
     <action-mappings>
         <action path="/save"
                 type="action.FileUploadAction"
-                parameter="parseRequest"
-                scope="request">
-            <forward name="successful" path="/suc.jsp"/>
+                parameter="loadMultipartContent"
+                scope="request"
+                name="fileForm"
+                validate="true">
+            <forward name="success" path="/suc.jsp"/>
+            <forward name="userIsNotExist" path="/error.jsp"/>
          </action>
     </action-mappings>
 

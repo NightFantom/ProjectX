@@ -3,13 +3,23 @@
  */
 package form;
 
+import org.apache.commons.fileupload.FileUpload;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.upload.FormFile;
 
 public class FileUploadForm extends ActionForm {
-    private FormFile file;
+
     private String login;
     private String password;
+    private FormFile file;
+
+    public FormFile getFile() {
+        return file;
+    }
+
+    public void setFile(FormFile file) {
+        this.file = file;
+    }
 
     public String getLogin() {
         return login;
@@ -27,11 +37,4 @@ public class FileUploadForm extends ActionForm {
         this.password = password;
     }
 
-    public FormFile getFile() {
-        return file;
-    }
-
-    public void setFile(FormFile file) {
-        this.file = file;
-    }
 }

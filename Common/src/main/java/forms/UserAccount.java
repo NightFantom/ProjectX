@@ -7,7 +7,7 @@ package forms;
 import org.apache.struts.action.ActionForm;
 
 
-public class UserAccount extends ActionForm {
+public class UserAccount  {
     private Integer id;
     private String firstName;
     private String secondName;
