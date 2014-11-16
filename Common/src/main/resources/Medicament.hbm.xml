@@ -11,11 +11,11 @@
             </generator>
         </id>
 
-        <property name="name" column="NAME" type="java.lang.String"/>
-        <property name="description" column="DESCRIPTION" type="java.lang.String"/>
+        <property name="name" column="NAME" type="java.lang.String" not-null="true"/>
+        <property name="description" column="DESCRIPTION" type="java.lang.String" not-null="false"/>
 
         <query name="getByName">
-            select medicament from forms.Medicament as medicament where medicament.name = :name
+            select medicament from forms.Medicament as medicament where medicament.name = UPPER(:name)
         </query>
     </class>
 </hibernate-mapping>

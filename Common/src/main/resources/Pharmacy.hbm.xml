@@ -14,9 +14,9 @@
         <property name="address" column="ADDRESS" type="java.lang.String"/>
         <property name="name" column="NAME" type="java.lang.String"/>
         <property name="phone" column="PHONE" type="java.lang.String"/>
-        <property name="idCity" column="ID_CITY" type="java.lang.Integer"/>
-        <property name="login" column="LOGIN" type="java.lang.String"/>
-        <property name="password" column="PASSWORD" type="java.lang.String"/>
+        <property name="idCity" column="ID_CITY" type="java.lang.Integer" not-null="true"/>
+        <property name="login" column="LOGIN" type="java.lang.String" not-null="true"/>
+        <property name="password" column="PASSWORD" type="java.lang.String" not-null="true"/>
 
         <query name="getByLogin">
             select pharmacy from forms.Pharmacy as pharmacy where pharmacy.login = :login

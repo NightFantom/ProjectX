@@ -10,8 +10,7 @@
                 <param name="sequence">S_ID_CITY</param>
             </generator>
         </id>
-
-        <property name="name" column="NAME" type="java.lang.String"/>
+        <property name="name" column="NAME" type="java.lang.String" not-null="true"/>
 
     </class>
 </hibernate-mapping>
