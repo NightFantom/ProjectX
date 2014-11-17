@@ -5,7 +5,7 @@
 
 <hibernate-mapping>
     <class name="forms.Pharmacy" table="PHARMACY">
-        <id name="id" column="ID_PHARMACY">
+        <id name="id" column="ID_PHARMACY" type="java.lang.Integer">
             <generator class="sequence">
                 <param name="sequence">S_ID_PHARMACY</param>
             </generator>

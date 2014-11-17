@@ -217,7 +217,7 @@ body {
     background: #e2efd9;
 }
 
-.highlightLink:hover{
+.highlightLink a:hover{
     color: #feb772;
     cursor: pointer;
 }

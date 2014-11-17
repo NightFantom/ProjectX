@@ -18,7 +18,7 @@
     <meta http-equiv="content-type" content="text/html; charset = UTF-8">
     <meta http-equiv="Content-language" content="ru">
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
-    <title><tiles:insertAttribute name="title"/></title>
+    <title><tiles:getAsString name="title"/></title>
 </head>
 <body>
 <div id="fon">

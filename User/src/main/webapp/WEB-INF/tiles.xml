@@ -9,8 +9,8 @@
         <put-attribute name="content" type="definition"/>
     </definition>
 
-    <definition name="search" template="/WEB-INF/template/search.jsp">
-        <put-attribute name="action" type="string" value=""/>
+    <definition name="searchLine" template="/WEB-INF/template/search.jsp">
+        <put-attribute name="action"/>
     </definition>
 
     <definition name="menu" template="/WEB-INF/template/menu.jsp"/>
@@ -23,15 +23,19 @@
     </definition>
 
     <definition name="searchTool" template="/WEB-INF/template/searchTool.jsp">
-        <put-attribute name="actionT" type="string" value=""/>
+        <put-attribute name="action" type="string"/>
     </definition>
 
     <definition name="resultTable" template="/WEB-INF/template/resultTable.jsp">
         <put-attribute name="medicament" type="string"/>
         <put-attribute name="grid" type="definition"/>
-        <put-attribute name="count" type="string"/>
+        <put-attribute name="count"/>
     </definition>
 
-
+    <definition name="viewPharmacy" template="/WEB-INF/template/viewParmacy.jsp">
+        <put-attribute name="address" type="string" value=""/>
+        <put-attribute name="name" type="string" value=""/>
+        <put-attribute name="phone" type="string" value=""/>
+    </definition>
 
 </tiles-definitions>

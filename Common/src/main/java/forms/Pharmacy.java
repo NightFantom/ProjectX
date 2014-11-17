@@ -4,10 +4,7 @@
 
 package forms;
 
-import org.apache.struts.action.ActionForm;
-
-
-public class Pharmacy {
+public class Pharmacy{
     private Integer id;
     private String address;
     private String name;

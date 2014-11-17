@@ -4,18 +4,25 @@
 
 package forms;
 
-import org.apache.struts.action.ActionForm;
 import java.util.Date;
 
 public class Price {
     private Integer id;
     private Integer idCity;
-    private String pharmacyName;
     private Integer idPharmacy;
-    private Integer idMedicine;
+    private Integer idMedicament;
     private Integer count;
     private Double cost;
     private Date dateUpdate;
+    private Pharmacy pharmacy;
+
+    public Pharmacy getPharmacy() {
+        return pharmacy;
+    }
+
+    public void setPharmacy(Pharmacy pharmacy) {
+        this.pharmacy = pharmacy;
+    }
 
     public Integer getId() {
         return id;
@@ -33,14 +40,6 @@ public class Price {
         this.idCity = idCity;
     }
 
-    public String getPharmacyName() {
-        return pharmacyName;
-    }
-
-    public void setPharmacyName(String pharmacyName) {
-        this.pharmacyName = pharmacyName;
-    }
-
     public Integer getIdPharmacy() {
         return idPharmacy;
     }
@@ -49,12 +48,12 @@ public class Price {
         this.idPharmacy = idPharmacy;
     }
 
-    public Integer getIdMedicine() {
-        return idMedicine;
+    public Integer getIdMedicament() {
+        return idMedicament;
     }
 
-    public void setIdMedicine(Integer idMedicine) {
-        this.idMedicine = idMedicine;
+    public void setIdMedicament(Integer idMedicament) {
+        this.idMedicament = idMedicament;
     }
 
     public Integer getCount() {

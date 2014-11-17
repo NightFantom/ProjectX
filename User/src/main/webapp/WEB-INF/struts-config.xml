@@ -5,12 +5,33 @@
 <struts-config>
 
     <form-beans>
-
+        <form-bean name="ResultSetForm" type="forms.ActionFormBase"/>
+        <form-bean name="StandardSearchForm" type="forms.ActionFormBase"/>
+        <form-bean name="ViewPharmacyForm" type="forms.ViewPharmacyForm"/>
     </form-beans>
 
-
     <action-mappings>
-        <action path="/index" forward="/index.jsp"/>
+        <action path="/index"
+                forward="/jsp/index.jsp"
+                name="StandardSearchForm"
+                scope="request"/>
+
+        <action path="/ourContacts" forward="/jsp/ourContacts.jsp"/>
+
+        <action path="/search"
+                type="action.SearchAction"
+                name="StandardSearchForm"
+                scope="request">
+            <forward name="start" path="/jsp/resultSet.jsp"/>
+        </action>
+
+        <action path="/viewPharmacy"
+                type="action.ViewPharmacyAction"
+                name="ViewPharmacyForm"
+                scope="request">
+            <forward name="start" path="/jsp/viewPharmacy.jsp"/>
+        </action>
+
     </action-mappings>
 
 

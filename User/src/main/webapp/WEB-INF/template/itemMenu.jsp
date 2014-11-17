@@ -24,7 +24,7 @@ text - текст пункта меню--%>
 </c:choose>
 
 <td class="${st}">
-    <a href="${link}">
+    <a href="${pageContext.request.contextPath}/${link}">
         <div>
             <img src="${imagePath}">
             <p>${text}</p>

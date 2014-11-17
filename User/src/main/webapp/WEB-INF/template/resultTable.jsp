@@ -11,8 +11,10 @@
     grid - грид
 --%>
 
+<tiles:importAttribute/>
+
 <div class="blockResult">
 <p class="bigText marginBottom10">Результаты <span class="doubleOrange">поиска</span></p>
-<p class="smallItalicText marginBottom10">Лекарство <span class="doubleOrange"> "<tiles:insertAttribute name="medicament"/>"</span> найдено в <tiles:insertAttribute name="count"/> аптеках</p>
+<p class="smallItalicText marginBottom10">Лекарство <span class="doubleOrange"> "<tiles:insertAttribute name="medicament"/>"</span> найдено в ${count} аптеках</p>
 <tiles:insertAttribute name="grid"/>
 </div>
