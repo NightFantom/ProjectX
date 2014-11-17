@@ -4,10 +4,7 @@
 
 package forms;
 
-import org.apache.struts.action.ActionForm;
-
-
-public class UserAccount  {
+public class UserAccount {
     private Integer id;
     private String firstName;
     private String secondName;

@@ -3,10 +3,7 @@
  */
 package forms;
 
-import org.apache.struts.action.ActionForm;
-
-
-public class Medicament  {
+public class Medicament {
     private Integer id;
     private String name;
     private String description;
