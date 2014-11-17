@@ -28,17 +28,20 @@ public class UpdateData {
      * @param lodedData
      */
     public void updateData(List<UpdateRecord> list, LodedData lodedData) {
-
+        //TODO: Переделать на for each
         iter = list.iterator();
         price = new Price();
         while (iter.hasNext()) {
             updateRecord = (UpdateRecord) iter.next();
+            //TODO: Удалить класс Mapper
             medicaments = new HibernateService<Medicament>(Medicament.class).getList(new Mapper().getMap("name", updateRecord.getName()), "getByName");
             if (medicaments.isEmpty()) {
+                //TODO: Удалить метод createMedicament. Незачем сначала создавать, затем сохранять и доставать из базы. Достаточно передать в saveOrUpdate экземпляр класса. После выполнения метода, экземпляру присвоется id
                 new HibernateService<Medicament>(Medicament.class).saveOrUpdate(createMedicament());
                 medicaments = new HibernateService<Medicament>(Medicament.class).getList(new Mapper().getMap("name", updateRecord.getName()), "getByName");
             }
             medicament = medicaments.get(0);
+            //TODO: Прости, отойду от правил. БЛЯ! Это вообще лишено смысла! Id в таблице Price несоответствует id лекарства!!!!!!!!!!!!!!!!!!!!!!
             price = new HibernateService<Price>(Price.class).getById(medicament.getId());
             if(price == null){
                 price = createPrice(lodedData);
@@ -61,13 +64,12 @@ public class UpdateData {
 
     private Price createPrice(LodedData lodedData){
         price = new Price();
-        price.setIdMedicine(medicament.getId());
+        price.setIdMedicament(medicament.getId());
         price.setIdCity(lodedData.pharmacy.getIdCity());
         price.setIdPharmacy(lodedData.pharmacy.getId());
         price.setCount(Integer.parseInt(updateRecord.getCount()));
         price.setCost(Double.parseDouble(updateRecord.getCost()));
         price.setDateUpdate(new Date());
-        price.setPharmacyName(lodedData.pharmacy.getName());
         return price;
     }
 }
