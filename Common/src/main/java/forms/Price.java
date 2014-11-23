@@ -9,9 +9,8 @@ import java.util.Calendar;
 public class Price {
     private Integer id;
     private Integer idCity;
-    private Integer idPharmacy;
     private Integer idMedicament;
-    private Integer count;
+    private Integer amount;
     private Double cost;
     private Calendar dateUpdate;
     private Pharmacy pharmacy;
@@ -40,14 +39,6 @@ public class Price {
         this.idCity = idCity;
     }
 
-    public Integer getIdPharmacy() {
-        return idPharmacy;
-    }
-
-    public void setIdPharmacy(Integer idPharmacy) {
-        this.idPharmacy = idPharmacy;
-    }
-
     public Integer getIdMedicament() {
         return idMedicament;
     }
@@ -56,12 +47,12 @@ public class Price {
         this.idMedicament = idMedicament;
     }
 
-    public Integer getCount() {
-        return count;
+    public Integer getAmount() {
+        return amount;
     }
 
-    public void setCount(Integer count) {
-        this.count = count;
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 
     public Double getCost() {

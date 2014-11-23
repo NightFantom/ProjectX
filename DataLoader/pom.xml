@@ -7,8 +7,10 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
+    <groupId>${myapp.groupid}</groupId>
     <artifactId>DataLoader</artifactId>
     <packaging>war</packaging>
+    <version>${myapp.version}</version>
     <name>DataLoader</name>
 
     <dependencies>
@@ -24,7 +26,6 @@
             <version>1.3.1</version>
         </dependency>
 
-
     </dependencies>
 
     <build>
@@ -35,12 +36,6 @@
                 <version>2.4</version>
                 <configuration>
                     <webXml>src\main\webapp\WEB-INF\web.xml </webXml>
-                    <webResources>
-                    <resource>
-                        <directory>src/main/resources/META-INF/</directory>
-                        <targetPath>META-INF</targetPath>
-                    </resource>
-                </webResources>
                 </configuration>
             </plugin>
         </plugins>

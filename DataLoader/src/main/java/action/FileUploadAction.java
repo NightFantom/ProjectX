@@ -23,15 +23,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FileUploadAction extends DispatchAction {
+public class FileUploadAction extends LogDispatchAction {
 
     private final String SUCCESS = "success";
     private final String USER_IS_NOT_EXIST = "userIsNotExist";
     private final String IS_NOT_MULTIPART_CONTENT = "isNotMultipartContent";
 
-    protected String getMethodName(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response, String parameter) throws Exception {
-        return parameter;
-    }
 
     /**
      * Загрузка файла, логина, пароля
@@ -57,15 +54,12 @@ public class FileUploadAction extends DispatchAction {
                     String filePath = getServlet().getServletContext().getRealPath("/") + pharmacy.getLogin();
                     lodedData.setPathToFile(new FileManager(filePath).loadFile(file).getAbsolutePath());
                     lodedData.setPharmacy(pharmacy);
+                    QueueManager.getQueue().add(lodedData);
+                    return mapping.findForward(SUCCESS);
                 }
-            } else {
-                mapping.findForward(USER_IS_NOT_EXIST);
             }
-        } else {
-            return mapping.findForward(IS_NOT_MULTIPART_CONTENT);
         }
-        QueueManager.getQueue().add(lodedData);
-
-        return mapping.findForward(SUCCESS);
+        //TODO: Нужно иначе разруливать "плохие" ситуации
+        return mapping.findForward(IS_NOT_MULTIPART_CONTENT);
     }
 }

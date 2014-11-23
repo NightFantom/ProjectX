@@ -8,7 +8,7 @@ import javax.servlet.ServletContextListener;
 import java.util.Locale;
 
 public class HibernateListener implements ServletContextListener {
-    @Override
+
     public void contextInitialized(ServletContextEvent servletContextEvent) {
 
         try {
@@ -21,7 +21,7 @@ public class HibernateListener implements ServletContextListener {
         }
     }
 
-    @Override
+
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
         HibernateUtil.closeSessionFactory();
     }

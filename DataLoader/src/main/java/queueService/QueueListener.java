@@ -5,7 +5,7 @@ package queueService;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-public class Listener implements ServletContextListener {
+public class QueueListener implements ServletContextListener {
 
     private QueueHandler queueHandler;
     private Thread queueHandlerThread;

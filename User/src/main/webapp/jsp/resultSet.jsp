@@ -26,7 +26,7 @@
                <grid:table uid="price" name="${form.data}">
                    <grid:column property="pharmacy.name" title="Название аптеки" href="${pageContext.request.contextPath}/viewPharmacy.do" paramId="id" paramProperty="pharmacy.id" class="highlightLink"/>
                    <grid:column property="pharmacy.address" title="Адрес" href="${pageContext.request.contextPath}/viewPharmacy.do" paramId="id" paramProperty="pharmacy.id" class="highlightLink"/>
-                   <grid:column property="count" title="Количество"/>
+                   <grid:column property="amount" title="Количество"/>
                    <grid:column property="cost" title="Стоимость"/>
                    <grid:column  title="Дата обновления">
                         ${helper:getDateUpdate(price.dateUpdate)}

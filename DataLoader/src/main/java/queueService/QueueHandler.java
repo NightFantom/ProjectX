@@ -3,7 +3,7 @@ package queueService;
  * Created by Виктор on 06.11.2014.
  */
 import form.LodedData;
-import forms.Parser;
+import forms.DescriptionParser;
 import handler.UpdateData;
 import hibernateService.HibernateService;
 import parsers.ParserFactory;
@@ -38,9 +38,8 @@ public class QueueHandler implements Runnable {
      */
     private void processData(Queue queue){
         LodedData lodedData = (LodedData) queue.poll();
-        //TODO:переименовать
-        Parser parser =(Parser) new HibernateService<Parser>(Parser.class).getById(lodedData.pharmacy.getId());
-        updateData.updateData( new ParserFactory().getParser(parser.getParser()).getRecords(lodedData.getPathToFile()),lodedData);
+        DescriptionParser descriptionParser = new HibernateService<DescriptionParser>(DescriptionParser.class).getById(lodedData.pharmacy.getId());
+        updateData.updateData( new ParserFactory().getParser(descriptionParser.getParser()).getRecords(lodedData.getPathToFile()),lodedData);
     }
 
     /**
