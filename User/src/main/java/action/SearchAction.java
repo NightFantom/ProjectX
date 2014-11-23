@@ -5,7 +5,6 @@
 package action;
 
 import forms.ActionFormBase;
-import forms.ExtendsPrice;
 import forms.Medicament;
 import forms.Price;
 import helpers.SessionAndRequestHelper;
@@ -13,7 +12,6 @@ import hibernateService.HibernateService;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;

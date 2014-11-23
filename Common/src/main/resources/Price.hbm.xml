@@ -14,7 +14,7 @@
         <property name="idMedicament" column="ID_MEDICAMENT" type="java.lang.Integer" not-null="true"/>
         <property name="count" column="COUNT" type="java.lang.Integer" not-null="true"/>
         <property name="cost" column="COSTS" type="java.lang.Double" not-null="true"/>
-        <property name="dateUpdate" column="DATE_UPDATE" type="java.util.Date" not-null="true"/>
+        <property name="dateUpdate" column="DATE_UPDATE" type="java.util.Calendar" not-null="true"/>
         <many-to-one name="pharmacy" column="ID_PHARMACY" class="forms.Pharmacy" lazy="false"/>
 
         <query name="getPrice">

@@ -4,6 +4,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://helper" prefix="helper"%>
+
+<c:set var="path" value="${helper:getPath(pageContext)}"/>
 
 <div id="headerMenu">
     <table>
@@ -14,7 +18,7 @@
                 <tiles:putAttribute name="text" value="поиск лекарств"/>
             </tiles:insertDefinition>
             <tiles:insertDefinition name="menuItem">
-                <tiles:putAttribute name="link" value=""/>
+                <tiles:putAttribute name="link" value="listPharmacy.do"/>
                 <tiles:putAttribute name="imagePath" value="images/hederMenu/icon2.png"/>
                 <tiles:putAttribute name="text" value="список аптек"/>
             </tiles:insertDefinition>

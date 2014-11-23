@@ -4,7 +4,7 @@
 
 package forms;
 
-import java.util.Date;
+import java.util.Calendar;
 
 public class Price {
     private Integer id;
@@ -13,7 +13,7 @@ public class Price {
     private Integer idMedicament;
     private Integer count;
     private Double cost;
-    private Date dateUpdate;
+    private Calendar dateUpdate;
     private Pharmacy pharmacy;
 
     public Pharmacy getPharmacy() {
@@ -72,11 +72,11 @@ public class Price {
         this.cost = cost;
     }
 
-    public Date getDateUpdate() {
+    public Calendar getDateUpdate() {
         return dateUpdate;
     }
 
-    public void setDateUpdate(Date dateUpdate) {
+    public void setDateUpdate(Calendar dateUpdate) {
         this.dateUpdate = dateUpdate;
     }
 }

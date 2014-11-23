@@ -7,6 +7,7 @@
 <%@taglib uri="http://displaytag.sf.net" prefix="grid"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@taglib uri="http://helper" prefix="helper"%>
 
 <c:set var="form" value="${StandardSearchForm}" scope="request"/>
 
@@ -22,12 +23,14 @@
             </tiles:putAttribute>
             <tiles:putAttribute name="count" value="${form.length}"/>
             <tiles:putAttribute name="grid">
-               <grid:table name="${form.data}">
+               <grid:table uid="price" name="${form.data}">
                    <grid:column property="pharmacy.name" title="Название аптеки" href="${pageContext.request.contextPath}/viewPharmacy.do" paramId="id" paramProperty="pharmacy.id" class="highlightLink"/>
                    <grid:column property="pharmacy.address" title="Адрес" href="${pageContext.request.contextPath}/viewPharmacy.do" paramId="id" paramProperty="pharmacy.id" class="highlightLink"/>
                    <grid:column property="count" title="Количество"/>
                    <grid:column property="cost" title="Стоимость"/>
-                   <grid:column property="dateUpdate" title="Дата обновления"/>
+                   <grid:column  title="Дата обновления">
+                        ${helper:getDateUpdate(price.dateUpdate)}
+                   </grid:column>
                </grid:table>
             </tiles:putAttribute>
         </tiles:insertDefinition>

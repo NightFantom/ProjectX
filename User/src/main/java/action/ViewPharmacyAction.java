@@ -4,17 +4,23 @@
  */
 package action;
 
+import forms.ActionFormBase;
 import forms.Pharmacy;
 import forms.ViewPharmacyForm;
+import helpers.SessionAndRequestHelper;
 import hibernateService.HibernateService;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ViewPharmacyAction extends LogDispatchAction {
+
+    private static final String FORWARD_START = "start";
 
     public ActionForward start(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response){
 
@@ -24,7 +30,7 @@ public class ViewPharmacyAction extends LogDispatchAction {
             Pharmacy pharmacy = new HibernateService<Pharmacy>(Pharmacy.class).getById(id);
             frm.setPharmacy(pharmacy);
         }
-        return mapping.findForward("start");
+        return mapping.findForward(FORWARD_START);
     }
 
     private int getID(ViewPharmacyForm frm){
@@ -32,5 +38,15 @@ public class ViewPharmacyAction extends LogDispatchAction {
             return frm.getId();
         }
         return -1;
+    }
+
+    public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response){
+
+        ActionFormBase frm = (ActionFormBase)form;
+        Map<Object, Object> map = new HashMap<>();
+        map.put("idCity", SessionAndRequestHelper.getCityId(request));
+        List<Pharmacy> list = new HibernateService<Pharmacy>(Pharmacy.class).getList(map, "getAllPharmacyOfCity");
+        frm.setData(list);
+        return mapping.findForward(FORWARD_START);
     }
 }
