@@ -15,8 +15,7 @@ import java.util.Scanner;
  */
 public class FileManager {
     private Scanner scanner;
-    private PrintWriter out;
-    private String pathFile;
+   private String pathFile;
 
     /**
      * Сканер файла

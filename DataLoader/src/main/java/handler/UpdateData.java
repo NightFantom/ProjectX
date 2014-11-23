@@ -4,7 +4,6 @@ package handler;
  */
 
 import form.LodedData;
-import form.Mapper;
 import form.UpdateRecord;
 import forms.Medicament;
 import forms.Price;
@@ -16,61 +15,45 @@ import java.util.*;
  * Обновление данных о стоимости и количестве лекартсва
  */
 public class UpdateData {
-    private UpdateRecord updateRecord;
-    private Iterator iter ;
+
+
     private List<Medicament> medicaments;
+    private List<Price> priceList;
     private Medicament medicament;
-    private Price price ;
+    private Price price;
+    private Map<Object, Object> map = new HashMap<Object, Object>();
 
     /**
      * Обновить данные
-     * @param list лист распарсенных данных
+     *
+     * @param list      лист распарсенных данных
      * @param lodedData
      */
     public void updateData(List<UpdateRecord> list, LodedData lodedData) {
-        //TODO: Переделать на for each
-        iter = list.iterator();
-        price = new Price();
-        while (iter.hasNext()) {
-            updateRecord = (UpdateRecord) iter.next();
-            //TODO: Удалить класс Mapper
-            medicaments = new HibernateService<Medicament>(Medicament.class).getList(new Mapper().getMap("name", updateRecord.getName()), "getByName");
+
+        for (UpdateRecord updateRecord : list) {
+            map.put("name", updateRecord.getName());
+            medicaments = new HibernateService<Medicament>(Medicament.class).getList(map, "getByName");
             if (medicaments.isEmpty()) {
-                //TODO: Удалить метод createMedicament. Незачем сначала создавать, затем сохранять и доставать из базы. Достаточно передать в saveOrUpdate экземпляр класса. После выполнения метода, экземпляру присвоется id
-                new HibernateService<Medicament>(Medicament.class).saveOrUpdate(createMedicament());
-                medicaments = new HibernateService<Medicament>(Medicament.class).getList(new Mapper().getMap("name", updateRecord.getName()), "getByName");
+                medicament.setName(updateRecord.getName());
+                new HibernateService<Medicament>(Medicament.class).saveOrUpdate(medicament);
+            } else {
+                medicament = medicaments.get(0);
             }
-            medicament = medicaments.get(0);
-            //TODO: Прости, отойду от правил. БЛЯ! Это вообще лишено смысла! Id в таблице Price несоответствует id лекарства!!!!!!!!!!!!!!!!!!!!!!
-            price = new HibernateService<Price>(Price.class).getById(medicament.getId());
-            if(price == null){
-                price = createPrice(lodedData);
-            }else {
-                price.setCount(Integer.parseInt(updateRecord.getCount()));
-                price.setCost(Double.parseDouble(updateRecord.getCost()));
-                price.setDateUpdate(new Date());
-            }
+            price = new Price();
+            price.setIdMedicament(medicament.getId());
+            price.setIdCity(lodedData.pharmacy.getIdCity());
+            price.setIdPharmacy(lodedData.pharmacy.getId());
+            price.setCount(Integer.parseInt(updateRecord.getCount()));
+            price.setCost(Double.parseDouble(updateRecord.getCost()));
+            price.setDateUpdate(new Date());
+            price.setPharmacyName(lodedData.pharmacy.getName());
+            price.setPharmacy(lodedData.getPharmacy());
             new HibernateService<Price>(Price.class).saveOrUpdate(price);
 
         }
 
     }
 
-    private Medicament createMedicament(){
-        medicament = new Medicament();
-        medicament.setName(updateRecord.getName());
-        return medicament;
-    }
-
-    private Price createPrice(LodedData lodedData){
-        price = new Price();
-        price.setIdMedicament(medicament.getId());
-        price.setIdCity(lodedData.pharmacy.getIdCity());
-        price.setIdPharmacy(lodedData.pharmacy.getId());
-        price.setCount(Integer.parseInt(updateRecord.getCount()));
-        price.setCost(Double.parseDouble(updateRecord.getCost()));
-        price.setDateUpdate(new Date());
-        return price;
-    }
 }
 

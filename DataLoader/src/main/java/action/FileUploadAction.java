@@ -7,7 +7,6 @@ package action;
 import fileService.FileManager;
 import form.LodedData;
 import form.FileUploadForm;
-import form.Mapper;
 import forms.Pharmacy;
 import hibernateService.HibernateService;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -20,7 +19,9 @@ import queueService.QueueManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FileUploadAction extends DispatchAction {
 
@@ -46,7 +47,9 @@ public class FileUploadAction extends DispatchAction {
         FileUploadForm fileUploadForm = (FileUploadForm) form;
         LodedData lodedData = new LodedData();
         if (ServletFileUpload.isMultipartContent(request)) {                    // если нам пришел реквест с файлом
-            List<Pharmacy> pharmaciesList = new HibernateService<Pharmacy>(Pharmacy.class).getList(new Mapper().getMap("login", fileUploadForm.getLogin()), "getByLogin");
+            Map<Object, Object> map = new HashMap<Object, Object>();
+            map.put("login", fileUploadForm.getLogin());
+            List<Pharmacy> pharmaciesList = new HibernateService<Pharmacy>(Pharmacy.class).getList( map, "getByLogin");
             if (!pharmaciesList.isEmpty()) {
                 Pharmacy pharmacy = pharmaciesList.get(0);
                 if (pharmacy.getPassword().equals(fileUploadForm.getPassword())) {
