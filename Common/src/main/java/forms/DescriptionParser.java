@@ -3,7 +3,7 @@ package forms;
 /**
  * Created by Виктор on 14.11.2014.
  */
-public class Parser {
+public class DescriptionParser {
     private Integer id;
     private String parser;
 

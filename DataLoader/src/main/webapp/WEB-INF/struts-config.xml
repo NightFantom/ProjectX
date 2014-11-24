@@ -10,6 +10,9 @@
 
 
     <action-mappings>
+        <action path="/index"
+                forward="/jsp/index.jsp"/>
+
         <action path="/save"
                 type="action.FileUploadAction"
                 parameter="loadMultipartContent"

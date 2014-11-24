@@ -24,8 +24,8 @@ public class LogDispatchAction extends DispatchAction {
 
     @Override
     protected String getMethodName(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response, String parameter) throws Exception {
-        String methodName = request.getParameter(parameter);
-        if (methodName != null){
+        String methodName = parameter;
+        if (methodName != null && !methodName.equals("")){
             return methodName;
         }
         return "start";

@@ -21,5 +21,8 @@
         <query name="getByLogin">
             select pharmacy from forms.Pharmacy as pharmacy where pharmacy.login = :login
         </query>
+        <query name="getAllPharmacyOfCity">
+            select pharmacy from forms.Pharmacy as pharmacy where pharmacy.idCity = :idCity
+        </query>
     </class>
 </hibernate-mapping>

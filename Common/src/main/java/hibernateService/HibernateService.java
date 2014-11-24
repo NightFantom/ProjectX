@@ -138,5 +138,20 @@ public class HibernateService<E> {
         return list;
     }
 
+    public int update(Map<Object, Object> criteria, String nameQuery) throws HibernateException{
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            Query query = session.getNamedQuery(clazz.getName() + "." + nameQuery);
+            query.setProperties(criteria);
+            return query.executeUpdate();
+        } catch (HibernateException e) {
+            throw e;
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
 
 }

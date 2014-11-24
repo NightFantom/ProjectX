@@ -5,19 +5,22 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://helper" prefix="helper"%>
 <%--
     title - заголовок страницы
     content - контент
 --%>
 <tiles:importAttribute/>
 
+<c:set var="path" value="${helper:getPath(pageContext)}"/>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset = UTF-8">
     <meta http-equiv="Content-language" content="ru">
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/css/style.css"/>
     <title><tiles:getAsString name="title"/></title>
     <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
     <script type="text/javascript" src="js/jquery-ui.js"></script>
@@ -31,8 +34,8 @@
         <div id="wrapper">
             <header>
                 <div id="logo">
-                    <a href="${pageContext.servletContext.contextPath}/index.do">
-                        <img src="images/logo.png">
+                    <a href="${path}/index.do">
+                        <img src="${path}/images/logo.png">
                     </a>
                 </div>
                 <tiles:insertDefinition name="menu"/>

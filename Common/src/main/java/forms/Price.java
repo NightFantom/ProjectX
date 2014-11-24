@@ -4,16 +4,15 @@
 
 package forms;
 
-import java.util.Date;
+import java.util.Calendar;
 
 public class Price {
     private Integer id;
     private Integer idCity;
-    private Integer idPharmacy;
     private Integer idMedicament;
-    private Integer count;
+    private Integer amount;
     private Double cost;
-    private Date dateUpdate;
+    private Calendar dateUpdate;
     private Pharmacy pharmacy;
     private String pharmacyName;
 
@@ -49,14 +48,6 @@ public class Price {
         this.idCity = idCity;
     }
 
-    public Integer getIdPharmacy() {
-        return idPharmacy;
-    }
-
-    public void setIdPharmacy(Integer idPharmacy) {
-        this.idPharmacy = idPharmacy;
-    }
-
     public Integer getIdMedicament() {
         return idMedicament;
     }
@@ -65,12 +56,12 @@ public class Price {
         this.idMedicament = idMedicament;
     }
 
-    public Integer getCount() {
-        return count;
+    public Integer getAmount() {
+        return amount;
     }
 
-    public void setCount(Integer count) {
-        this.count = count;
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 
     public Double getCost() {
@@ -81,11 +72,11 @@ public class Price {
         this.cost = cost;
     }
 
-    public Date getDateUpdate() {
+    public Calendar getDateUpdate() {
         return dateUpdate;
     }
 
-    public void setDateUpdate(Date dateUpdate) {
+    public void setDateUpdate(Calendar dateUpdate) {
         this.dateUpdate = dateUpdate;
     }
 }

@@ -17,7 +17,7 @@
         <mapping resource="Pharmacy.hbm.xml"/>
         <mapping resource="UserAccount.hbm.xml"/>
         <mapping resource="City.hbm.xml"/>
-        <mapping resource="Parser.hbm.xml"/>
+        <mapping resource="DescriptionParser.hbm.xml"/>
     </session-factory>
 
 </hibernate-configuration>

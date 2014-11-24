@@ -8,6 +8,14 @@
 
 <tiles:importAttribute/>
 
-<p>Название: <tiles:insertAttribute name="name"/></p>
-<p>Адрес: <tiles:insertAttribute name="address"/></p>
-<p>Телефон: <tiles:insertAttribute name="phone"/></p>
+<p class="bigText marginBottom30">Аптека <span class="orangeText"><tiles:insertAttribute name="name"/></span></p>
+<div class="leftColumn">
+    <p class="bigText marginBottom30"><span class="orangeText">Контактная</span> информация</p>
+    <p>Адрес: <span class="usualText"><tiles:insertAttribute name="address"/></span></p>
+    <p>Время работы: <span class="usualText"><tiles:insertAttribute name="workTime"/></span></p>
+    <p>Телефон: <span class="usualText"><tiles:insertAttribute name="phone"/></span></p>
+    <p>Доп. информация: <span class="usualText"><tiles:insertAttribute name="additionalInformation"/></span></p>
+</div>
+<div class="workArea">
+    <p class="bigText marginBottom30">Карта</p>
+</div>
