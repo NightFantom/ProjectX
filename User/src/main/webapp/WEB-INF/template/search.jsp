@@ -17,13 +17,13 @@
 </c:set>
 
 <div id="fieldSearch">
-    <html:form action="search" method="post">
+    <html:form action="search" styleId="searchForm" method="post">
         <html:hidden  name="form" property="id"/>
         <img id = "iconSearch" src="images/iconSearch.png">
         <div id="searchLine">
             <p class="additionText bigText">поиск <span class="doubleOrange">лекарств</span></p>
             <div class="floatLeft">
-                <html:text name="form" property="fields(searchInput)"  styleClass="inputTextSearch" maxlength="40"/>
+                <html:text styleId="searchText" name="form" property="fields(searchInput)"  styleClass="inputTextSearch" maxlength="40"/>
             </div>
             <input id="searchButton" type="image" src="images/search.png">
             <p class="additionText smallItalicText">например: <span class="doubleOrange">аспирин</span></p>

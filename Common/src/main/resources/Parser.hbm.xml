@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="forms.Parser" table="PARSER">
+    <class name="forms.Parser" table="PARSERS">
         <id column="ID_PHARMACY" name="id" type="java.lang.Integer"></id>
         <property name="parser" column="PARSER" type="java.lang.String"/>
     </class>

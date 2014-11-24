@@ -44,6 +44,7 @@ public class UpdateData {
             price.setIdMedicament(medicament.getId());
             price.setIdCity(lodedData.pharmacy.getIdCity());
             price.setIdPharmacy(lodedData.pharmacy.getId());
+            //TODO убрать в парсер преобразование строки в число
             price.setCount(Integer.parseInt(updateRecord.getCount()));
             price.setCost(Double.parseDouble(updateRecord.getCost()));
             price.setDateUpdate(new Date());

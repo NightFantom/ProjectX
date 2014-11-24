@@ -19,6 +19,11 @@
     <meta http-equiv="Content-language" content="ru">
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <title><tiles:getAsString name="title"/></title>
+    <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/ajax.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <script>contextUrl("${pageContext.servletContext.contextPath}")</script>
 </head>
 <body>
 <div id="fon">

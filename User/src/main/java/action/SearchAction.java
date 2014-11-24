@@ -5,7 +5,6 @@
 package action;
 
 import forms.ActionFormBase;
-import forms.ExtendsPrice;
 import forms.Medicament;
 import forms.Price;
 import helpers.SessionAndRequestHelper;
@@ -51,4 +50,6 @@ public class SearchAction extends LogDispatchAction {
         }
         return -1;
     }
+
+
 }

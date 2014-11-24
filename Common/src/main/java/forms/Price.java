@@ -15,6 +15,15 @@ public class Price {
     private Double cost;
     private Date dateUpdate;
     private Pharmacy pharmacy;
+    private String pharmacyName;
+
+    public String getPharmacyName() {
+        return pharmacyName;
+    }
+
+    public void setPharmacyName(String pharmacyName) {
+        this.pharmacyName = pharmacyName;
+    }
 
     public Pharmacy getPharmacy() {
         return pharmacy;
