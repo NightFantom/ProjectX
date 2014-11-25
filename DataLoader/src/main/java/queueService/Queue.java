@@ -17,7 +17,7 @@ public class Queue<T>{
      * проверка на возможность добавеления элемента в очередь
      * @return
      */
-    public boolean isBlockAdd() {
+    public boolean isBlockingAdd() {
         return blockAdd;
     }
 
@@ -25,7 +25,7 @@ public class Queue<T>{
      * true-запретить/ false-разрешить добавление в очередь
      * @param blockAdd
      */
-    public void setBlockAdd(boolean blockAdd) {
+    public void setBlockingAdd(boolean blockAdd) {
         this.blockAdd = blockAdd;
     }
 
