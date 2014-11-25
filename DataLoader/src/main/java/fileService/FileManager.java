@@ -14,11 +14,13 @@ import java.util.Scanner;
  *
  */
 public class FileManager {
+    private static final String FILE_PREFIX = "Pharmacy";
     private Scanner scanner;
-   private String pathFile;
+    private String pathFile;
 
     /**
      * Сканер файла
+     *
      * @return
      */
     public Scanner getScanner() {
@@ -31,62 +33,45 @@ public class FileManager {
     }
 
     /**
-     *
-     * @param in
-     */
-    public void setIn(Scanner in) {
-        this.scanner = in;
-    }
-
-    /**
-     *
      * @param pathFile - путь до файла
      */
-    public FileManager(String pathFile){
+    public FileManager(String pathFile) {
         this.pathFile = pathFile;
     }
 
     /**
-     *
      * @param formFile - файл, который загрузили
      * @return файл в который скопировали данные
      */
-    public File loadFile(FormFile formFile){
+    //TODO: Если с загрузкой файла произошла ошибка, что пробросить её наверх
+    public File loadFile(FormFile formFile, String name) {
         createFolder();
-        if (!formFile.getFileName().equals("")) {
-            File newFile = new File(pathFile, formFile.getFileName());
-            FileOutputStream fos = null;
-            if (!newFile.exists()) {
-                try {
-                    fos = new FileOutputStream(newFile);
-                    fos.write(formFile.getFileData());
-                    fos.flush();
-                    fos.close();
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            return newFile;
+        File newFile = new File(pathFile, FILE_PREFIX + name);
+        try(FileOutputStream outputStream = new FileOutputStream(newFile)) {
+            outputStream.write(formFile.getFileData());
+            outputStream.flush();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return null;
+        return newFile;
     }
 
     /**
-     * Создает новую папку для файла
+     * Создаёт папку
+     * @return Да, если и только если, папка создана успешно
      */
-    public void createFolder(){
+    public boolean createFolder() {
+        //TODO: Сделать так чтобы, если папка существует, то её не создавать.
         File folder = new File(pathFile);
-        if(Files.isRegularFile(folder.toPath())) {
+        if (Files.isRegularFile(folder.toPath())) {
             try {
                 Files.delete(folder.toPath());
-            }catch (IOException e){
-
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-
         }
-        folder.mkdir();
-
+        return folder.mkdir();
     }
 }
