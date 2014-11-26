@@ -4,8 +4,9 @@ package queueService;
  */
 import form.LodedData;
 import forms.DescriptionParser;
-import handler.UpdateData;
+import handler.UpdateDataHandler;
 import hibernateService.HibernateService;
+import parsers.Parser;
 import parsers.ParserFactory;
 
 /**
@@ -15,9 +16,9 @@ public class QueueHandler implements Runnable {
 
     private boolean running;
     private final int SLEEP_TIME = 5000;
-    private UpdateData updateData = new UpdateData();
+    private UpdateDataHandler updateData = new UpdateDataHandler();
     /**
-     * проверка на дестрой из лисенера
+     * проверка на дестрой
      * @return
      */
     public boolean isRunning() {
@@ -33,13 +34,23 @@ public class QueueHandler implements Runnable {
     }
 
     /**
-     * извлечение,обработка и обновление в бд данных пришедших из очереди
+     * Извлечение, обработка и обновление в бд данных, пришедших из очереди
      * @param queue
      */
     private void processData(Queue queue){
-        LodedData lodedData = (LodedData) queue.poll();
-        DescriptionParser descriptionParser = new HibernateService<DescriptionParser>(DescriptionParser.class).getById(lodedData.pharmacy.getId());
-        updateData.updateData( new ParserFactory().getParser(descriptionParser.getParser()).getRecords(lodedData.getPathToFile()),lodedData);
+        try{
+            LodedData lodedData = (LodedData) queue.poll();
+            DescriptionParser descriptionParser = new HibernateService<DescriptionParser>(DescriptionParser.class).getById(lodedData.pharmacy.getId());
+            if(descriptionParser == null){
+                throw new Exception("Не найден парсер для аптеки с id = " + lodedData.getPharmacy().getId());
+            }
+            Parser parser = new ParserFactory().getParser(descriptionParser.getParser());
+            //TODO: Нужно реализовать обработку исключения "Не удалось распарсить"
+            updateData.updateData(parser.getRecords(lodedData.getPathToFile()),lodedData);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     /**
@@ -59,7 +70,7 @@ public class QueueHandler implements Runnable {
                 }
             }
         }
-        if (!running && queue.isBlockAdd()) {
+        if (!running && queue.isBlockingAdd()) {
             while (!queue.isEmpty()) {
                 processData(queue);
             }

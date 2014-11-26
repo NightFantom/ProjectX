@@ -17,6 +17,7 @@ public interface Parser {
      * @param pathToFile путь до файла, который нужно распарсить
      * @return лист распарсенных данных
      */
+    //TODO: Написать проброску исключения в случае неудачного парсинга
     public List<UpdateRecord> getRecords(String pathToFile);
 
 }

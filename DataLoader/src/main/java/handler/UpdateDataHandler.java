@@ -15,12 +15,10 @@ import java.util.*;
 /**
  * Обновление данных о стоимости и количестве лекартсва
  */
-public class UpdateData {
+public class UpdateDataHandler {
 
-    private List<Price> priceList;
-    private Price price;
-    private Map<Object, Object> map = new HashMap<Object, Object>();
-
+    private HibernateService<Price> servicePrice = new HibernateService<Price>(Price.class);
+    private HibernateService<Medicament> serviceMedicament = new HibernateService<Medicament>(Medicament.class);
     /**
      * Обновить данные
      *
@@ -30,18 +28,8 @@ public class UpdateData {
     public void updateData(List<UpdateRecord> list, LodedData lodedData) {
 
         Medicament medicament = null;
-        HibernateService<Price> service = new HibernateService<Price>(Price.class);
-        HibernateService<Medicament> serviceMedicament = new HibernateService<Medicament>(Medicament.class);
         for (UpdateRecord updateRecord : list) {
-            map.put("name", updateRecord.getName());
-            List<Medicament> medicaments = serviceMedicament.getList(map, "getByName");
-            if (medicaments.isEmpty()) {
-                medicament = new Medicament();
-                medicament.setName(updateRecord.getName().toUpperCase());
-                new HibernateService<Medicament>(Medicament.class).saveOrUpdate(medicament);
-            } else {
-                medicament = medicaments.get(0);
-            }
+            medicament = getMedicamentByName(updateRecord.getName());
 
             Map<Object, Object> hashMap = new HashMap<>();
             hashMap.put("cost", Double.parseDouble(updateRecord.getCost()));
@@ -51,9 +39,9 @@ public class UpdateData {
             hashMap.put("idCity",lodedData.pharmacy.getIdCity());
             hashMap.put("dateUpdate",new GregorianCalendar());
 
-            int amountUpdateRecords =  service.update(hashMap, "updatePrice");
+            int amountUpdateRecords =  servicePrice.update(hashMap, "updatePrice");
             if(amountUpdateRecords == 0){
-                service.saveOrUpdate(getPrice(hashMap));
+                servicePrice.saveOrUpdate(getPrice(hashMap));
             }
         }
 
@@ -68,6 +56,21 @@ public class UpdateData {
         price.setIdCity((Integer)map.get("idCity"));
         price.setIdMedicament((Integer) map.get("idMedicament"));
         return price;
+    }
+
+    private Medicament getMedicamentByName(String name){
+        Map<Object, Object> map = new HashMap<Object, Object>();
+        map.put("name", name);
+        List<Medicament> medicaments = serviceMedicament.getList(map, "getByName");
+        Medicament medicament = null;
+        if (medicaments.isEmpty()) {
+            medicament = new Medicament();
+            medicament.setName(name.toUpperCase());
+            serviceMedicament.saveOrUpdate(medicament);
+        } else {
+            medicament = medicaments.get(0);
+        }
+        return medicament;
     }
 }
 

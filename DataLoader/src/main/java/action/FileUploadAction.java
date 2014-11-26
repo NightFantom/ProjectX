@@ -13,10 +13,9 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.actions.DispatchAction;
 import org.apache.struts.upload.FormFile;
 import queueService.QueueManager;
-
+import helpers.DateHelper;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
@@ -28,7 +27,7 @@ public class FileUploadAction extends LogDispatchAction {
     private final String SUCCESS = "success";
     private final String USER_IS_NOT_EXIST = "userIsNotExist";
     private final String IS_NOT_MULTIPART_CONTENT = "isNotMultipartContent";
-
+    private static final  String FOLDER = "UploadFile";
 
     /**
      * Загрузка файла, логина, пароля
@@ -51,8 +50,8 @@ public class FileUploadAction extends LogDispatchAction {
                 Pharmacy pharmacy = pharmaciesList.get(0);
                 if (pharmacy.getPassword().equals(fileUploadForm.getPassword())) {
                     FormFile file = (FormFile) fileUploadForm.getMultipartRequestHandler().getFileElements().get("upfile");
-                    String filePath = getServlet().getServletContext().getRealPath("/") + pharmacy.getLogin();
-                    lodedData.setPathToFile(new FileManager(filePath).loadFile(file).getAbsolutePath());
+                    String filePath = getServlet().getServletContext().getRealPath("/") + FOLDER;
+                    lodedData.setPathToFile(new FileManager(filePath).loadFile(file, pharmacy.getId().toString()).getAbsolutePath());
                     lodedData.setPharmacy(pharmacy);
                     QueueManager.getQueue().add(lodedData);
                     return mapping.findForward(SUCCESS);
