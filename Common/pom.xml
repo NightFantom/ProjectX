@@ -28,7 +28,7 @@
             <artifactId>jsp-api</artifactId>
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>c:\My program\Tomcat 8\apache-tomcat-8.0.12\lib\jsp-api.jar</systemPath>
+            <systemPath>C:\Program Files\Tomcat\apache-tomcat-7.0.53-windows-x64\apache-tomcat-7.0.53\lib\jsp-api.jar</systemPath>
         </dependency>
 
         <dependency>
