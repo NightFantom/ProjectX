@@ -1,6 +1,7 @@
 /**
- * Created: Денис
- * Date: 03.11.14.
+ * Создано: Денис
+ * Дата: 03.11.14.
+ * Описание: Базовый класс для всех форм
  */
 package forms;
 
@@ -43,5 +44,9 @@ public class ActionFormBase extends ActionForm {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public void setField(String key, Object value){
+        fields.put(key, value);
     }
 }
