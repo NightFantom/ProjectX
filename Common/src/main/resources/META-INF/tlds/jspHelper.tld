@@ -17,4 +17,9 @@
         <function-class>helpers.DateHelper</function-class>
         <function-signature>java.lang.String getDateUpdate(java.util.Calendar)</function-signature>
     </function>
+    <function>
+        <name>getCurrentForm</name>
+        <function-class>helpers.SessionAndRequestHelper</function-class>
+        <function-signature>org.apache.struts.action.ActionForm getCurrentForm(javax.servlet.jsp.PageContext)</function-signature>
+    </function>
 </taglib>

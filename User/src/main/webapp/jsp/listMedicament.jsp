@@ -1,6 +1,6 @@
 <%--
     Created: Денис 
-    Date: 02.11.14.
+    Date: 30.12.14.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
@@ -9,7 +9,7 @@
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@taglib uri="http://helper" prefix="helper"%>
 
-<c:set var="form" value="${helper:getCurrentForm(pageContext)}" scope="request"/>
+<c:set var="form" value="${StandardSearchForm}" scope="request"/>
 
 <tiles:insertDefinition name="main">
     <tiles:putAttribute name="title" value="Медсправка"/>
@@ -23,15 +23,9 @@
             </tiles:putAttribute>
             <tiles:putAttribute name="count" value="${form.length}"/>
             <tiles:putAttribute name="grid">
-               <grid:table uid="price" name="${form.data}">
-                   <grid:column property="pharmacy.name" title="Название аптеки" href="${pageContext.request.contextPath}/viewPharmacy.do" paramId="id" paramProperty="pharmacy.id" class="highlightLink"/>
-                   <grid:column property="pharmacy.address" title="Адрес" href="${pageContext.request.contextPath}/viewPharmacy.do" paramId="id" paramProperty="pharmacy.id" class="highlightLink"/>
-                   <grid:column property="amount" title="Количество"/>
-                   <grid:column property="cost" title="Стоимость"/>
-                   <grid:column  title="Дата обновления">
-                        ${helper:getDateUpdate(price.dateUpdate)}
-                   </grid:column>
-               </grid:table>
+                <grid:table uid="medicaments" name="${form.data}">
+                    <grid:column  property="name" title="Название лекарства" href="${pageContext.request.contextPath}/search.do" paramId="id" paramProperty="id" class="highlightLink"/>
+                </grid:table>
             </tiles:putAttribute>
         </tiles:insertDefinition>
     </tiles:putAttribute>

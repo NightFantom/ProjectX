@@ -4,6 +4,7 @@
  */
 package helpers;
 
+import org.apache.struts.action.ActionForm;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.PageContext;
 
@@ -32,4 +33,17 @@ public class SessionAndRequestHelper {
         return pageContext.getServletContext().getContextPath();
     }
 
+    /**
+     * Получение текущей ActionForm для запроса
+     * @param pageContext Запрос
+     * @return Форма
+     */
+    public static ActionForm getCurrentForm(PageContext pageContext){
+        HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
+        Object obj = request.getAttribute(GlobalConstants.CURRENT_ACTION_FORM);
+        if (obj == null){
+            obj = request.getSession().getAttribute(GlobalConstants.CURRENT_ACTION_FORM);
+        }
+        return (ActionForm) obj;
+    }
 }
