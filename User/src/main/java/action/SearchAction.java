@@ -8,6 +8,7 @@ package action;
 import forms.ActionFormBase;
 import forms.Medicament;
 import forms.Price;
+import helpers.GlobalConstants;
 import helpers.SessionAndRequestHelper;
 import hibernateService.HibernateService;
 import org.apache.struts.action.ActionForm;
@@ -42,7 +43,7 @@ public class SearchAction extends LogDispatchAction {
         Integer id =  frm.getId();
         Map<Object, Object> map = new HashMap<>();
         map.put("idMedicament", id);
-        map.put("idCity", SessionAndRequestHelper.getCityId(request));
+        map.put(GlobalConstants.ID_USER_CITY, SessionAndRequestHelper.getCityId(request));
         List<Price> list = new HibernateService<Price>(Price.class).getList(map,"getPrice");
         Medicament medicament = new HibernateService<Medicament>(Medicament.class).getById(id);
         frm.setField("searchInput", medicament.getName());
