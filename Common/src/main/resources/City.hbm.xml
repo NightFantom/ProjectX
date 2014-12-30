@@ -12,5 +12,9 @@
         </id>
         <property name="name" column="NAME" type="java.lang.String" not-null="true"/>
 
+        <query name="getByName">
+            select city from City as city where name = UPPER(:name)
+        </query>
+
     </class>
 </hibernate-mapping>

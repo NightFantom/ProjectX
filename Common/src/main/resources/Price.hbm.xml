@@ -21,7 +21,7 @@
             select price from forms.Price as price where price.idMedicament = :idMedicament and price.idCity = :idCity
         </query>
         <query name="updatePrice">
-            update forms.Price as price set price.cost =:cost, price.amount = :amount, price.dateUpdate = :dateUpdate where  price.idMedicament = :idMedicament and price.idCity = :idCity and price.pharmacy = :pharmacy
+            update forms.Price as price set price.cost =:cost, price.amount = :amount, price.dateUpdate = :dateUpdate where  price.idMedicament = :idMedicament  and price.pharmacy = :pharmacy
         </query>
     </class>
 </hibernate-mapping>
