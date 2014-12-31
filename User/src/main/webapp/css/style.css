@@ -303,3 +303,8 @@ header{
     height: 40px;
     text-align: center;
 }
+
+.errorBlock{
+    font-size: 30px;
+    text-align: center;
+}

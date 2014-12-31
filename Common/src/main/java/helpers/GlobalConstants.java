@@ -9,5 +9,6 @@ public class GlobalConstants {
 
     public static final String CURRENT_ACTION_FORM = "currentActionForm";
     public static final String ID_USER_CITY = "idCity";
+    public static final String EMPTY_FORM = "EmptyForm";
 
 }
