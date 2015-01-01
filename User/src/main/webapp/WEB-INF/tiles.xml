@@ -27,9 +27,8 @@
     </definition>
 
     <definition name="resultTable" template="/WEB-INF/template/resultTable.jsp">
-        <put-attribute name="medicament" type="string"/>
+        <put-attribute name="message" type="string" value=""/>
         <put-attribute name="grid" type="definition"/>
-        <put-attribute name="count"/>
     </definition>
 
     <definition name="viewPharmacy" template="/WEB-INF/template/viewParmacy.jsp">

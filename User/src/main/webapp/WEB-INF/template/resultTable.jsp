@@ -15,6 +15,6 @@
 
 <div class="blockResult">
 <p class="bigText marginBottom10">Результаты <span class="doubleOrange">поиска</span></p>
-<p class="smallItalicText marginBottom10">Лекарство <span class="doubleOrange"> "<tiles:insertAttribute name="medicament"/>"</span> найдено в ${count} аптеках</p>
+<p class="smallItalicText marginBottom10"><tiles:insertAttribute name="message"/></p>
 <tiles:insertAttribute name="grid"/>
 </div>
