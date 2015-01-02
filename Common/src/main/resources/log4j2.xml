@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Configuration strict="true">
+    <Appenders>
+        <Appender type="Console" name="myConsole">
+            <Layout Type="PatternLayout" Pattern="%d [%t] %c{3} %level{length=5}: %msg%throwable %n"/>
+        </Appender>
+        <Appender type="File" name="myFile" fileName="${sys:catalina.home}/logs/info.html">
+            <Layout Type="HTMLLayout"/>
+        </Appender>
+    </Appenders>
+    <Loggers>
+        <Logger name="main" level="trace" additivity="false">
+            <AppenderRef ref="myConsole"/>
+        </Logger>
+        <Logger level="trace" name="main.levelTwo">
+            <AppenderRef ref="myFile"/>
+        </Logger>
+        <Root level="INFO">
+            <AppenderRef ref="myConsole"/>
+            <AppenderRef ref="myFile"/>
+        </Root>
+    </Loggers>
+</Configuration>
