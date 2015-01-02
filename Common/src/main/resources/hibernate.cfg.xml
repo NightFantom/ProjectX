@@ -10,7 +10,6 @@
         <property name="hibernate.connection.datasource">java:/comp/env/jdbc/ProjectX</property>
         <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
         <property name="hibernate.connection.autocommit">false</property>
-        <property name="hibernate.show_sql">true</property>
 
         <mapping resource="Medicament.hbm.xml"/>
         <mapping resource="Price.hbm.xml"/>
