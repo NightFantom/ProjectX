@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<Configuration strict="true" xmlns="http://www.w3.org/2001/XMLSchema"
+<Configuration strict="true"
+               xmlns="http://www.w3.org/2001/XMLSchema"
                xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance"
                xsd:schemaLocation = "http://www.w3.org/2001/XMLSchema  Log4j-config.xsd">
     <Appenders>
@@ -9,30 +10,30 @@
         <Appender type="Console" name="consoleHibernate">
             <Layout Type="PatternLayout" Pattern="Hibernate: %msg%n"/>
         </Appender>
-        <Appender type="File" name="infoFile" fileName="${sys:catalina.home}/logs/info.html">
+        <Appender type="File" name="logFile" fileName="${sys:catalina.home}/logs/Log-${date:MM-dd k-m}.html">
             <Layout Type="HTMLLayout"/>
         </Appender>
-        <Appender type="File" name="fileHibernate" fileName="${sys:catalina.home}/logs/fileHibernate.html">
+        <Appender type="File" name="logHibernate" fileName="${sys:catalina.home}/logs/LogHibernate-${date:MM-dd k-m}.html">
             <Layout Type="HTMLLayout"/>
         </Appender>
     </Appenders>
     <Loggers>
 
         <Logger level="info" name="org.hibernate" additivity="false">
-            <AppenderRef ref="fileHibernate"/>
+            <AppenderRef ref="logHibernate"/>
             <AppenderRef ref="consoleOut"/>
         </Logger>
         <Logger level="trace" name="org.hibernate.SQL" additivity="false">
             <AppenderRef ref="consoleHibernate"/>
         </Logger>
 
-        <Logger level="debug" name="org.apache.struts" additivity="false">
+        <Logger level="info" name="org.apache.struts" additivity="false">
             <AppenderRef ref="consoleOut"/>
         </Logger>
 
         <Root level="INFO">
             <AppenderRef ref="consoleOut"/>
-            <AppenderRef ref="infoFile"/>
+            <AppenderRef ref="logFile"/>
         </Root>
     </Loggers>
 </Configuration>

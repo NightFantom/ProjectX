@@ -6,7 +6,6 @@
 
     <form-beans>
         <form-bean name="ResultSetForm" type="forms.ActionFormBase"/>
-        <form-bean name="EmptyForm" type="forms.ActionFormBase"/>
         <form-bean name="StandardSearchForm" type="forms.ActionFormBase"/>
         <form-bean name="ViewPharmacyForm" type="forms.ViewPharmacyForm"/>
     </form-beans>
@@ -21,7 +20,7 @@
     <action-mappings>
         <action path="/index"
                 forward="/jsp/index.jsp"
-                name="EmptyForm"
+                name="StandardSearchForm"
                 scope="request"/>
 
         <action path="/ourContacts" forward="/jsp/ourContacts.jsp"/>
@@ -61,6 +60,10 @@
 
     </action-mappings>
 
+    <controller>
+        <set-property value="action.ExtendedRequestProcessor" property="processorClass"/>
+    </controller>
+    
     <message-resources parameter="commonBundle" className="org.apache.struts.config.MessageResourcesConfig" factory="org.apache.struts.util.PropertyMessageResourcesFactory"/>
 
 </struts-config>

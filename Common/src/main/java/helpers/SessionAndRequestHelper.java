@@ -1,6 +1,7 @@
 /**
- * Created: Денис 
- * Date: 16.11.14.
+ * Создано: Денис
+ * Дата: 16.11.14.
+ * Описание: Класс-помошник для работы с request'ом и session'ей
  */
 package helpers;
 
@@ -13,9 +14,6 @@ import javax.servlet.jsp.PageContext;
  * Класс - помошник для работы с сессией и реквестом
  */
 public class SessionAndRequestHelper {
-
-    private static final String ID_CITY = "idCity";
-
     /**
      * Возвращает id города, в котором находится пользователь
      *
@@ -23,7 +21,7 @@ public class SessionAndRequestHelper {
      * @return Id города, в котором находится пользователь
      */
     public static Integer getCityId(HttpServletRequest request) {
-        return (Integer) request.getSession().getAttribute(ID_CITY);
+        return (Integer) request.getSession().getAttribute(GlobalConstants.ID_USER_CITY);
     }
 
     /**
@@ -37,19 +35,13 @@ public class SessionAndRequestHelper {
     }
 
     /**
-     * Получение текущей ActionForm для запроса. В случае, если запрос минует Action, и при этом на странице требуется форма, то нужно использовать EmptyForm.
+     * Получение текущей ActionForm для запроса.
      * @param pageContext Запрос
      * @return Текущая форма
      */
     public static ActionForm getCurrentForm(PageContext pageContext) {
         HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
         Object obj = request.getAttribute(GlobalConstants.CURRENT_ACTION_FORM);
-        if (obj == null) {
-            obj = request.getAttribute(GlobalConstants.EMPTY_FORM);
-            if (obj == null) {
-                obj = request.getSession().getAttribute(GlobalConstants.CURRENT_ACTION_FORM);
-            }
-        }
         return (ActionForm) obj;
     }
 }
