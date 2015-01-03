@@ -1,16 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 <parent>
-    <artifactId>Pharmacy</artifactId>
-    <groupId>${myapp.groupid}</groupId>
-    <version>${myapp.version}</version>
+    <artifactId>pharmacy</artifactId>
+    <groupId>pharmacy</groupId>
+    <version>1.0</version>
 </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>${myapp.groupid}</groupId>
     <artifactId>Common</artifactId>
     <packaging>jar</packaging>
-    <version>${myapp.version}</version>
+    <version>1.0</version>
     <name>Common</name>
 
     <dependencies>
@@ -18,9 +17,6 @@
         <dependency>
             <groupId>${myapp.groupid}</groupId>
             <artifactId>servlet-api</artifactId>
-            <version>1.0.0</version>
-            <scope>system</scope>
-            <systemPath>c:\My program\Tomcat 8\apache-tomcat-8.0.12\lib\servlet-api.jar</systemPath>
         </dependency>
 
         <dependency>
@@ -28,19 +24,13 @@
             <artifactId>jsp-api</artifactId>
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>c:\My program\Tomcat 8\apache-tomcat-8.0.12\lib\jsp-api.jar</systemPath>
+            <systemPath>${project.pathJSPApi}</systemPath>
         </dependency>
 
         <dependency>
             <groupId>struts</groupId>
             <artifactId>struts</artifactId>
             <version>1.2.9</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>antlr</artifactId>
-                    <groupId>antlr</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
@@ -52,13 +42,6 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>4.3.7.Final</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.jboss.logging</groupId>
-                    <artifactId>jboss-logging</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
@@ -88,25 +71,6 @@
         <dependency>
             <groupId>displaytag</groupId>
             <artifactId>displaytag</artifactId>
-            <version>1.1.1</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-jdk14</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>jcl104-over-slf4j</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-log4j12</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
