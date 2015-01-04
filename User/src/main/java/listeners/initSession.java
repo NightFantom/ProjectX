@@ -3,7 +3,7 @@
  * Дата: 16.11.14.
  * Описание: Класс предназначен для инициализации города по умолчанию для нвовь зашедших пользователей
  */
-package listers;
+package listeners;
 
 import helpers.GlobalConstants;
 

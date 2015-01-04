@@ -9,6 +9,11 @@
         <put-attribute name="content" value=""/>
     </definition>
 
+    <definition name="onlyFon" template="/WEB-INF/template/onlyFon.jsp">
+        <put-attribute name="title" value=""/>
+        <put-attribute name="content" value=""/>
+    </definition>
+
     <definition name="searchLine" template="/WEB-INF/template/search.jsp">
         <put-attribute name="action"/>
     </definition>

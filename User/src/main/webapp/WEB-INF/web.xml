@@ -14,7 +14,7 @@
     </listener>
 
     <listener>
-        <listener-class>listers.initSession</listener-class>
+        <listener-class>listeners.initSession</listener-class>
     </listener>
 
     <filter>

@@ -1,6 +1,6 @@
 <%--
-    Created: Денис 
-    Date: 02.11.14.
+    Создано: Денис
+    Дата: 02.11.14.
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
