@@ -4,5 +4,39 @@
         "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 <struts-config>
 
-    <message-resources parameter="myBundle" factory="org.apache.struts.util.PropertyMessageResourcesFactory" id="MyBundle"/>
+    <form-beans>
+        <form-bean name="LoginForm" type="forms.LoginForm"/>
+    </form-beans>
+
+    <global-exceptions>
+        <exception type="java.lang.Exception"
+                   path="/error.do"
+                   handler="action.AllExceptionHandler"
+                   key="commonError"/>
+    </global-exceptions>
+
+    <action-mappings>
+        <action path="/index"
+                name="LoginForm"
+                forward="/jsp/index.jsp"/>
+
+        <action path="/error" forward="/jsp/error.jsp"/>
+
+        <action path="/login"
+                name="LoginForm"
+                type="login.LoginAction"
+                scope="request">
+            <forward name="success" path="/private/myPharmacies.do" redirect="true"/>
+            <forward name="error" path="/jsp/index.jsp"/>
+        </action>
+
+        <action path="/private/myPharmacies" forward="/jsp/panel.jsp"/>
+    </action-mappings>
+
+    <controller>
+        <set-property value="action.ExtendedRequestProcessor" property="processorClass"/>
+    </controller>
+
+    <message-resources parameter="commonBundle" className="org.apache.struts.config.MessageResourcesConfig" factory="org.apache.struts.util.PropertyMessageResourcesFactory"/>
+
 </struts-config>

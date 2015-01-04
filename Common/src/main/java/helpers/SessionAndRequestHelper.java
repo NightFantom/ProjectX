@@ -5,9 +5,11 @@
  */
 package helpers;
 
+import entities.UserAccount;
 import org.apache.struts.action.ActionForm;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.PageContext;
 
 /**
@@ -43,5 +45,15 @@ public class SessionAndRequestHelper {
         HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
         Object obj = request.getAttribute(GlobalConstants.CURRENT_ACTION_FORM);
         return (ActionForm) obj;
+    }
+
+    /**
+     * Получение имени пользователя
+     * @return Имя пользователя
+     */
+    public static String getPersonName(PageContext pageContext){
+        HttpSession session = ((HttpServletRequest) pageContext.getRequest()).getSession();
+        UserAccount user = (UserAccount) session.getAttribute(GlobalConstants.CLIENT);
+        return user.getFirstName() + " " + user.getFatherName();
     }
 }

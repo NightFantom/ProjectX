@@ -44,4 +44,9 @@
         <put-attribute name="workTime" value=""/>
     </definition>
 
+    <definition name="adminPanel" template="/WEB-INF/template/adminPanel.jsp">
+        <put-attribute name="title" type="string" value=""/>
+        <put-attribute name="contentHeader" type="string" value=""/>
+        <put-attribute name="content" value=""/>
+    </definition>
 </tiles-definitions>

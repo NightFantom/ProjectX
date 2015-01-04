@@ -258,10 +258,32 @@ header{
     font-size: 16pt;
 }
 
+.leftColumnAdmin{
+    float: left;
+    height: 100%;
+    width: 250px;
+    font-size: 16pt;
+    padding: 20px 0 0;
+}
+
 .workArea{
     margin-left: 410px;
     height: 500px;
 }
+
+.workAreaAdmin{
+    width: 100%;
+    height: 90%;
+    padding: 10px 20px 0;
+}
+
+.wrapperAdmin{
+    height: 100%;
+    margin: 0 0 0 250px;
+    background: #f4fff1;
+    border-radius: 0 10px 10px 0;
+}
+
 .usualText{
     color:#555555;
 }
@@ -273,7 +295,7 @@ header{
 #formDL {
     padding: 100px 0 0 0;
     margin: 0 auto;
-    text-align: left;
+    text-align: center;
     font-size: 16pt;
     width: 700px;
 }
@@ -307,4 +329,29 @@ header{
 .errorBlock{
     font-size: 30px;
     text-align: center;
+}
+
+.twoColumn{
+    border-radius: 10px 15px 15px 10px;
+    background: #52aa52;
+    height: 610px;
+    margin: 10px 0 50px;
+}
+
+.leftMenu{
+    font-family: Intro;
+    color:white;
+    margin: 0 0 10px;
+    padding: 0 0 0 50px;
+}
+.leftMenu:hover{
+    color:#feb772;
+}
+
+#forSearch{
+    padding: 200px 0 0 0;
+    margin: 0 auto 0;
+}
+.errorMessage{
+    color: #FF2E2E;
 }

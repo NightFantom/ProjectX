@@ -22,4 +22,9 @@
         <function-class>helpers.SessionAndRequestHelper</function-class>
         <function-signature>org.apache.struts.action.ActionForm getCurrentForm(javax.servlet.jsp.PageContext)</function-signature>
     </function>
+    <function>
+        <name>getPersonName</name>
+        <function-class>helpers.SessionAndRequestHelper</function-class>
+        <function-signature>java.lang.String getPersonName(javax.servlet.jsp.PageContext)</function-signature>
+    </function>
 </taglib>
