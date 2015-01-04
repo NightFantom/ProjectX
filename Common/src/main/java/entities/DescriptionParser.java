@@ -1,4 +1,4 @@
-package forms;
+package entities;
 
 /**
  * Created by Виктор on 14.11.2014.

@@ -2,7 +2,7 @@
  * Created by Виктор on 04.11.2014.
  */
 
-package forms;
+package entities;
 
 import java.util.Calendar;
 

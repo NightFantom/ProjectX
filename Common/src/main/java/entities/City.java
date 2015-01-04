@@ -2,7 +2,7 @@
  * Created: Денис 
  * Date: 09.11.14.
  */
-package forms;
+package entities;
 
 public class City {
     private String name;
