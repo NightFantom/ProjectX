@@ -56,4 +56,22 @@ public class SessionAndRequestHelper {
         UserAccount user = (UserAccount) session.getAttribute(GlobalConstants.CLIENT);
         return user.getFirstName() + " " + user.getFatherName();
     }
+
+    /**
+     * Получение учётной записи пользователя
+     * @param request Запрос пользователя
+     * @return Аккаут пользователя
+     */
+    public static UserAccount getUserAccount(HttpServletRequest request){
+       return getUserAccount(request.getSession());
+    }
+
+    /**
+     * Получение учётной записи пользователя
+     * @param session Сессия пользователя
+     * @return Аккаут пользователя
+     */
+    public static UserAccount getUserAccount(HttpSession session){
+        return (UserAccount) session.getAttribute(GlobalConstants.CLIENT);
+    }
 }

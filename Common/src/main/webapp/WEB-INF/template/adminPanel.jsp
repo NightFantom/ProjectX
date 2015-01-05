@@ -22,9 +22,9 @@
 <div id="fon">
     <div id="basis">
         <div id="wrapper">
-            <header>
+            <header class="headerAdmin">
                 <div id="logo">
-                    <a href="#">
+                    <a href="${path}/private/welcomePage.do">
                         <img src="${path}/images/logo.png">
                     </a>
                 </div>
@@ -35,8 +35,9 @@
                 <p><span class="doubleOrange">Добро пожаловать, ${helper:getPersonName(pageContext)}!</span></p>
                 <div class="twoColumn">
                     <div class="leftColumnAdmin">
-                        <a href="#"><p class="leftMenu">Мои аптеки</p></a>
+                        <a href="${path}/private/myPharmacies.do"><p class="leftMenu">Мои аптеки</p></a>
                         <a href="#"><p class="leftMenu">Статистика</p></a>
+                        <a href="${path}/private/exit.do"><p class="leftMenu">Выход</p></a>
                     </div>
                     <div class="wrapperAdmin">
                         <div class="workAreaAdmin">

@@ -27,8 +27,8 @@
 <div id="fon">
     <div id="basis">
         <div id="wrapper">
-            <header>
-                <div id="logo">
+            <header class="headerUser">
+                <div id="logo" class="floatLeft">
                     <a href="${path}/index.do">
                         <img src="${path}/images/logo.png">
                     </a>

@@ -6,6 +6,8 @@
 
     <form-beans>
         <form-bean name="LoginForm" type="forms.LoginForm"/>
+        <form-bean name="DefaultForm" type="forms.ActionFormBase"/>
+        <form-bean name="ViewPharmacy" type="forms.ViewPharmacyFrom"/>
     </form-beans>
 
     <global-exceptions>
@@ -21,22 +23,45 @@
                 forward="/jsp/index.jsp"/>
 
         <action path="/error" forward="/jsp/error.jsp"/>
+        <action path="/private/rejectAccess" forward="/jsp/rejectAccess.jsp"/>
+        <action path="/private/welcomePage" forward="/jsp/welcomePage.jsp"/>
 
         <action path="/login"
                 name="LoginForm"
                 type="login.LoginAction"
                 scope="request">
-            <forward name="success" path="/private/myPharmacies.do" redirect="true"/>
+            <forward name="success" path="/private/welcomePage.do" redirect="true"/>
             <forward name="error" path="/jsp/index.jsp"/>
         </action>
 
-        <action path="/private/myPharmacies" forward="/jsp/panel.jsp"/>
+        <action path="/private/myPharmacies"
+                type="action.ViewPharmaciesAction"
+                name="DefaultForm">
+            <forward name="success" path="/jsp/myPharmacies.jsp"/>
+        </action>
+
+        <action path="/private/viewPharmacy"
+                type="action.ViewPharmaciesAction"
+                name="ViewPharmacy"
+                parameter="viewPharmacy">
+            <forward name="success" path="/jsp/viewPharmacy.jsp"/>
+            <forward name="error" path="/private/rejectAccess.do" redirect="true"/>
+        </action>
+
+        <action path="/private/exit"
+                name="LoginForm"
+                type="login.LoginAction"
+                parameter="exit">
+            <forward name="success" path="/jsp/index.jsp"/>
+        </action>
+
     </action-mappings>
 
     <controller>
         <set-property value="action.ExtendedRequestProcessor" property="processorClass"/>
     </controller>
 
-    <message-resources parameter="commonBundle" className="org.apache.struts.config.MessageResourcesConfig" factory="org.apache.struts.util.PropertyMessageResourcesFactory"/>
+    <message-resources parameter="commonBundle" className="org.apache.struts.config.MessageResourcesConfig"
+                       factory="org.apache.struts.util.PropertyMessageResourcesFactory"/>
 
 </struts-config>

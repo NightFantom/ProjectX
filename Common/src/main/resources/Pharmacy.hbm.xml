@@ -17,12 +17,16 @@
         <property name="idCity" column="ID_CITY" type="java.lang.Integer" not-null="true"/>
         <property name="login" column="LOGIN" type="java.lang.String" not-null="true"/>
         <property name="password" column="PASSWORD" type="java.lang.String" not-null="true"/>
+        <property name="codeNetwork" column="CODE_NETWORK" type="java.lang.Integer" not-null="true"/>
 
         <query name="getByLogin">
             select pharmacy from entities.Pharmacy as pharmacy where pharmacy.login = :login
         </query>
         <query name="getAllPharmacyOfCity">
             select pharmacy from entities.Pharmacy as pharmacy where pharmacy.idCity = :idCity
+        </query>
+        <query name="getByCodeNetwork">
+            select pharmacy from entities.Pharmacy as pharmacy where pharmacy.codeNetwork = :codeNetwork
         </query>
     </class>
 </hibernate-mapping>

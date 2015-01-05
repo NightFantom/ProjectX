@@ -6,15 +6,18 @@ package action;
 
 import helpers.StringHelper;
 import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class LogDispatchAction extends DispatchAction {
+public abstract class LogDispatchAction extends DispatchAction {
 
     private static final String DEFAULT_METHOD = "start";
     private static final String EMPTY = "";
+    protected static final String SUCCESS = "success";
+    protected static final String ERROR = "error";
 
     @Override
     protected String getParameter(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -27,4 +30,9 @@ public class LogDispatchAction extends DispatchAction {
         String methodName = parameter;
         return StringHelper.isNotEmpty(methodName)? methodName : DEFAULT_METHOD;
     }
+
+    /**
+     * Метод по умолчанию
+     */
+    public abstract ActionForward start(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

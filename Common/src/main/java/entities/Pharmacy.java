@@ -12,6 +12,7 @@ public class Pharmacy{
     private Integer idCity;
     private String login;
     private String password;
+    private Integer codeNetwork;
 
     public String getLogin() {
         return login;
@@ -67,5 +68,13 @@ public class Pharmacy{
 
     public void setIdCity(Integer idCity) {
         this.idCity = idCity;
+    }
+
+    public Integer getCodeNetwork() {
+        return codeNetwork;
+    }
+
+    public void setCodeNetwork(Integer codeNetwork) {
+        this.codeNetwork = codeNetwork;
     }
 }

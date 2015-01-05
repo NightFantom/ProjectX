@@ -18,6 +18,7 @@ import org.apache.struts.action.ActionMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,9 +27,10 @@ public class LoginAction extends LogDispatchAction {
 
     private static final String LOGIN = "login";
     private static final String PASSWORD = "password";
-    private static final String SUCCESS = "success";
-    private static final String ERROR = "error";
 
+    /**
+     * Вход пользователя в систему
+     */
     public ActionForward start(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         LoginForm frm = (LoginForm) form;
         Map<Object, Object> map = frm.getFields();
@@ -49,6 +51,18 @@ public class LoginAction extends LogDispatchAction {
         }
         frm.setCorrectLoginAndPassword(false);
         return mapping.findForward(ERROR);
+    }
+
+    /**
+     * Выход пользователя из системы.
+     */
+    public ActionForward exit(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        HttpSession session = request.getSession();
+        UserAccount user = (UserAccount)session.getAttribute(GlobalConstants.CLIENT);
+        session.removeAttribute(GlobalConstants.IS_LOGIN_USER);
+        session.removeAttribute(GlobalConstants.CLIENT);
+        log.info("Пользователь " + user.getLogin() + " вышел из системы");
+        return mapping.findForward(SUCCESS);
     }
 
 }

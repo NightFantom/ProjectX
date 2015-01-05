@@ -14,7 +14,7 @@
     <tiles:putAttribute name="content">
         <div id="formDL">
             <c:if test="${!form.correctLoginAndPassword}">
-                <p class="errorMessage">Направильно введён логин и пароль</p>
+                <p class="errorMessage">Направильно введён логин или пароль</p>
             </c:if>
             <form method="POST" enctype="multipart/form-data" action="${helper:getPath(pageContext)}/login.do">
                 <table class="tableDL">

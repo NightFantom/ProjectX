@@ -1,5 +1,5 @@
 <%--
-    Создано: Денис 
+    Создано: Денис
     Дата: 05.01.15.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,6 +11,6 @@
     <tiles:putAttribute name="title" value="Админка"/>
     <tiles:putAttribute name="contentHeader" value="Мои аптеки"/>
     <tiles:putAttribute name="content">
-        <p>Текст</p>
+        <p>В доступе отказано!</p>
     </tiles:putAttribute>
 </tiles:insertDefinition>
