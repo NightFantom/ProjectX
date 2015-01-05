@@ -4,6 +4,8 @@
  */
 package forms;
 
+import entities.Pharmacy;
+
 public class ViewPharmacyForm extends ActionFormBase {
     private Pharmacy pharmacy;
 

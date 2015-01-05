@@ -9,13 +9,14 @@
 <%@taglib uri="http://helper" prefix="helper"%>
 
 <c:set var="form" value="${helper:getCurrentForm(pageContext)}" scope="request"/>
+<c:set var="path" value="${helper:getPath(pageContext)}"/>
 
 <tiles:insertDefinition name="main">
     <tiles:putAttribute name="title" value="Список аптек"/>
     <tiles:putAttribute name="content">
         <grid:table name="${form.data}">
-            <grid:column property="name" title="Название" href="${pageContext.request.contextPath}/viewPharmacy.do" paramId="id" paramProperty="id" class="highlightLink"/>
-            <grid:column property="address" title="Адрес" href="${pageContext.request.contextPath}/viewPharmacy.do" paramId="id" paramProperty="id" class="highlightLink"/>
+            <grid:column property="name" title="Название" href="${path}/viewPharmacy.do" paramId="id" paramProperty="id" class="highlightLink"/>
+            <grid:column property="address" title="Адрес" href="${path}/viewPharmacy.do" paramId="id" paramProperty="id" class="highlightLink"/>
             <grid:column property="phone" title="Телефон"/>
         </grid:table>
     </tiles:putAttribute>

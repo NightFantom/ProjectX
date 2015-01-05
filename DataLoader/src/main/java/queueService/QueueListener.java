@@ -26,18 +26,20 @@ public class QueueListener implements ServletContextListener {
      * @param servletContextEvent
      */
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-
+        System.out.println(queueHandlerThread);
         if(queueHandlerThread.isAlive() && queueHandler.isRunning()){
-            QueueManager.getQueue().setBlockAdd(true);
+            QueueManager.getQueue().setBlockingAdd(true);
             queueHandler.setRunning(false);
         }
-
+        System.out.println("Поток обработки жив: " + queueHandlerThread.isAlive());
         try {
+            System.out.println("Ожидаем завершения обработки очереди");
             queueHandlerThread.join();
+            System.out.println("Дождался завершения обработки очереди");
         }catch (InterruptedException e){
             e.printStackTrace();
         }
-
+        System.out.println("Поток обработки жив: " + queueHandlerThread.isAlive());
     }
 
 }

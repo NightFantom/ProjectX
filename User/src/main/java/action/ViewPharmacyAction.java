@@ -5,7 +5,7 @@
 package action;
 
 import forms.ActionFormBase;
-import forms.Pharmacy;
+import entities.Pharmacy;
 import forms.ViewPharmacyForm;
 import helpers.SessionAndRequestHelper;
 import hibernateService.HibernateService;

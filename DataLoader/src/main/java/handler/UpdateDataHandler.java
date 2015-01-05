@@ -5,9 +5,9 @@ package handler;
 
 import form.LodedData;
 import form.UpdateRecord;
-import forms.Medicament;
-import forms.Pharmacy;
-import forms.Price;
+import entities.Medicament;
+import entities.Pharmacy;
+import entities.Price;
 import hibernateService.HibernateService;
 
 import java.util.*;

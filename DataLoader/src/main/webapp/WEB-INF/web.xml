@@ -31,6 +31,10 @@
         </init-param>
     </filter>
 
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
     <servlet>
         <servlet-name>Action</servlet-name>

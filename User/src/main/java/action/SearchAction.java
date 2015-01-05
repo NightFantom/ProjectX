@@ -6,8 +6,8 @@
 package action;
 
 import forms.ActionFormBase;
-import forms.Medicament;
-import forms.Price;
+import entities.Medicament;
+import entities.Price;
 import helpers.GlobalConstants;
 import helpers.SessionAndRequestHelper;
 import hibernateService.HibernateService;

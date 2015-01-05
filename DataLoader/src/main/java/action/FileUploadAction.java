@@ -7,7 +7,7 @@ package action;
 import fileService.FileManager;
 import form.LodedData;
 import form.FileUploadForm;
-import forms.Pharmacy;
+import entities.Pharmacy;
 import hibernateService.HibernateService;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.struts.action.ActionForm;
@@ -15,7 +15,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.upload.FormFile;
 import queueService.QueueManager;
-import helpers.DateHelper;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
@@ -24,10 +24,14 @@ import java.util.Map;
 
 public class FileUploadAction extends LogDispatchAction {
 
-    private final String SUCCESS = "success";
     private final String USER_IS_NOT_EXIST = "userIsNotExist";
     private final String IS_NOT_MULTIPART_CONTENT = "isNotMultipartContent";
     private static final  String FOLDER = "UploadFile";
+
+    @Override
+    public ActionForward start(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        return null;
+    }
 
     /**
      * Загрузка файла, логина, пароля
