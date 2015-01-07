@@ -12,6 +12,9 @@ import hibernateService.HibernateService;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import statistic.PharmacyStatistic;
+import statistic.StatisticUtil;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
@@ -28,9 +31,13 @@ public class ViewPharmacyAction extends LogDispatchAction {
         int id = getID(frm);
         if (id > 0){
             Pharmacy pharmacy = new HibernateService<Pharmacy>(Pharmacy.class).getById(id);
-            frm.setPharmacy(pharmacy);
+            if (pharmacy != null){
+                StatisticUtil.getStatistic(PharmacyStatistic.class).increment(pharmacy.getId());
+                frm.setPharmacy(pharmacy);
+                return mapping.findForward(FORWARD_START);
+            }
         }
-        return mapping.findForward(FORWARD_START);
+        throw new IllegalArgumentException("Не найдено аптеки с id" + id);
     }
 
     private int getID(ViewPharmacyForm frm){

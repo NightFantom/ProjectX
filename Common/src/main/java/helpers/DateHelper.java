@@ -52,4 +52,17 @@ public class DateHelper {
         string.append(month);
         return  string.toString();
     }
+
+    /**
+     * Получение текущей даты со временем 00.00 часов.
+     * @return Текущая дата со временем 00.00 часов.
+     */
+    public static Calendar getCurrentDateInZeroTime(){
+        Calendar date = new GregorianCalendar();
+        date.set(Calendar.HOUR_OF_DAY, 0);
+        date.set(Calendar.MINUTE, 0);
+        date.set(Calendar.SECOND, 0);
+        date.set(Calendar.MILLISECOND, 0);
+        return date;
+    }
 }

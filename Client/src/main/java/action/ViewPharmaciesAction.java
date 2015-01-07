@@ -25,7 +25,6 @@ public class ViewPharmaciesAction extends LogDispatchAction {
     /**
      * Получение списка всех аптек клиента
      */
-
     public ActionForward start(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         ActionFormBase frm = (ActionFormBase)form;
         UserAccount account = SessionAndRequestHelper.getUserAccount(request);

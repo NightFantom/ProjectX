@@ -21,7 +21,7 @@ public class HibernateUtil {
     private static SessionFactory sessionFactory;
 
     public static void buildSessionFactory() throws Exception{
-        LOG.info("Начата инициализация Hibernate.");
+        LOG.info("Начало инициализация Hibernate.");
         try{
             Configuration configuration = new Configuration();
             configuration.configure("hibernate.cfg.xml");

@@ -1,6 +1,7 @@
 /**
- * Created: Денис 
- * Date: 05.11.14.
+ * Создано: Денис
+ * Дата: 05.11.14.
+ * Описание: Класс-сервис для работы с БД
  */
 package hibernateService;
 
@@ -63,7 +64,7 @@ public class HibernateService<E> {
     /**
      * Сохраняет или обновляет сущность
      *
-     * @param obj Сущность для добавления/сохранения
+     * @param obj Сущность для обнавления/сохранения
      * @throws HibernateException
      */
     public void saveOrUpdate(E obj) throws HibernateException {
@@ -138,6 +139,13 @@ public class HibernateService<E> {
         return list;
     }
 
+    /**
+     * Обновление записей в БД
+     * @param criteria Критерии запроса
+     * @param nameQuery Имя запроса
+     * @return Количество обновлённых записей
+     * @throws HibernateException
+     */
     public int update(Map<Object, Object> criteria, String nameQuery) throws HibernateException{
         Session session = null;
         try {
@@ -154,4 +162,27 @@ public class HibernateService<E> {
         }
     }
 
+    /**
+     * Выполнение произвольного запроса.
+     * @param query Класс, реализующий класс GenerallyHibernateQuery
+     */
+    public void execute(GenerallyHibernateQuery query){
+        Session session = null;
+        Transaction transaction = null;
+        try {
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+            query.run(session);
+            transaction.commit();
+        } catch (HibernateException e) {
+            if (transaction != null){
+                transaction.rollback();
+            }
+            throw e;
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
 }

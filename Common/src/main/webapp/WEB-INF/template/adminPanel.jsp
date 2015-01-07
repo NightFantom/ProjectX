@@ -36,7 +36,10 @@
                 <div class="twoColumn">
                     <div class="leftColumnAdmin">
                         <a href="${path}/private/myPharmacies.do"><p class="leftMenu">Мои аптеки</p></a>
-                        <a href="#"><p class="leftMenu">Статистика</p></a>
+                        <p class="leftMenu">Статистика</p>
+                        <a href="${path}/private/pharmaciesStatistic.do"><p class="leftSubMenu">По аптекам</p></a>
+                        <a href="#"><p class="leftSubMenu">По лекарствам</p></a>
+                        <a href="#"><p class="leftMenu">Обратная связь</p></a>
                         <a href="${path}/private/exit.do"><p class="leftMenu">Выход</p></a>
                     </div>
                     <div class="wrapperAdmin">

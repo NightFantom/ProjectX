@@ -14,7 +14,11 @@
     </listener>
 
     <listener>
-        <listener-class>listeners.initSession</listener-class>
+        <listener-class>listeners.InitSession</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>listeners.InitStatisticUtilListener</listener-class>
     </listener>
 
     <filter>

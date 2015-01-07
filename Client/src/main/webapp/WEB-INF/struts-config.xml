@@ -55,6 +55,12 @@
             <forward name="success" path="/jsp/index.jsp"/>
         </action>
 
+        <action path="/private/pharmaciesStatistic"
+                name="DefaultForm"
+                type="action.StatisticViewAction">
+            <forward name="success" path="/jsp/pharmaciesStatistic.jsp"/>
+        </action>
+
     </action-mappings>
 
     <controller>

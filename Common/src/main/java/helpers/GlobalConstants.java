@@ -13,5 +13,6 @@ public class GlobalConstants {
     public static final String PERSON_NAME = "personName";
     public static final String IS_LOGIN_USER = "isLoginUser";
     public static final String CLIENT = "client";
-
+    public static final String PHARMACY_STAT = "PharStatistic";
+    public static final String MEDICAMENT_STAT = "MedStatistic";
 }
