@@ -5,6 +5,7 @@
  */
 package helpers;
 
+import entities.City;
 import entities.UserAccount;
 import org.apache.struts.action.ActionForm;
 
@@ -17,13 +18,23 @@ import javax.servlet.jsp.PageContext;
  */
 public class SessionAndRequestHelper {
     /**
+     * Возвращает город, в котором находится пользователь
+     *
+     * @param request запрос
+     * @return Город, в котором находится пользователь
+     */
+    public static City getCity(HttpServletRequest request) {
+        return (City) request.getSession().getAttribute(GlobalConstants.ID_USER_CITY);
+    }
+
+    /**
      * Возвращает id города, в котором находится пользователь
      *
      * @param request запрос
      * @return Id города, в котором находится пользователь
      */
     public static Integer getCityId(HttpServletRequest request) {
-        return (Integer) request.getSession().getAttribute(GlobalConstants.ID_USER_CITY);
+        return ((City) request.getSession().getAttribute(GlobalConstants.ID_USER_CITY)).getId();
     }
 
     /**
