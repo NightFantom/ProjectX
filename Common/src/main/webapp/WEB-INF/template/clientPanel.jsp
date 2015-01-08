@@ -9,7 +9,6 @@
 
 <tiles:importAttribute/>
 <c:set var="path" value="${helper:getPath(pageContext)}"/>
-<c:set var="errorMessage" value="${helper:getErrorMessage(pageContext)}"/>
 
 <!DOCTYPE html>
 <html>
@@ -33,22 +32,19 @@
             </header>
             <div id="content">
                 <p class="bigText">Личный <span class="doubleOrange">кабинет</span></p>
-                <p><span class="doubleOrange">Добро пожаловать, Админ!</span></p>
+                <p><span class="doubleOrange">Добро пожаловать, ${helper:getPersonName(pageContext)}!</span></p>
                 <div class="twoColumn">
                     <div class="leftColumnAdmin">
-                        <a href="${path}/private/viewPharmacies.do"><p class="leftMenu">Аптеки</p></a>
-                        <a href="${path}/private/createPharmacy.do"><p class="leftSubMenu">Создать</p></a>
-                        <a href="#"><p class="leftMenu">Клиенты</p></a>
-                        <a href="#"><p class="leftMenu">Статистика</p></a>
-                        <a href="#"><p class="leftMenu">Настройки</p></a>
+                        <a href="${path}/private/myPharmacies.do"><p class="leftMenu">Мои аптеки</p></a>
+                        <p class="leftMenu">Статистика</p>
+                        <a href="${path}/private/pharmaciesStatistic.do"><p class="leftSubMenu">По аптекам</p></a>
+                        <a href="#"><p class="leftSubMenu">По лекарствам</p></a>
+                        <a href="#"><p class="leftMenu">Обратная связь</p></a>
                         <a href="${path}/private/exit.do"><p class="leftMenu">Выход</p></a>
                     </div>
                     <div class="wrapperAdmin">
                         <div class="workAreaAdmin">
-                            <p class="bigText doubleOrange marginBottom30">${contentHeader}</p>
-                            <c:if test="${not empty errorMessage}">
-                                <p class="errorMessage marginBottom10">${errorMessage}</p>
-                            </c:if>
+                            ${contentHeader}
                             ${content}
                         </div>
                     </div>

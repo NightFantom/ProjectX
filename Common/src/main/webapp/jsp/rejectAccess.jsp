@@ -1,5 +1,5 @@
 <%--
-    Создано: Денис 
+    Создано: Денис
     Дата: 05.01.15.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -7,12 +7,10 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://helper" prefix="helper"%>
 
-<tiles:insertDefinition name="clientPanel">
+<tiles:insertDefinition name="onlyFon">
     <tiles:putAttribute name="title" value="Админка"/>
-    <tiles:putAttribute name="contentHeader">
-        <p class="bigText marginBottom10">Главная <span class="orangeText">страница</span></p>
-    </tiles:putAttribute>
+    <tiles:putAttribute name="contentHeader" value="Мои аптеки"/>
     <tiles:putAttribute name="content">
-        <p>Рады приветствовать Вас на нашем сайте!</p>
+        <p>В доступе отказано!</p>
     </tiles:putAttribute>
 </tiles:insertDefinition>

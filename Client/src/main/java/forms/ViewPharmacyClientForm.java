@@ -7,7 +7,7 @@ package forms;
 
 import entities.Pharmacy;
 
-public class ViewPharmacyFrom extends ActionFormBase {
+public class ViewPharmacyClientForm extends ActionFormBase {
     private Pharmacy pharmacy;
 
     public Pharmacy getPharmacy() {

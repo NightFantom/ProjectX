@@ -8,7 +8,7 @@ package action;
 import entities.Pharmacy;
 import entities.UserAccount;
 import forms.ActionFormBase;
-import forms.ViewPharmacyFrom;
+import forms.ViewPharmacyClientForm;
 import helpers.SessionAndRequestHelper;
 import hibernateService.HibernateService;
 import org.apache.struts.action.ActionForm;
@@ -36,7 +36,7 @@ public class ViewPharmaciesAction extends LogDispatchAction {
     }
 
     public ActionForward viewPharmacy(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        ViewPharmacyFrom frm = (ViewPharmacyFrom)form;
+        ViewPharmacyClientForm frm = (ViewPharmacyClientForm)form;
         UserAccount account = SessionAndRequestHelper.getUserAccount(request);
         int id = getID(frm);
         if (id > 0){

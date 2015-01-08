@@ -85,4 +85,13 @@ public class SessionAndRequestHelper {
     public static UserAccount getUserAccount(HttpSession session){
         return (UserAccount) session.getAttribute(GlobalConstants.CLIENT);
     }
+
+    /**
+     * Получение сообщения об ошибке, произощедщем в Action.
+     * @return Сообщение об ошибке
+     */
+    public static String getErrorMessage(PageContext pageContext){
+        HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
+        return (String) request.getAttribute(GlobalConstants.ERROR_MESSAGE);
+    }
 }

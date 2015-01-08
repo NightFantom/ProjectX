@@ -7,7 +7,7 @@
     <form-beans>
         <form-bean name="LoginForm" type="forms.LoginForm"/>
         <form-bean name="DefaultForm" type="forms.ActionFormBase"/>
-        <form-bean name="ViewPharmacy" type="forms.ViewPharmacyFrom"/>
+        <form-bean name="ViewPharmacy" type="forms.ViewPharmacyClientForm"/>
     </form-beans>
 
     <global-exceptions>

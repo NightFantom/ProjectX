@@ -20,7 +20,7 @@ public class CityHelper {
      * Получение списка всех городов
      * @return Список городов
      */
-    public static List<City> getListCities() {
+    public synchronized static List<City> getListCities() {
         if (listCity == null) {
             new HibernateService<City>(City.class).execute(new GenerallyHibernateQuery() {
                 @Override

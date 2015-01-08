@@ -15,4 +15,6 @@ public class GlobalConstants {
     public static final String CLIENT = "client";
     public static final String PHARMACY_STAT = "PharStatistic";
     public static final String MEDICAMENT_STAT = "MedStatistic";
+    public static final String STUFF = "Stuff";
+    public static final String ERROR_MESSAGE = "ERROR_MESSAGE";
 }

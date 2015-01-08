@@ -27,6 +27,10 @@
             <AppenderRef ref="consoleHibernate"/>
         </Logger>
 
+        <Logger level="debug" name="checkForm.FormHandler" additivity="false">
+            <AppenderRef ref="consoleOut"/>
+        </Logger>
+
         <Logger level="info" name="org.apache.struts" additivity="false">
             <AppenderRef ref="consoleOut"/>
         </Logger>

@@ -280,6 +280,7 @@ body {
 }
 
 .wrapperAdmin{
+    min-height: 610px;
     height: 100%;
     margin: 0 0 0 250px;
     background: #f4fff1;
@@ -336,7 +337,7 @@ body {
 .twoColumn{
     border-radius: 10px 15px 15px 10px;
     background: #52aa52;
-    height: 610px;
+    min-height: 610px;
     margin: 10px 0 50px;
 }
 

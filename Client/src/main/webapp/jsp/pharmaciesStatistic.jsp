@@ -11,10 +11,12 @@
 
 <c:set var="form" value="${helper:getCurrentForm(pageContext)}"/>
 
-<tiles:insertDefinition name="adminPanel">
+<tiles:insertDefinition name="clientPanel">
     <tiles:putAttribute name="title" value="Информация об аптеке"/>
-    <tiles:putAttribute name="content">
+    <tiles:putAttribute name="contentHeader">
         <p class="bigText marginBottom10">Статистика <span class="orangeText">посещаемости</span></p>
+    </tiles:putAttribute>
+    <tiles:putAttribute name="content">
         <grid:table name="${form.data}">
             <grid:column property="pharmacy.name" title="Аптека" href="${path}/viewDetailedStatistic.do" paramId="id" paramProperty="pharmacy.id" class="highlightLink"/>
             <grid:column property="countVisitOverDay" title="За день" />
