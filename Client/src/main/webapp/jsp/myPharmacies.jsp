@@ -11,13 +11,14 @@
 <c:set var="form" value="${helper:getCurrentForm(pageContext)}"/>
 <c:set var="path" value="${helper:getPath(pageContext)}"/>
 
-<tiles:insertDefinition name="adminPanel">
+<tiles:insertDefinition name="clientPanel">
     <tiles:putAttribute name="title" value="Админка"/>
     <tiles:putAttribute name="contentHeader" value="Мои аптеки"/>
     <tiles:putAttribute name="content">
         <grid:table name="${form.data}">
             <grid:column property="name" title="Название" href="${path}/private/viewPharmacy.do" paramId="id" paramProperty="id" class="highlightLink"/>
             <grid:column property="address" title="Адрес" href="${path}/private/viewPharmacy.do" paramId="id" paramProperty="id" class="highlightLink"/>
+            <grid:column property="city.name" title="Город"/>
             <grid:column property="phone" title="Телефон"/>
         </grid:table>
     </tiles:putAttribute>

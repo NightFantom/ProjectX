@@ -36,7 +36,7 @@ public class UpdateDataHandler {
             hashMap.put("amount", Integer.parseInt(updateRecord.getCount()));
             hashMap.put("pharmacy",lodedData.getPharmacy());
             hashMap.put("idMedicament",medicament.getId());
-            hashMap.put("idCity",lodedData.pharmacy.getIdCity());
+            hashMap.put("idCity",lodedData.pharmacy.getCity().getId());
             hashMap.put("dateUpdate",new GregorianCalendar());
 
             int amountUpdateRecords =  servicePrice.update(hashMap, "updatePrice");

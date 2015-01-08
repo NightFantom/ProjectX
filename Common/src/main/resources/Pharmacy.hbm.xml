@@ -14,7 +14,7 @@
         <property name="address" column="ADDRESS" type="java.lang.String"/>
         <property name="name" column="NAME" type="java.lang.String"/>
         <property name="phone" column="PHONE" type="java.lang.String"/>
-        <property name="idCity" column="ID_CITY" type="java.lang.Integer" not-null="true"/>
+        <many-to-one name="city" column="ID_CITY" class="entities.City" lazy="false"/>
         <property name="login" column="LOGIN" type="java.lang.String" not-null="true"/>
         <property name="password" column="PASSWORD" type="java.lang.String" not-null="true"/>
         <property name="codeNetwork" column="CODE_NETWORK" type="java.lang.Integer" not-null="true"/>
@@ -23,7 +23,7 @@
             select pharmacy from entities.Pharmacy as pharmacy where pharmacy.login = :login
         </query>
         <query name="getAllPharmacyOfCity">
-            select pharmacy from entities.Pharmacy as pharmacy where pharmacy.idCity = :idCity
+            select pharmacy from entities.Pharmacy as pharmacy where pharmacy.city = :idCity
         </query>
         <query name="getByCodeNetwork">
             select pharmacy from entities.Pharmacy as pharmacy where pharmacy.codeNetwork = :codeNetwork

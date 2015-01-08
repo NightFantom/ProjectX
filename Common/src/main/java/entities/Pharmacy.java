@@ -9,7 +9,7 @@ public class Pharmacy{
     private String address;
     private String name;
     private String phone;
-    private Integer idCity;
+    private City city;
     private String login;
     private String password;
     private Integer codeNetwork;
@@ -62,12 +62,12 @@ public class Pharmacy{
         this.phone = phone;
     }
 
-    public Integer getIdCity() {
-        return idCity;
+    public City getCity() {
+        return city;
     }
 
-    public void setIdCity(Integer idCity) {
-        this.idCity = idCity;
+    public void setCity(City city) {
+        this.city = city;
     }
 
     public Integer getCodeNetwork() {
