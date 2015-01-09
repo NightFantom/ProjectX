@@ -19,6 +19,9 @@ public class PasswordValidator extends BaseFormValidator {
     public boolean validate(Map<String, Object> map) {
         String password1 = (String) map.get("password1");
         String password2 = (String) map.get("password2");
+        if (password1 == null && password2 == null){
+            return true;
+        }
         return StringHelper.isNotEmpty(password1) && password1.equals(password2);
     }
 }

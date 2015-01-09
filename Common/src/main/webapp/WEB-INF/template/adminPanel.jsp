@@ -38,14 +38,15 @@
                     <div class="leftColumnAdmin">
                         <a href="${path}/private/viewPharmacies.do"><p class="leftMenu">Аптеки</p></a>
                         <a href="${path}/private/createPharmacy.do"><p class="leftSubMenu">Создать</p></a>
-                        <a href="#"><p class="leftMenu">Клиенты</p></a>
+                        <a href="${path}/private/listClient.do"><p class="leftMenu">Клиенты</p></a>
+                        <a href="${path}/private/createClient.do"><p class="leftSubMenu">Создать</p></a>
                         <a href="#"><p class="leftMenu">Статистика</p></a>
                         <a href="#"><p class="leftMenu">Настройки</p></a>
                         <a href="${path}/private/exit.do"><p class="leftMenu">Выход</p></a>
                     </div>
                     <div class="wrapperAdmin">
                         <div class="workAreaAdmin">
-                            <p class="bigText doubleOrange marginBottom30">${contentHeader}</p>
+                            ${contentHeader}
                             <c:if test="${not empty errorMessage}">
                                 <p class="errorMessage marginBottom10">${errorMessage}</p>
                             </c:if>

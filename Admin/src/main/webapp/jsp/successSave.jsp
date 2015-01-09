@@ -9,8 +9,10 @@
 
 <tiles:insertDefinition name="adminPanel">
     <tiles:putAttribute name="title" value="Админка"/>
-    <tiles:putAttribute name="contentHeader" value="Мои аптеки"/>
+    <tiles:putAttribute name="contentHeader" >
+        <p class="bigText marginBottom10">Главная <span class="orangeText">страница</span></p>
+    </tiles:putAttribute>
     <tiles:putAttribute name="content">
-        <p>Аптека сохранена удачно!</p>
+        <p>Данные обновлены!</p>
     </tiles:putAttribute>
 </tiles:insertDefinition>

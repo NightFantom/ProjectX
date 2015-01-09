@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FormImp implements Form {
+    private String name;
     private List<Field> fields = new ArrayList<>();
     private List<FormValidator> validatorsList = new ArrayList<>();
     @Override
@@ -35,5 +36,15 @@ public class FormImp implements Form {
     @Override
     public List<FormValidator> getValidators() {
         return validatorsList;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

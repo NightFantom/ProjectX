@@ -166,13 +166,14 @@ public class HibernateService<E> {
      * Выполнение произвольного запроса.
      * @param query Класс, реализующий класс GenerallyHibernateQuery
      */
-    public void execute(GenerallyHibernateQuery query){
+    public List<E> execute(GenerallyHibernateQuery query){
         Session session = null;
         Transaction transaction = null;
+        List<E> list = null;
         try {
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
-            query.run(session);
+            list = query.run(session);
             transaction.commit();
         } catch (HibernateException e) {
             if (transaction != null){
@@ -184,5 +185,26 @@ public class HibernateService<E> {
                 session.close();
             }
         }
+        return list;
+    }
+
+    /**
+     * Получение всех записей из таблицы
+     * @return Список всех сущностей в таблице
+     */
+    public List<E> getAll(){
+        Session session = null;
+        List<E> list = null;
+        try {
+            session = sessionFactory.openSession();
+            list = session.createCriteria(clazz).list();
+        } catch (HibernateException e) {
+            throw e;
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return list;
     }
 }

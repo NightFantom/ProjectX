@@ -39,7 +39,7 @@ public class StatisticViewWU {
         //Получение статиски за 1, 7, 30 дней для каждой аптеки.
         statisticService.execute(new GenerallyHibernateQuery() {
             @Override
-            public void run(Session session) throws HibernateException {
+            public List<StatisticViewEntity> run(Session session) throws HibernateException {
                 Query queue = session.getNamedQuery("countVisitOverPeriod");
 
                 Calendar fromDay = DateHelper.getCurrentDateInZeroTime();
@@ -69,6 +69,7 @@ public class StatisticViewWU {
 
                     statisticList.add(new StatisticViewEntity(pharmacy, day, week, month));
                 }
+                return null;
             }
         });
     }

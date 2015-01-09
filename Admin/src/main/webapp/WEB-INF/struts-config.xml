@@ -8,7 +8,11 @@
         <form-bean name="LoginForm" type="forms.LoginForm"/>
         <form-bean name="DefaultForm" type="forms.ActionFormBase"/>
         <form-bean name="ViewPharmacy" type="forms.ViewPharmacyForm"/>
+        <form-bean name="EditPharmacy" type="forms.EditPharmacyForm"/>
         <form-bean name="CreatePharmacy" type="forms.CreatePharmacyForm"/>
+        <form-bean name="ViewClient" type="forms.ViewClientForm"/>
+        <form-bean name="CreateClient" type="forms.CreateClientForm"/>
+        <form-bean name="EditClient" type="forms.EditClientForm"/>
     </form-beans>
 
     <global-exceptions>
@@ -38,23 +42,22 @@
 
         <action path="/private/viewPharmacies"
                 name="DefaultForm"
-                type="actions.ViewPharmaciesAction"
-                scope="request">
+                type="actions.PharmacyAction"
+                scope="request"
+                parameter="filter">
             <forward name="success" path="/jsp/allPharmacy.jsp"/>
         </action>
 
         <action path="/private/viewPharmacy"
                 name="ViewPharmacy"
-                type="actions.ViewPharmaciesAction"
-                parameter="viewPharmacy"
+                type="actions.PharmacyAction"
                 scope="request">
             <forward name="success" path="/jsp/viewPharmacy.jsp"/>
         </action>
 
         <action path="/private/editPharmacy"
                 name="ViewPharmacy"
-                type="actions.ViewPharmaciesAction"
-                parameter="viewPharmacy"
+                type="actions.PharmacyAction"
                 scope="request">
             <forward name="success" path="/jsp/editPharmacy.jsp"/>
         </action>
@@ -65,16 +68,18 @@
 
         <action path="/private/savePharmacy"
                 name="CreatePharmacy"
-                type="actions.PharmacyEditAction"
-                scope="request">
+                type="actions.PharmacyAction"
+                scope="request"
+                parameter="edit">
             <forward name="success" path="/jsp/successSave.jsp"/>
             <forward name="error" path="/jsp/editPharmacy.jsp"/>
         </action>
 
         <action path="/private/saveEditPharmacy"
-                name="ViewPharmacy"
-                type="actions.PharmacyEditAction"
-                scope="request">
+                name="EditPharmacy"
+                type="actions.PharmacyAction"
+                scope="request"
+                parameter="edit">
             <forward name="success" path="/jsp/successSave.jsp"/>
             <forward name="error" path="/jsp/editPharmacy.jsp"/>
         </action>
@@ -82,8 +87,47 @@
         <action path="/private/exit"
                 name="LoginForm"
                 type="actions.LoginAction"
+                scope="request"
                 parameter="exit">
             <forward name="success" path="/jsp/index.jsp"/>
+        </action>
+
+        <action path="/private/listClient"
+                name="DefaultForm"
+                scope="request"
+                type="actions.ClientAction"
+                parameter="filter">
+            <forward name="success" path="/jsp/listClients.jsp"/>
+        </action>
+
+        <action path="/private/createClient"
+                name="ViewClient"
+                scope="request"
+                forward="/jsp/viewClient.jsp"/>
+
+        <action path="/private/viewClient"
+                name="ViewClient"
+                scope="request"
+                type="actions.ClientAction">
+            <forward name="success" path="/jsp/viewClient.jsp"/>
+        </action>
+
+        <action path="/private/saveEditClient"
+                name="EditClient"
+                scope="request"
+                type="actions.ClientAction"
+                parameter="edit">
+            <forward name="success" path="/jsp/successSave.jsp"/>
+            <forward name="error" path="/jsp/viewClient.jsp"/>
+        </action>
+
+        <action path="/private/saveClient"
+                name="CreateClient"
+                scope="request"
+                type="actions.ClientAction"
+                parameter="edit">
+            <forward name="success" path="/jsp/successSave.jsp"/>
+            <forward name="error" path="/jsp/viewClient.jsp"/>
         </action>
 
     </action-mappings>

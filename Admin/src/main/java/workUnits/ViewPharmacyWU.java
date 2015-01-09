@@ -10,23 +10,28 @@ import hibernateService.GenerallyHibernateQuery;
 import hibernateService.HibernateService;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import workUnit.ViewWorkUnit;
 
 import java.util.List;
 
-public class ViewPharmacyWU {
+public class ViewPharmacyWU implements ViewWorkUnit<Pharmacy> {
 
-    private List<Pharmacy> list;
-
-    public void init(){
-        new HibernateService<Pharmacy>(Pharmacy.class).execute(new GenerallyHibernateQuery() {
-            @Override
-            public void run(Session session) throws HibernateException {
-                list = session.createCriteria(Pharmacy.class).list();
+    private Pharmacy pharmacy;
+    private HibernateService<Pharmacy> service = new HibernateService<Pharmacy>(Pharmacy.class);
+    @Override
+    public void init(Integer id) {
+        if (id != null && id > 0){
+            pharmacy = service.getById(id);
+            if  (pharmacy == null){
+                throw new IllegalArgumentException("Недопустимый ID = " + id);
             }
-        });
+        }else {
+            throw new IllegalArgumentException("Недопустимый ID = " + id);
+        }
     }
 
-    public List<Pharmacy> getResult(){
-        return list;
+    @Override
+    public Pharmacy getEntity() {
+        return pharmacy;
     }
 }

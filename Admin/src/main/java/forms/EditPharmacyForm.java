@@ -14,10 +14,9 @@ import checkForm.parsers.EmptyParser;
 import checkForm.parsers.IntegerParser;
 import checkForm.validators.IntegerValidator;
 import checkForm.validators.NotEmptyValidator;
-import checkForm.validators.PasswordValidator;
 
-public class CreatePharmacyForm extends ViewPharmacyForm {
-    public static final Form FORM = create();
+public class EditPharmacyForm extends ViewPharmacyForm {
+    private static final Form FORM = create();
 
     @Override
     public Form getLogicForm() {
@@ -66,25 +65,23 @@ public class CreatePharmacyForm extends ViewPharmacyForm {
         field = new FieldImp();
         field.setName("login");
         field.setDescription("Логин");
-        field.setValidators(new NotEmptyValidator());
+        field.setNotRequired();
         field.setParser(new EmptyParser());
         form.addField(field);
 
         field = new FieldImp();
         field.setName("password1");
         field.setDescription("Пароль 1");
-        field.setValidators(new NotEmptyValidator());
+        field.setNotRequired();
         field.setParser(new EmptyParser());
         form.addField(field);
 
         field = new FieldImp();
         field.setName("password2");
         field.setDescription("Пароль 2");
-        field.setValidators(new NotEmptyValidator());
+        field.setNotRequired();
         field.setParser(new EmptyParser());
         form.addField(field);
-
-        form.addValidators(new PasswordValidator());
 
         return form;
     }

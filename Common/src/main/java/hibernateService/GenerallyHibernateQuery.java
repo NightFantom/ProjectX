@@ -8,6 +8,8 @@ package hibernateService;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
-public abstract class GenerallyHibernateQuery {
-    public abstract void run(Session session) throws HibernateException;
+import java.util.List;
+
+public abstract class GenerallyHibernateQuery<E> {
+    public abstract List<E> run(Session session) throws HibernateException;
 }

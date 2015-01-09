@@ -86,4 +86,8 @@ public class UserAccount {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getFIO(){
+        return secondName + " " + firstName + " " + fatherName;
+    }
 }

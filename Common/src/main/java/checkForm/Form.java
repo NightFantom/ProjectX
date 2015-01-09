@@ -12,6 +12,18 @@ import checkForm.validators.Validator;
 import java.util.List;
 
 public interface Form {
+
+    /**
+     * Установление имени для формы
+     * @param name Имя формы
+     */
+    public void setName(String name);
+
+    /**
+     * Получение имени формы
+     * @return
+     */
+    public String getName();
     /**
      * Получение списка всех полей формы
      * @return Список полей формы

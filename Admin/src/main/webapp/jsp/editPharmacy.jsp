@@ -16,7 +16,9 @@
 
 <tiles:insertDefinition name="adminPanel">
     <tiles:putAttribute name="title" value="Админка"/>
-    <tiles:putAttribute name="contentHeader" value="Редактирование аптеки"/>
+    <tiles:putAttribute name="contentHeader">
+         <p class="bigText marginBottom10">Редактирование <span class="orangeText">аптеки</span></p>
+    </tiles:putAttribute>
     <tiles:putAttribute name="content">
         <html:form method="POST" action="/private/${not empty pharmacy? 'saveEditPharmacy' : 'savePharmacy'}.do">
             <html:hidden name="form" property="id"/>

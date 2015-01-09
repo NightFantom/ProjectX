@@ -22,10 +22,10 @@ public class CityHelper {
      */
     public synchronized static List<City> getListCities() {
         if (listCity == null) {
-            new HibernateService<City>(City.class).execute(new GenerallyHibernateQuery() {
+            listCity = new HibernateService<City>(City.class).execute(new GenerallyHibernateQuery() {
                 @Override
-                public void run(Session session) throws HibernateException {
-                    listCity = session.createCriteria(City.class).list();
+                public List<City> run(Session session) throws HibernateException {
+                    return session.createCriteria(City.class).list();
                 }
             });
         }
