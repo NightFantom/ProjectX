@@ -8,6 +8,7 @@ package actions;
 import action.SaveAction;
 import checkForm.Form;
 import forms.ActionFormBase;
+import forms.CreatePharmacyForm;
 import forms.ViewPharmacyForm;
 import workUnit.EditWorkUnit;
 import workUnits.EditPharmacyWU;
@@ -16,7 +17,10 @@ public class PharmacyEditAction extends SaveAction {
 
     @Override
     protected Form getLogicForm(ActionFormBase form) {
-        return ViewPharmacyForm.FORM;
+        if (form instanceof ViewPharmacyForm){
+            return ViewPharmacyForm.FORM;
+        }
+        return CreatePharmacyForm.FORM;
     }
 
     @Override

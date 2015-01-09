@@ -9,6 +9,7 @@
 <%@ taglib prefix="html" uri="http://jakarta.apache.org/struts/tags-html" %>
 
 <c:set var="form" value="${helper:getCurrentForm(pageContext)}" scope="request"/>
+<c:set var="mapFields" value="${form.fields}"/>
 <c:set var="path" value="${helper:getPath(pageContext)}"/>
 <c:set var="pharmacy" value="${form.pharmacy}"/>
 <c:set var="listCities" value="${helper:getListCities()}"/>
@@ -17,23 +18,24 @@
     <tiles:putAttribute name="title" value="Админка"/>
     <tiles:putAttribute name="contentHeader" value="Редактирование аптеки"/>
     <tiles:putAttribute name="content">
-        <html:form method="POST" action="/private/savePharmacy.do">
-            <html:hidden name="form" property="id" value="${not empty pharmacy ? pharmacy.id : ''}"/>
+        <html:form method="POST" action="/private/${not empty pharmacy? 'saveEditPharmacy' : 'savePharmacy'}.do">
+            <html:hidden name="form" property="id"/>
             <table>
                 <tr>
                     <td class="leftColumnDL">Название:</td>
                     <td><html:text name="form" property="fields(name)"
-                                   value="${not empty pharmacy ? pharmacy.name : ''}" styleClass="inputDL"/></td>
+                                   value="${not empty pharmacy ? pharmacy.name : empty mapFields['name']? '' : mapFields['name']}"
+                                   styleClass="inputDL"/></td>
                 </tr>
                 <tr>
                     <td class="leftColumnDL">Адрес:</td>
                     <td><html:text name="form" property="fields(address)"
-                                   value="${not empty pharmacy ? pharmacy.address : ''}" styleClass="inputDL"/></td>
+                                   value="${not empty pharmacy ? pharmacy.address :  empty mapFields['address']? '' : mapFields['address']}" styleClass="inputDL"/></td>
                 </tr>
                 <tr>
                     <td class="leftColumnDL">Тефелон:</td>
                     <td><html:text name="form" property="fields(phone)"
-                                   value="${not empty pharmacy ? pharmacy.phone : ''}" styleClass="inputDL"/></td>
+                                   value="${not empty pharmacy ? pharmacy.phone :  empty mapFields['phone']? '' : mapFields['phone']}" styleClass="inputDL"/></td>
                 </tr>
                 <tr>
                     <td class="leftColumnDL">Город:</td>
@@ -48,11 +50,13 @@
                 <tr>
                     <td class="leftColumnDL">Код сети:</td>
                     <td><html:text name="form" property="fields(codeNetwork)"
-                                   value="${not empty pharmacy ? pharmacy.codeNetwork : ''}" styleClass="inputDL"/></td>
+                                   value="${not empty pharmacy ? pharmacy.codeNetwork :  empty mapFields['codeNetwork']? '' : mapFields['codeNetwork']}"
+                                   disabled="${not empty pharmacy}" styleClass="inputDL"/></td>
                 </tr>
                 <tr>
                     <td class="leftColumnDL">Логин:</td>
-                    <td><html:text name="form" property="fields(login)" value="${not empty pharmacy ? pharmacy.login : ''}" styleClass="inputDL"/></td>
+                    <td><html:text name="form" property="fields(login)"
+                                   value="${not empty pharmacy ? pharmacy.login :  empty mapFields['login']? '' : mapFields['login']}" styleClass="inputDL"/></td>
                 </tr>
                 <tr>
                     <td class="leftColumnDL">Пароль:</td>

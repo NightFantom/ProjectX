@@ -8,6 +8,7 @@
         <form-bean name="LoginForm" type="forms.LoginForm"/>
         <form-bean name="DefaultForm" type="forms.ActionFormBase"/>
         <form-bean name="ViewPharmacy" type="forms.ViewPharmacyForm"/>
+        <form-bean name="CreatePharmacy" type="forms.CreatePharmacyForm"/>
     </form-beans>
 
     <global-exceptions>
@@ -63,6 +64,14 @@
                 forward="/jsp/editPharmacy.jsp"/>
 
         <action path="/private/savePharmacy"
+                name="CreatePharmacy"
+                type="actions.PharmacyEditAction"
+                scope="request">
+            <forward name="success" path="/jsp/successSave.jsp"/>
+            <forward name="error" path="/jsp/editPharmacy.jsp"/>
+        </action>
+
+        <action path="/private/saveEditPharmacy"
                 name="ViewPharmacy"
                 type="actions.PharmacyEditAction"
                 scope="request">
