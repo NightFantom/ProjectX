@@ -1,6 +1,6 @@
 /**
  * Создано: Денис 
- * Дата: 05.01.15
+ * Дата: 09.01.15
  * Описание: 
  */
 package forms;
@@ -14,11 +14,11 @@ import checkForm.parsers.EmptyParser;
 import checkForm.parsers.IntegerParser;
 import checkForm.validators.IntegerValidator;
 import checkForm.validators.NotEmptyValidator;
+import checkForm.validators.PasswordValidator;
 import entities.Pharmacy;
 
-public class ViewPharmacyForm extends ActionFormBase {
+public class CreatePharmacyForm extends ActionFormBase {
     public static final Form FORM = create();
-
     private Pharmacy pharmacy;
 
     public Pharmacy getPharmacy() {
@@ -71,23 +71,25 @@ public class ViewPharmacyForm extends ActionFormBase {
         field = new FieldImp();
         field.setName("login");
         field.setDescription("Логин");
-        field.setNotRequired();
+        field.setValidators(new NotEmptyValidator());
         field.setParser(new EmptyParser());
         form.addField(field);
 
         field = new FieldImp();
         field.setName("password1");
         field.setDescription("Пароль 1");
-        field.setNotRequired();
+        field.setValidators(new NotEmptyValidator());
         field.setParser(new EmptyParser());
         form.addField(field);
 
         field = new FieldImp();
         field.setName("password2");
         field.setDescription("Пароль 2");
-        field.setNotRequired();
+        field.setValidators(new NotEmptyValidator());
         field.setParser(new EmptyParser());
         form.addField(field);
+
+        form.addValidators(new PasswordValidator());
 
         return form;
     }

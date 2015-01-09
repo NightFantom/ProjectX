@@ -7,11 +7,12 @@ package checkForm;
 
 import checkForm.fields.Field;
 import checkForm.parsers.FieldParser;
+import checkForm.validators.FormValidator;
 import checkForm.validators.Validator;
 import exceptions.ParserException;
+import helpers.StringHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,9 +32,13 @@ public class FormHandler {
      * Обработка данных с формы
      * @return Да, если данные корректны. Нет в противном случае.
      */
-    public boolean handler() throws Exception {
+    public boolean handler() throws ParserException {
         for (Field field : form.getFields()) {
             String value = (String)mapInputValue.get(field.getName());
+            //Если поле не обязательное и пустое, то пропускаем его
+            if (!field.isRequire() && StringHelper.isEmpty(value)){
+                continue;
+            }
             for (Validator validator : field.getValidators()) {
                 if (!validator.validate(value)){
                     log.debug("Некоретное значение у поля \"" + field.getName()+"\". Валидатор: " + validator.getClass().getName());
@@ -48,11 +53,18 @@ public class FormHandler {
                     entity = parser != null ? parser.parser(value) : value;
                 }catch (ParserException e){
                     log.error("Неудалось распарсить поле \"" + field.getName() + "\". Парсе: " + parser.getClass().getName());
-                    throw new Exception(e);
+                    throw e;
                 }
                 if (entity != null){
                     mapOutputValue.put(field.getName(), entity);
                 }
+            }
+        }
+        for(FormValidator validator:form.getValidators()){
+            if (!validator.validate(mapOutputValue)){
+                log.debug("Некоретное значение у формы. Валидатор: " + validator.getClass().getName());
+                errorMessage = validator.getErrorMessage();
+                return false;
             }
         }
         return true;

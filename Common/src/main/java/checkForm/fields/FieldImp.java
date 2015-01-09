@@ -1,7 +1,7 @@
 /**
  * Создано: Денис 
  * Дата: 08.01.15
- * Описание: Реализация интерфейса формы.
+ * Описание: Реализация интерфейса Field.
  */
 package checkForm.fields;
 
@@ -16,6 +16,7 @@ public class FieldImp implements Field {
     private FieldParser parser;
     private String name;
     private String description;
+    private boolean require = true;
 
     @Override
     public void setValidator(Validator validator) {
@@ -62,5 +63,15 @@ public class FieldImp implements Field {
     @Override
     public String getDescription() {
         return this.description;
+    }
+
+    @Override
+    public void setNotRequired() {
+        require = false;
+    }
+
+    @Override
+    public boolean isRequire() {
+        return require;
     }
 }

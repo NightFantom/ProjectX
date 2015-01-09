@@ -1,18 +1,19 @@
 /**
  * Создано: Денис 
- * Дата: 08.01.15
- * Описание: Интерфейс для всех валидаторов
+ * Дата: 09.01.15
+ * Описание: 
  */
 package checkForm.validators;
 
-public interface Validator {
+import java.util.Map;
 
+public interface FormValidator {
     /**
-     * Валидация входной строки.
-     * @param str Строка для валидации
+     * Валидация входных данных с формы
+     * @param map Map'а для валидации
      * @return Да, если поле корректно. Нет, в противном случае.
      */
-    public boolean validate(String str);
+    public boolean validate(Map<String, Object> map);
 
     /**
      * Установление сообщения об ошибке, которое будет выводиться в случае неудачной валидации.
