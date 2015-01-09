@@ -5,16 +5,17 @@
  */
 package listeners;
 
+import entities.City;
 import helpers.GlobalConstants;
 
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
-public class initSession implements HttpSessionListener {
-    private static final Integer DEFAULT_ID = 1;
+public class InitSession implements HttpSessionListener {
+    private static final City DEFAULT_CITY = new City("Вологда", 1);
 
     public void sessionCreated(HttpSessionEvent httpSessionEvent) {
-        httpSessionEvent.getSession().setAttribute(GlobalConstants.ID_USER_CITY, DEFAULT_ID);
+        httpSessionEvent.getSession().setAttribute(GlobalConstants.ID_USER_CITY, DEFAULT_CITY);
     }
 
     public void sessionDestroyed(HttpSessionEvent httpSessionEvent) {
