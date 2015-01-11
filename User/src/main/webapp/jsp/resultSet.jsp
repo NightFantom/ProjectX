@@ -31,6 +31,14 @@
                         ${helper:getDateUpdate(price.dateUpdate)}
                    </grid:column>
                </grid:table>
+                <script>
+                    $(document).ready(function()
+                            {
+                                $("#price").tablesorter();
+                            }
+                    );
+
+                </script>
             </tiles:putAttribute>
         </tiles:insertDefinition>
     </tiles:putAttribute>
