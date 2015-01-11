@@ -36,6 +36,7 @@ public class EditPharmacyWU implements EditWorkUnit{
         pharmacy.setAddress((String) values.get("address"));
         pharmacy.setPhone((String) values.get("phone"));
         pharmacy.setCity((City) values.get("city"));
+        pharmacy.setCoordinates((String) values.get("coordinates"));
         if (pharmacy.getCodeNetwork() == null){
             pharmacy.setCodeNetwork((Integer) values.get("codeNetwork"));
         }

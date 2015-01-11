@@ -18,7 +18,7 @@
         <property name="login" column="LOGIN" type="java.lang.String" not-null="true"/>
         <property name="password" column="PASSWORD" type="java.lang.String" not-null="true"/>
         <property name="codeNetwork" column="CODE_NETWORK" type="java.lang.Integer" not-null="true"/>
-
+        <property name="coordinates" column="COORDINATES" type="java.lang.String" not-null="true"/>
         <query name="getByLogin">
             select pharmacy from entities.Pharmacy as pharmacy where pharmacy.login = :login
         </query>

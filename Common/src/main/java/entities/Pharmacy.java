@@ -13,6 +13,15 @@ public class Pharmacy{
     private String login;
     private String password;
     private Integer codeNetwork;
+    private String coordinates;
+
+    public String getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(String coordinates) {
+        this.coordinates = coordinates;
+    }
 
     public String getLogin() {
         return login;

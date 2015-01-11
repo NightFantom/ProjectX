@@ -42,6 +42,7 @@
         <put-attribute name="phone" type="string" value=""/>
         <put-attribute name="additionalInformation" value=""/>
         <put-attribute name="workTime" value=""/>
+        <put-attribute name="coordinates" type="string" value=""/>
     </definition>
 
     <definition name="clientPanel" template="/WEB-INF/template/clientPanel.jsp">

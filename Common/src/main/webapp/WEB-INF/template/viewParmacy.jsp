@@ -3,8 +3,8 @@
     Date: 16.11.14.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
 <tiles:importAttribute/>
 
@@ -18,4 +18,24 @@
 </div>
 <div class="workArea">
     <p class="bigText marginBottom30">Карта</p>
+
+    <div id="map"></div>
+    <script type="text/javascript">
+        ymaps.ready(init);
+        var myMap, myPlacemark;
+
+        function init(){
+            myMap = new ymaps.Map("map", {
+                center: [${coordinates}],
+                zoom: 16
+            });
+
+            myPlacemark = new ymaps.Placemark([${coordinates}], {
+                hintContent: '${name}',
+                balloonContent: '${address}'
+            });
+
+            myMap.geoObjects.add(myPlacemark);
+        }
+    </script>
 </div>

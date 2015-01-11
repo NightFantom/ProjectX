@@ -56,6 +56,12 @@
                                    disabled="${not empty pharmacy}" styleClass="inputDL"/></td>
                 </tr>
                 <tr>
+                    <td class="leftColumnDL">Координаты:</td>
+                    <td><html:text name="form" property="fields(coordinates)"
+                                   value="${not empty pharmacy ? pharmacy.coordinates :  empty mapFields['coordinates']? '' : mapFields['coordinates']}"
+                                   styleClass="inputDL"/></td>
+                </tr>
+                <tr>
                     <td class="leftColumnDL">Логин:</td>
                     <td><html:text name="form" property="fields(login)"
                                    value="${not empty pharmacy ? pharmacy.login :  empty mapFields['login']? '' : mapFields['login']}" styleClass="inputDL"/></td>

@@ -15,6 +15,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset = UTF-8">
     <meta http-equiv="Content-language" content="ru">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="${path}/css/style.css"/>
     <title>${title}</title>
 </head>
@@ -38,8 +39,8 @@
                         <a href="${path}/private/myPharmacies.do"><p class="leftMenu">Мои аптеки</p></a>
                         <p class="leftMenu">Статистика</p>
                         <a href="${path}/private/pharmaciesStatistic.do"><p class="leftSubMenu">По аптекам</p></a>
-                        <a href="#"><p class="leftSubMenu">По лекарствам</p></a>
-                        <a href="#"><p class="leftMenu">Обратная связь</p></a>
+                        <%--<a href="#"><p class="leftSubMenu">По лекарствам</p></a>--%>
+                        <%--<a href="#"><p class="leftMenu">Обратная связь</p></a>--%>
                         <a href="${path}/private/exit.do"><p class="leftMenu">Выход</p></a>
                     </div>
                     <div class="wrapperAdmin">

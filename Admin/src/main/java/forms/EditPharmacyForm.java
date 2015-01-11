@@ -63,9 +63,17 @@ public class EditPharmacyForm extends ViewPharmacyForm {
         form.addField(field);
 
         field = new FieldImp();
+        field.setName("coordinates");
+        field.setDescription("Координаты");
+        field.setValidator(new NotEmptyValidator());
+        field.setParser(new EmptyParser());
+        form.addField(field);
+
+        field = new FieldImp();
         field.setName("login");
         field.setDescription("Логин");
         field.setNotRequired();
+        field.setValidator(new NotEmptyValidator());
         field.setParser(new EmptyParser());
         form.addField(field);
 
