@@ -130,6 +130,14 @@
             <forward name="error" path="/jsp/viewClient.jsp"/>
         </action>
 
+        <action path="/private/listStatisticPharmacy"
+                name="DefaultForm"
+                scope="request"
+                type="actions.StatisticPharmacyAction"
+                parameter="filter">
+            <forward name="success" path="/jsp/listStatisticPharmacy.jsp"/>
+        </action>
+
     </action-mappings>
 
     <controller>
