@@ -7,6 +7,7 @@ package fileService;
 import org.apache.struts.upload.FormFile;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.Scanner;
 

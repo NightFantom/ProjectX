@@ -18,7 +18,7 @@
     </tiles:putAttribute>
     <tiles:putAttribute name="content">
         <grid:table name="${form.data}">
-            <grid:column property="pharmacy.name" title="Аптека" href="${path}/viewDetailedStatistic.do" paramId="id" paramProperty="pharmacy.id" class="highlightLink"/>
+            <grid:column property="pharmacy.name" title="Аптека"/>
             <grid:column property="countVisitOverDay" title="За день" />
             <grid:column property="countVisitOverWeek" title="За 7 дней"/>
             <grid:column property="countVisitOverMonth" title="За 30 дней"/>

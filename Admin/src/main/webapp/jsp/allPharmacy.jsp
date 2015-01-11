@@ -13,7 +13,9 @@
 
 <tiles:insertDefinition name="adminPanel">
     <tiles:putAttribute name="title" value="Список аптек"/>
-    <tiles:putAttribute name="contentHeader" value="Аптеки"/>
+    <tiles:putAttribute name="contentHeader">
+        <p class="bigText marginBottom10">Аптеки</p>
+    </tiles:putAttribute>
     <tiles:putAttribute name="content">
         <grid:table name="${form.data}">
             <grid:column value="Ред" href="${path}/private/editPharmacy.do" paramId="id" paramProperty="id" class="highlightLink"/>
