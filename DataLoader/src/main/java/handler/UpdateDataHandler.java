@@ -5,9 +5,9 @@ package handler;
 
 import form.LodedData;
 import form.UpdateRecord;
-import forms.Medicament;
-import forms.Pharmacy;
-import forms.Price;
+import entities.Medicament;
+import entities.Pharmacy;
+import entities.Price;
 import hibernateService.HibernateService;
 
 import java.util.*;
@@ -36,7 +36,7 @@ public class UpdateDataHandler {
             hashMap.put("amount", updateRecord.getAmount());
             hashMap.put("pharmacy",lodedData.getPharmacy());
             hashMap.put("idMedicament",medicament.getId());
-            hashMap.put("idCity",lodedData.pharmacy.getIdCity());
+            hashMap.put("idCity",lodedData.pharmacy.getCity().getId());
             hashMap.put("dateUpdate",new GregorianCalendar());
 
             int amountUpdateRecords =  servicePrice.update(hashMap, "updatePrice");

@@ -6,8 +6,10 @@
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@taglib uri="http://helper" prefix="helper"%>
 
-<c:set var="pharmacy" value="${ViewPharmacyForm.pharmacy}" scope="request"/>
+<c:set var="form" value="${helper:getCurrentForm(pageContext)}" scope="request"/>
+<c:set var="pharmacy" value="${form.pharmacy}" scope="request"/>
 
 <tiles:insertDefinition name="main">
     <tiles:putAttribute name="title" value="Информация об аптеке"/>
@@ -16,6 +18,7 @@
             <tiles:putAttribute name="name" value="${pharmacy.name}"/>
             <tiles:putAttribute name="address" value="${pharmacy.address}"/>
             <tiles:putAttribute name="phone" value="${pharmacy.phone}"/>
+            <tiles:putAttribute name="coordinates" value="${pharmacy.coordinates}"/>
         </tiles:insertDefinition>
     </tiles:putAttribute>
 </tiles:insertDefinition>

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Configuration strict="true"
+               xmlns="http://www.w3.org/2001/XMLSchema"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance"
+               xsd:schemaLocation = "http://www.w3.org/2001/XMLSchema  Log4j-config.xsd">
+    <Appenders>
+        <Appender type="Console" name="consoleOut">
+            <Layout Type="PatternLayout" Pattern="%d [%t] %c{3} [%level{length=5}]: %msg%throwable %n"/>
+        </Appender>
+        <Appender type="Console" name="consoleHibernate">
+            <Layout Type="PatternLayout" Pattern="Hibernate: %msg%n"/>
+        </Appender>
+        <Appender type="File" name="logFile" fileName="${sys:catalina.home}/logs/Log-${date:MM-dd k-m}.html">
+            <Layout Type="HTMLLayout"/>
+        </Appender>
+        <Appender type="File" name="logHibernate" fileName="${sys:catalina.home}/logs/LogHibernate-${date:MM-dd k-m}.html">
+            <Layout Type="HTMLLayout"/>
+        </Appender>
+    </Appenders>
+    <Loggers>
+
+        <Logger level="info" name="org.hibernate" additivity="false">
+            <AppenderRef ref="logHibernate"/>
+            <AppenderRef ref="consoleOut"/>
+        </Logger>
+        <Logger level="trace" name="org.hibernate.SQL" additivity="false">
+            <AppenderRef ref="consoleHibernate"/>
+        </Logger>
+
+        <Logger level="debug" name="checkForm.FormHandler" additivity="false">
+            <AppenderRef ref="consoleOut"/>
+        </Logger>
+
+        <Logger level="info" name="org.apache.struts" additivity="false">
+            <AppenderRef ref="consoleOut"/>
+        </Logger>
+
+        <Root level="INFO">
+            <AppenderRef ref="consoleOut"/>
+            <AppenderRef ref="logFile"/>
+        </Root>
+    </Loggers>
+</Configuration>

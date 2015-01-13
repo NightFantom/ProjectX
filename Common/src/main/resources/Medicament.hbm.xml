@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="forms.Medicament" table="MEDICAMENT">
+    <class name="entities.Medicament" table="MEDICAMENT">
         <id column="ID_MEDICAMENT" name="id" type="java.lang.Integer">
             <generator class="sequence">
                 <param name="sequence">S_ID_MEDICAMENT</param>
@@ -12,10 +12,14 @@
         </id>
 
         <property name="name" column="NAME" type="java.lang.String" not-null="true"/>
-        <property name="description" column="DESCRIPTION" type="java.lang.String" not-null="false"/>
 
         <query name="getByName">
-            select medicament from forms.Medicament as medicament where medicament.name = UPPER(:name)
+            select medicament from entities.Medicament as medicament where medicament.name = UPPER(:name)
         </query>
+
+        <query name="getByNameLike">
+            select medicament from entities.Medicament as medicament where medicament.name like UPPER(:name)
+        </query>
+
     </class>
 </hibernate-mapping>

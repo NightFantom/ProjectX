@@ -2,7 +2,7 @@
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@taglib uri="http://helper" prefix="helper"%>
 
-<tiles:insertDefinition name="main">
+<tiles:insertDefinition name="onlyFon">
     <tiles:putAttribute name="title" value="Загрузка файла"/>
     <tiles:putAttribute name="content">
         <div id="formDL">

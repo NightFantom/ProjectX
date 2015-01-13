@@ -4,13 +4,17 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="forms.City" table="CITIES">
+    <class name="entities.City" table="CITIES">
         <id column="id" name="id" type="java.lang.Integer">
             <generator class="sequence">
                 <param name="sequence">S_ID_CITY</param>
             </generator>
         </id>
         <property name="name" column="NAME" type="java.lang.String" not-null="true"/>
+
+        <query name="getByName">
+            select city from City as city where name = UPPER(:name)
+        </query>
 
     </class>
 </hibernate-mapping>

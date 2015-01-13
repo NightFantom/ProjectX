@@ -17,4 +17,24 @@
         <function-class>helpers.DateHelper</function-class>
         <function-signature>java.lang.String getDateUpdate(java.util.Calendar)</function-signature>
     </function>
+    <function>
+        <name>getCurrentForm</name>
+        <function-class>helpers.SessionAndRequestHelper</function-class>
+        <function-signature>org.apache.struts.action.ActionForm getCurrentForm(javax.servlet.jsp.PageContext)</function-signature>
+    </function>
+    <function>
+        <name>getPersonName</name>
+        <function-class>helpers.SessionAndRequestHelper</function-class>
+        <function-signature>java.lang.String getPersonName(javax.servlet.jsp.PageContext)</function-signature>
+    </function>
+    <function>
+        <name>getListCities</name>
+        <function-class>helpers.CityHelper</function-class>
+        <function-signature>java.util.List getListCities()</function-signature>
+    </function>
+    <function>
+        <name>getErrorMessage</name>
+        <function-class>helpers.SessionAndRequestHelper</function-class>
+        <function-signature>java.lang.String getErrorMessage(javax.servlet.jsp.PageContext)</function-signature>
+    </function>
 </taglib>

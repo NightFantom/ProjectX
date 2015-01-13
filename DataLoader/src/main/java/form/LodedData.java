@@ -3,7 +3,7 @@ package form;
  * Created by Виктор on 04.11.2014.
  */
 
-import forms.Pharmacy;
+import entities.Pharmacy;
 
 /**
  * Класс загруженных в экшене данных.

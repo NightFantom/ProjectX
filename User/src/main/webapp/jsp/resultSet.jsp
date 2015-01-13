@@ -9,7 +9,7 @@
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@taglib uri="http://helper" prefix="helper"%>
 
-<c:set var="form" value="${StandardSearchForm}" scope="request"/>
+<c:set var="form" value="${helper:getCurrentForm(pageContext)}" scope="request"/>
 
 <tiles:insertDefinition name="main">
     <tiles:putAttribute name="title" value="Медсправка"/>
@@ -18,10 +18,9 @@
             <tiles:putAttribute name="action" value="search"/>
         </tiles:insertDefinition>
         <tiles:insertDefinition name="resultTable" flush="false">
-            <tiles:putAttribute name="medicament">
-                <bean:write name="form" property="fields(searchInput)"/>
+            <tiles:putAttribute name="message">
+                <p class="smallItalicText marginBottom10">Лекарство <span class="doubleOrange"> "<bean:write name="form" property="fields(searchInput)"/>"</span> найдено в ${form.length} аптеках</p>
             </tiles:putAttribute>
-            <tiles:putAttribute name="count" value="${form.length}"/>
             <tiles:putAttribute name="grid">
                <grid:table uid="price" name="${form.data}">
                    <grid:column property="pharmacy.name" title="Название аптеки" href="${pageContext.request.contextPath}/viewPharmacy.do" paramId="id" paramProperty="pharmacy.id" class="highlightLink"/>
@@ -32,6 +31,14 @@
                         ${helper:getDateUpdate(price.dateUpdate)}
                    </grid:column>
                </grid:table>
+                <script>
+                    $(document).ready(function()
+                            {
+                                $("#price").tablesorter();
+                            }
+                    );
+
+                </script>
             </tiles:putAttribute>
         </tiles:insertDefinition>
     </tiles:putAttribute>

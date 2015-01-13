@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-<parent>
-    <artifactId>Pharmacy</artifactId>
-    <groupId>${myapp.groupid}</groupId>
-    <version>${myapp.version}</version>
-</parent>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <artifactId>pharmacy</artifactId>
+        <groupId>pharmacy</groupId>
+        <version>1.0</version>
+    </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>User</artifactId>
@@ -15,24 +15,7 @@
         <dependency>
             <groupId>${myapp.groupid}</groupId>
             <artifactId>Common</artifactId>
-            <version>${myapp.version}</version>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.4</version>
-                <configuration>
-		            <webXml>src\main\webapp\WEB-INF\web.xml </webXml>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
-
-
 
 </project>

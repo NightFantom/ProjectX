@@ -1,9 +1,11 @@
 /**
- * Created: Денис
- * Date: 03.11.14.
+ * Создано: Денис
+ * Дата: 03.11.14.
+ * Описание: Базовый класс для всех форм
  */
 package forms;
 
+import checkForm.Form;
 import org.apache.struts.action.ActionForm;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +15,7 @@ public class ActionFormBase extends ActionForm {
     private Integer id;
     private List<Object> data;
     private Map<Object, Object> fields = new HashMap<Object, Object>();
+    private Map<Object, Object> filters = new HashMap<Object, Object>();
 
     public List<Object> getData() {
         return data;
@@ -43,5 +46,21 @@ public class ActionFormBase extends ActionForm {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public void setField(String key, Object value){
+        fields.put(key, value);
+    }
+
+    public Map<Object, Object> getFilters() {
+        return filters;
+    }
+
+    public void setFilters(Map<Object, Object> filters) {
+        this.filters = filters;
+    }
+
+    public Form getLogicForm(){
+        return null;
     }
 }

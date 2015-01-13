@@ -3,7 +3,7 @@ package queueService;
  * Created by Виктор on 06.11.2014.
  */
 import form.LodedData;
-import forms.DescriptionParser;
+import entities.DescriptionParser;
 import handler.UpdateDataHandler;
 import hibernateService.HibernateService;
 import parsers.Parser;

@@ -1,18 +1,16 @@
+/**
+ * Создано: Виктор
+ * Дата: 09.11.2014
+ */
 package fileService;
 
 import org.apache.struts.upload.FormFile;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.Scanner;
 
-/**
- * Created by Виктор on 09.11.2014.
- */
-
-/**
- *
- */
 public class FileManager {
     private static final String FILE_PREFIX = "Pharmacy";
     private Scanner scanner;
@@ -20,7 +18,6 @@ public class FileManager {
 
     /**
      * Сканер файла
-     *
      * @return
      */
     public Scanner getScanner() {
@@ -43,7 +40,7 @@ public class FileManager {
      * @param formFile - файл, который загрузили
      * @return файл в который скопировали данные
      */
-    //TODO: Если с загрузкой файла произошла ошибка, что пробросить её наверх
+    //TODO: Если с загрузкой файла произошла ошибка, то пробросить её наверх
     public File loadFile(FormFile formFile, String name) {
         createFolder();
         File newFile = new File(pathFile, FILE_PREFIX + name);

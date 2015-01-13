@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="forms.Price" table="PRICE">
+    <class name="entities.Price" table="PRICE">
         <id name="id" column="ID" type="java.lang.Integer">
             <generator class="sequence">
                 <param name="sequence">S_ID_PRICE</param>
@@ -15,13 +15,13 @@
         <property name="amount" column="COUNT" type="java.lang.Integer" not-null="true"/>
         <property name="cost" column="COSTS" type="java.lang.Double" not-null="true"/>
         <property name="dateUpdate" column="DATE_UPDATE" type="java.util.Calendar" not-null="true"/>
-        <many-to-one name="pharmacy" column="ID_PHARMACY" class="forms.Pharmacy" lazy="false"/>
+        <many-to-one name="pharmacy" column="ID_PHARMACY" class="entities.Pharmacy" lazy="false"/>
 
         <query name="getPrice">
-            select price from forms.Price as price where price.idMedicament = :idMedicament and price.idCity = :idCity
+            select price from entities.Price as price where price.idMedicament = :idMedicament and price.idCity = :idCity
         </query>
         <query name="updatePrice">
-            update forms.Price as price set price.cost =:cost, price.amount = :amount, price.dateUpdate = :dateUpdate where  price.idMedicament = :idMedicament and price.idCity = :idCity and price.pharmacy = :pharmacy
+            update entities.Price as price set price.cost =:cost, price.amount = :amount, price.dateUpdate = :dateUpdate where  price.idMedicament = :idMedicament  and price.pharmacy = :pharmacy
         </query>
     </class>
 </hibernate-mapping>

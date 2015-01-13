@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="forms.UserAccount" table="USERS_ACCOUNT">
+    <class name="entities.UserAccount" table="USERS_ACCOUNT">
         <id name="id" column="ID">
             <generator class="sequence">
                 <param name="sequence">S_ID_USER_ACCOUNT</param>
@@ -20,8 +20,8 @@
         <property name="login" column="LOGIN" type="java.lang.String"  not-null="true"/>
         <property name="password" column="PASSWORD" type="java.lang.String"  not-null="true"/>
 
-        <query name="getByLogin">
-            select userAccount from forms.UserAccount as userAccount where userAccount.login = :login
+        <query name="getByLoginAndPassword">
+            select userAccount from entities.UserAccount as userAccount where userAccount.login = :login and userAccount.password = :password
         </query>
     </class>
 </hibernate-mapping>
