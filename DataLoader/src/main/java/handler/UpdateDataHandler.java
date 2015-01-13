@@ -32,8 +32,8 @@ public class UpdateDataHandler {
             medicament = getMedicamentByName(updateRecord.getName());
 
             Map<Object, Object> hashMap = new HashMap<>();
-            hashMap.put("cost", Double.parseDouble(updateRecord.getCost()));
-            hashMap.put("amount", Integer.parseInt(updateRecord.getCount()));
+            hashMap.put("cost", updateRecord.getCost());
+            hashMap.put("amount", updateRecord.getAmount());
             hashMap.put("pharmacy",lodedData.getPharmacy());
             hashMap.put("idMedicament",medicament.getId());
             hashMap.put("idCity",lodedData.pharmacy.getIdCity());

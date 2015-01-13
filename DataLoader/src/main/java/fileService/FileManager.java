@@ -60,18 +60,21 @@ public class FileManager {
 
     /**
      * Создаёт папку
-     * @return Да, если и только если, папка создана успешно
+     * @return true - создана новая папка , false - папка с таким названием уже существует
      */
     public boolean createFolder() {
-        //TODO: Сделать так чтобы, если папка существует, то её не создавать.
+
         File folder = new File(pathFile);
-        if (Files.isRegularFile(folder.toPath())) {
-            try {
-                Files.delete(folder.toPath());
-            } catch (IOException e) {
-                e.printStackTrace();
+        if(!folder.exists()) {
+            if (Files.isRegularFile(folder.toPath())) {
+                try {
+                    Files.delete(folder.toPath());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
+            return folder.mkdir();
         }
-        return folder.mkdir();
+        return false;
     }
 }

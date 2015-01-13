@@ -8,6 +8,7 @@ import handler.UpdateDataHandler;
 import hibernateService.HibernateService;
 import parsers.Parser;
 import parsers.ParserFactory;
+import parsers.ParsingException;
 
 /**
  * Обработчик очереди
@@ -46,7 +47,11 @@ public class QueueHandler implements Runnable {
             }
             Parser parser = new ParserFactory().getParser(descriptionParser.getParser());
             //TODO: Нужно реализовать обработку исключения "Не удалось распарсить"
-            updateData.updateData(parser.getRecords(lodedData.getPathToFile()),lodedData);
+            try {
+                updateData.updateData(parser.getRecords(lodedData.getPathToFile()), lodedData);
+            }catch (ParsingException e){
+                throw new Exception(e);
+            }
         }catch (Exception e){
             e.printStackTrace();
         }

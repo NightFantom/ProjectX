@@ -18,6 +18,6 @@ public interface Parser {
      * @return лист распарсенных данных
      */
     //TODO: Написать проброску исключения в случае неудачного парсинга
-    public List<UpdateRecord> getRecords(String pathToFile);
+    public List<UpdateRecord> getRecords(String pathToFile)throws ParsingException;
 
 }

@@ -50,10 +50,11 @@ public class FileUploadAction extends LogDispatchAction {
                 Pharmacy pharmacy = pharmaciesList.get(0);
                 if (pharmacy.getPassword().equals(fileUploadForm.getPassword())) {
                     FormFile file = (FormFile) fileUploadForm.getMultipartRequestHandler().getFileElements().get("upfile");
-                    String filePath = getServlet().getServletContext().getRealPath("/") + FOLDER;
+                    String filePath = getServlet().getServletContext().getRealPath("/") + pharmacy.getLogin();
                     lodedData.setPathToFile(new FileManager(filePath).loadFile(file, pharmacy.getId().toString()).getAbsolutePath());
                     lodedData.setPharmacy(pharmacy);
                     QueueManager.getQueue().add(lodedData);
+                    ((FormFile) fileUploadForm.getMultipartRequestHandler().getFileElements().get("upfile")).destroy();
                     return mapping.findForward(SUCCESS);
                 }
             }

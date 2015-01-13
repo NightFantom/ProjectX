@@ -10,8 +10,8 @@ package form;
 public class UpdateRecord {
 
     private String name;
-    private String count;
-    private String cost;
+    private Integer amount;
+    private Double cost;
 
     /**
      *
@@ -31,33 +31,33 @@ public class UpdateRecord {
 
     /**
      *
-     * @return количество данного лекарства
+     * @return количество лекарства
      */
-    public String getCount() {
-        return count;
+    public Integer getAmount() {
+        return amount;
     }
 
     /**
      *
-     * @param count количество даного лекарства
+     * @param amount количество лекарства
      */
-    public void setCount(String count) {
-        this.count = count;
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 
     /**
      *
      * @return стоимость лекарства
      */
-    public String getCost() {
+    public Double getCost() {
         return cost;
     }
 
     /**
      *
-     * @param cost стоимость лекартсва
+     * @param cost стоимость лекарства
      */
-    public void setCost(String cost) {
+    public void setCost(Double cost) {
         this.cost = cost;
     }
 }

@@ -28,7 +28,7 @@ public class QueueListener implements ServletContextListener {
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
 
         if(queueHandlerThread.isAlive() && queueHandler.isRunning()){
-            QueueManager.getQueue().setBlockAdd(true);
+            QueueManager.getQueue().setBlockingAdd(true);
             queueHandler.setRunning(false);
         }
 

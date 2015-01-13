@@ -24,7 +24,7 @@
         <div id="searchLine">
             <p class="additionText bigText">поиск <span class="doubleOrange">лекарств</span></p>
             <div class="floatLeft">
-                <html:text name="form" property="fields(searchInput)"  styleClass="inputTextSearch" maxlength="40"/>
+                <html:text name="form" property="fields(searchInput)" styleId="searchText" styleClass="inputTextSearch" maxlength="40"/>
             </div>
             <input id="searchButton" type="image" src="${path}/images/search.png">
             <p class="additionText smallItalicText">например: <span class="doubleOrange">аспирин</span></p>
