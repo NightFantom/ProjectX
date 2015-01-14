@@ -189,8 +189,8 @@
 		<myapp.groupid>pharmacy</myapp.groupid>
 		<myapp.version>1.0</myapp.version>
 		<myapp.finalname>${project.artifactId}-${myapp.version}</myapp.finalname>
-        <project.pathServletApi>c:\My program\Tomcat 8\apache-tomcat-8.0.12\lib\servlet-api.jar</project.pathServletApi>
-        <project.pathJSPApi>c:\My program\Tomcat 8\apache-tomcat-8.0.12\lib\jsp-api.jar</project.pathJSPApi>
+        <project.pathServletApi>C:\Program Files\Tomcat\apache-tomcat-7.0.53-windows-x64\apache-tomcat-7.0.53\lib\servlet-api.jar</project.pathServletApi>
+        <project.pathJSPApi>C:\Program Files\Tomcat\apache-tomcat-7.0.53-windows-x64\apache-tomcat-7.0.53\lib\jsp-api.jar</project.pathJSPApi>
         <project.JDK>1.8</project.JDK>
 	</properties>
 </project>
