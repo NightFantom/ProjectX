@@ -16,7 +16,10 @@
         <Appender type="File" name="logHibernate" fileName="${sys:catalina.home}/logs/LogHibernate-${date:MM-dd k-m}.html">
             <Layout Type="HTMLLayout"/>
         </Appender>
-    </Appenders>
+        <Appender type="File" name="logFileUpload" fileName="${sys:catalina.home}/logs/LogFileUpload-${date:MM-dd k-m}.html">
+            <Layout Type="HTMLLayout"/>
+        </Appender>
+     </Appenders>
     <Loggers>
 
         <Logger level="info" name="org.hibernate" additivity="false">
@@ -33,6 +36,21 @@
 
         <Logger level="info" name="org.apache.struts" additivity="false">
             <AppenderRef ref="consoleOut"/>
+        </Logger>
+
+        <Logger level="info" name="DataLoader.src.main.java.queueService.QueueListener" additivity="false">
+            <AppenderRef ref="consoleOut"/>
+            <AppenderRef ref="logFileUpload"/>
+        </Logger>
+
+        <Logger level="info" name="DataLoader.src.main.java.queueService.QueueHandler" additivity="false">
+            <AppenderRef ref="consoleOut"/>
+            <AppenderRef ref="logFileUpload"/>
+        </Logger>
+
+        <Logger level="info" name="DataLoader.src.main.java.fileService.FileManager" additivity="false">
+            <AppenderRef ref="consoleOut"/>
+            <AppenderRef ref="logFileUpload"/>
         </Logger>
 
         <Root level="INFO">

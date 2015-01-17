@@ -9,6 +9,8 @@ import entities.Medicament;
 import entities.Pharmacy;
 import entities.Price;
 import hibernateService.HibernateService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
@@ -19,6 +21,8 @@ public class UpdateDataHandler {
 
     private HibernateService<Price> servicePrice = new HibernateService<Price>(Price.class);
     private HibernateService<Medicament> serviceMedicament = new HibernateService<Medicament>(Medicament.class);
+    protected final Logger LOG = LogManager.getLogger(UpdateDataHandler.class);
+
     /**
      * Обновить данные
      *
@@ -30,18 +34,19 @@ public class UpdateDataHandler {
         Medicament medicament = null;
         for (UpdateRecord updateRecord : list) {
             medicament = getMedicamentByName(updateRecord.getName());
+            if(medicament!=null) {
+                Map<Object, Object> hashMap = new HashMap<>();
+                hashMap.put("cost", updateRecord.getCost());
+                hashMap.put("amount", updateRecord.getAmount());
+                hashMap.put("pharmacy", lodedData.getPharmacy());
+                hashMap.put("idMedicament", medicament.getId());
+                hashMap.put("idCity", lodedData.getPharmacy().getCity().getId());
+                hashMap.put("dateUpdate", new GregorianCalendar());
 
-            Map<Object, Object> hashMap = new HashMap<>();
-            hashMap.put("cost", updateRecord.getCost());
-            hashMap.put("amount", updateRecord.getAmount());
-            hashMap.put("pharmacy",lodedData.getPharmacy());
-            hashMap.put("idMedicament",medicament.getId());
-            hashMap.put("idCity",lodedData.pharmacy.getCity().getId());
-            hashMap.put("dateUpdate",new GregorianCalendar());
-
-            int amountUpdateRecords =  servicePrice.update(hashMap, "updatePrice");
-            if(amountUpdateRecords == 0){
-                servicePrice.saveOrUpdate(getPrice(hashMap));
+                int amountUpdateRecords = servicePrice.update(hashMap, "updatePrice");
+                if (amountUpdateRecords == 0) {
+                    servicePrice.saveOrUpdate(getPrice(hashMap));
+                }
             }
         }
 
@@ -64,9 +69,11 @@ public class UpdateDataHandler {
         List<Medicament> medicaments = serviceMedicament.getList(map, "getByName");
         Medicament medicament = null;
         if (medicaments.isEmpty()) {
-            medicament = new Medicament();
-            medicament.setName(name.toUpperCase());
-            serviceMedicament.saveOrUpdate(medicament);
+            //TODO: Сделать отображение нового медикамента в админке
+//            medicament = new Medicament();
+//            medicament.setName(name.toUpperCase());
+            LOG.info("Новый медикамент: " + name.toUpperCase());
+//            serviceMedicament.saveOrUpdate(medicament);
         } else {
             medicament = medicaments.get(0);
         }

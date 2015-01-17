@@ -57,6 +57,7 @@ public class FileUploadAction extends LogDispatchAction {
                     String filePath = getServlet().getServletContext().getRealPath("/") + pharmacy.getLogin();
                     lodedData.setPathToFile(new FileManager(filePath).loadFile(file, pharmacy.getId().toString()).getAbsolutePath());
                     lodedData.setPharmacy(pharmacy);
+                    lodedData.setEncoding(new FileManager(lodedData.getPathToFile()).getEncodingFile());
                     QueueManager.getQueue().add(lodedData);
                     ((FormFile) fileUploadForm.getMultipartRequestHandler().getFileElements().get("upfile")).destroy();
                     return mapping.findForward(SUCCESS);

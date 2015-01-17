@@ -6,6 +6,8 @@ package parsers;
 import fileService.FileManager;
 import form.UpdateRecord;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -48,11 +50,11 @@ public class ParserAlpha implements Parser {
      *
      * @param pathToFile путь до файла
      */
-    private void parseFile(String pathToFile) {
+    private void parseFile(String pathToFile, String encoding) {
 
         scanner = new FileManager(pathToFile).getScanner();
         while (scanner.hasNextLine()) {
-            s = scanner.nextLine();
+            s = new String(scanner.nextLine().getBytes(),Charset.forName(encoding));
             try {
                 list.add(getParseRecord());
             } catch (NullPointerException e) {
@@ -62,9 +64,9 @@ public class ParserAlpha implements Parser {
 
     }
 
-    public List<UpdateRecord> getRecords(String pathToFile) throws ParsingException {
+    public List<UpdateRecord> getRecords(String pathToFile, String encoding) throws ParsingException {
         if (pathToFile != null && !pathToFile.equals("")) {
-            parseFile(pathToFile);
+            parseFile(pathToFile, encoding);
         } else {
             throw new ParsingException("Некорректный путь до файла");
         }

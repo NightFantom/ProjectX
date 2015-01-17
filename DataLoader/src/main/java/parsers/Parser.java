@@ -15,9 +15,10 @@ public interface Parser {
     /**
      *
      * @param pathToFile путь до файла, который нужно распарсить
+     * @param encoding кодировка файла
      * @return лист распарсенных данных
      */
     //TODO: Написать проброску исключения в случае неудачного парсинга
-    public List<UpdateRecord> getRecords(String pathToFile)throws ParsingException;
+    public List<UpdateRecord> getRecords(String pathToFile, String encoding)throws ParsingException;
 
 }

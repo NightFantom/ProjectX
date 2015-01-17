@@ -12,9 +12,18 @@ import entities.Pharmacy;
 public class LodedData {
 
     private String pathToFile;
-    public Pharmacy pharmacy;
+    private Pharmacy pharmacy;
+    private String encoding;
 
-     /**
+    public String getEncoding() {
+        return encoding;
+    }
+
+    public void setEncoding(String encoding) {
+        this.encoding = encoding;
+    }
+
+    /**
      *
      * @return путь до файла
      */
