@@ -28,5 +28,8 @@
         <query name="getByCodeNetwork">
             select pharmacy from entities.Pharmacy as pharmacy where pharmacy.codeNetwork = :codeNetwork
         </query>
+        <query name="getByLoginAndPassword">
+            select pharmacy from entities.Pharmacy as pharmacy where pharmacy.login = :login and pharmacy.password = :password
+        </query>
     </class>
 </hibernate-mapping>

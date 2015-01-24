@@ -37,4 +37,14 @@
         <function-class>helpers.SessionAndRequestHelper</function-class>
         <function-signature>java.lang.String getErrorMessage(javax.servlet.jsp.PageContext)</function-signature>
     </function>
+    <function>
+        <name>getPharmacyAddressAndPhone</name>
+        <function-class>helpers.SessionAndRequestHelper</function-class>
+        <function-signature>java.lang.String getPharmacyAddressAndPhone(javax.servlet.jsp.PageContext)</function-signature>
+    </function>
+    <function>
+        <name>getPharmacyLogin</name>
+        <function-class>helpers.SessionAndRequestHelper</function-class>
+        <function-signature>java.lang.String getPharmacyLogin(javax.servlet.jsp.PageContext)</function-signature>
+    </function>
 </taglib>

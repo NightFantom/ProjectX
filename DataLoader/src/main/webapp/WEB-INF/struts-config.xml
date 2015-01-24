@@ -6,6 +6,7 @@
 
     <form-beans>
         <form-bean name="fileForm" type="form.FileUploadForm"/>
+        <form-bean name="LoginForm" type="forms.LoginForm"/>
     </form-beans>
 
     <global-exceptions>
@@ -17,10 +18,24 @@
 
     <action-mappings>
         <action path="/index"
+                name="LoginForm"
                 forward="/jsp/index.jsp"/>
-
+        <action path="/private/loadFilePage" forward="/jsp/loadFile.jsp"/>
         <action path="/error" forward="/jsp/error.jsp"/>
-
+        <action path="/private/welcomePage" forward="/jsp/welcomePage.jsp"/>
+        <action path="/login"
+                name="LoginForm"
+                type="action.LoginAction"
+                scope="request">
+            <forward name="success" path="/private/welcomePage.do" redirect="true"/>
+            <forward name="error" path="/jsp/index.jsp"/>
+        </action>
+        <action path="/private/exit"
+                name="LoginForm"
+                type="action.LoginAction"
+                parameter="exit">
+            <forward name="success" path="/jsp/index.jsp"/>
+        </action>
         <action path="/save"
                 type="action.FileUploadAction"
                 parameter="loadMultipartContent"

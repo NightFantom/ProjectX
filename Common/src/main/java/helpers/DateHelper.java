@@ -17,10 +17,10 @@ public class DateHelper {
      */
     public static String getDateUpdate(Calendar calendar){
         int day = calendar.get(Calendar.DATE);
-        int month = calendar.get(Calendar.MONTH);
+        int month = calendar.get(Calendar.MONTH) + 1;
         Calendar currentDate = new GregorianCalendar();
         int currentDay = currentDate.get(Calendar.DATE);
-        int currentMonth = currentDate.get(Calendar.MONTH);
+        int currentMonth = currentDate.get(Calendar.MONTH) + 1;
         if (month == currentMonth){
             switch(currentDay-day){
                 case 0: return "Сегодня";

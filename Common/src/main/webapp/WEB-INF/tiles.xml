@@ -7,11 +7,13 @@
     <definition name="main" template="/WEB-INF/template/main.jsp">
         <put-attribute name="title" value=""/>
         <put-attribute name="content" value=""/>
+        <put-attribute name="script" value=""/>
     </definition>
 
     <definition name="onlyFon" template="/WEB-INF/template/onlyFon.jsp">
         <put-attribute name="title" value=""/>
         <put-attribute name="content" value=""/>
+        <put-attribute name="script" value=""/>
     </definition>
 
     <definition name="searchLine" template="/WEB-INF/template/search.jsp">
@@ -49,10 +51,18 @@
         <put-attribute name="title" type="string" value=""/>
         <put-attribute name="contentHeader" type="string" value=""/>
         <put-attribute name="content" value=""/>
+        <put-attribute name="script" value=""/>
     </definition>
     <definition name="adminPanel" template="/WEB-INF/template/adminPanel.jsp">
         <put-attribute name="title" type="string" value=""/>
         <put-attribute name="contentHeader" type="string" value=""/>
         <put-attribute name="content" value=""/>
+        <put-attribute name="script" value=""/>
+    </definition>
+    <definition name="loaderPanel" template="/WEB-INF/template/loaderPanel.jsp">
+        <put-attribute name="title" type="string" value=""/>
+        <put-attribute name="contentHeader" type="string" value=""/>
+        <put-attribute name="content" value=""/>
+        <put-attribute name="script" value=""/>
     </definition>
 </tiles-definitions>
