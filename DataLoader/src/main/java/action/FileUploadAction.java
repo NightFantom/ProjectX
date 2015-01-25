@@ -26,7 +26,7 @@ public class FileUploadAction extends LogDispatchAction {
 
     private final String USER_IS_NOT_EXIST = "userIsNotExist";
     private final String IS_NOT_MULTIPART_CONTENT = "isNotMultipartContent";
-    private static final  String FOLDER = "UploadFile";
+    private static final String FOLDER = "UploadFile";
 
     @Override
     public ActionForward start(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -35,6 +35,7 @@ public class FileUploadAction extends LogDispatchAction {
 
     /**
      * Загрузка файла, логина, пароля
+     *
      * @param mapping
      * @param form
      * @param request
@@ -49,19 +50,18 @@ public class FileUploadAction extends LogDispatchAction {
         if (ServletFileUpload.isMultipartContent(request)) {                    // если нам пришел реквест с файлом
             Map<Object, Object> map = new HashMap<Object, Object>();
             map.put("login", fileUploadForm.getLogin());
-            List<Pharmacy> pharmaciesList = new HibernateService<Pharmacy>(Pharmacy.class).getList( map, "getByLogin");
+            List<Pharmacy> pharmaciesList = new HibernateService<Pharmacy>(Pharmacy.class).getList(map, "getByLogin");
             if (!pharmaciesList.isEmpty()) {
                 Pharmacy pharmacy = pharmaciesList.get(0);
-                if (pharmacy.getPassword().equals(fileUploadForm.getPassword())) {
-                    FormFile file = (FormFile) fileUploadForm.getMultipartRequestHandler().getFileElements().get("upfile");
-                    String filePath = getServlet().getServletContext().getRealPath("/") + pharmacy.getLogin();
-                    lodedData.setPathToFile(new FileManager(filePath).loadFile(file, pharmacy.getId().toString()).getAbsolutePath());
-                    lodedData.setPharmacy(pharmacy);
-                    lodedData.setEncoding(new FileManager(lodedData.getPathToFile()).getEncodingFile());
-                    QueueManager.getQueue().add(lodedData);
-                    ((FormFile) fileUploadForm.getMultipartRequestHandler().getFileElements().get("upfile")).destroy();
-                    return mapping.findForward(SUCCESS);
-                }
+                FormFile file = (FormFile) fileUploadForm.getMultipartRequestHandler().getFileElements().get("upfile");
+                String filePath = getServlet().getServletContext().getRealPath("/") + pharmacy.getLogin();
+                lodedData.setPathToFile(new FileManager(filePath).loadFile(file, pharmacy.getId().toString()).getAbsolutePath());
+                lodedData.setPharmacy(pharmacy);
+                lodedData.setEncoding(new FileManager(lodedData.getPathToFile()).getEncodingFile());
+                QueueManager.getQueue().add(lodedData);
+                ((FormFile) fileUploadForm.getMultipartRequestHandler().getFileElements().get("upfile")).destroy();
+
+                return mapping.findForward(SUCCESS);
             }
         }
         //TODO: Нужно иначе разруливать "плохие" ситуации

@@ -9,9 +9,9 @@ jQuery(document).ready(function($){
             jQuery.ajax({
                 type: "POST",
                 url: cUrl+"/autoComplete.do",
-                data: "form="+$("#searchText").val(),
-                success: function(data,status,jqXHR){
-                    $(".floatLeft").append(data.toString());
+                dataType: "json",
+                success: function(data){
+                    alert(data.name);
                 }
 
             })

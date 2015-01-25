@@ -6,6 +6,7 @@
 package helpers;
 
 import entities.City;
+import entities.Pharmacy;
 import entities.UserAccount;
 import org.apache.struts.action.ActionForm;
 
@@ -94,4 +95,26 @@ public class SessionAndRequestHelper {
         HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
         return (String) request.getAttribute(GlobalConstants.ERROR_MESSAGE);
     }
+
+    /**
+     * Получение информации об аптеке
+     * @return строка с названием аптеки, ее адресом и телефоном
+     */
+    public static String getPharmacyAddressAndPhone(PageContext pageContext){
+        HttpSession session = ((HttpServletRequest) pageContext.getRequest()).getSession();
+        Pharmacy pharmacy = (Pharmacy) session.getAttribute(GlobalConstants.PHARMACY);
+        return pharmacy.getName() + ". Адрес: " + pharmacy.getAddress() + " тел. " + pharmacy.getPhone();
+    }
+
+
+    /**
+     * Получение логина аптеки
+     * @return логин
+     */
+    public static String getPharmacyLogin(PageContext pageContext){
+        HttpSession session = ((HttpServletRequest) pageContext.getRequest()).getSession();
+        Pharmacy pharmacy = (Pharmacy) session.getAttribute(GlobalConstants.PHARMACY);
+        return pharmacy.getLogin();
+    }
+
 }

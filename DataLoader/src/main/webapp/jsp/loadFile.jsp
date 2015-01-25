@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Виктор
-  Date: 03.11.2014
-  Time: 22:50
-  To change this template use File | Settings | File Templates.
---%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
@@ -21,6 +14,20 @@
         <p class="bigText marginBottom10">Загрузка <span class="orangeText">файла</span></p>
     </tiles:putAttribute>
     <tiles:putAttribute name="content">
-        <p class="bigText marginBottom10">Файл отправлен</p>
+        <div id="formDL">
+            <form method="POST" enctype="multipart/form-data" action="${helper:getPath(pageContext)}/save.do">
+                <input type="hidden" name="login" class="inputDL" value="${helper:getPharmacyLogin(pageContext)}"/>
+                <table class="tableDL">
+                  <tr>
+                        <td class="leftColumnDL">Файл для загрузки:</td>
+                        <td><input type="file" name="upfile"/></td>
+                    </tr>
+                    <tr>
+                        <td class="leftColumnDL"></td>
+                        <td><input type="submit" class="submitDL" value="Отправить"/></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
     </tiles:putAttribute>
 </tiles:insertDefinition>

@@ -20,16 +20,9 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset = UTF-8">
     <meta http-equiv="Content-language" content="ru">
-    <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-    <script type="text/javascript" src="${path}/js/jquery-2.1.3.js"></script>
-    <script type="text/javascript" src="${path}/js/jquery.tablesorter.js"></script>
     <link rel="stylesheet" type="text/css" href="${path}/css/style.css"/>
     <title><tiles:getAsString name="title"/></title>
-    <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
-    <script type="text/javascript" src="js/jquery-ui.js"></script>
-    <script type="text/javascript" src="js/ajax.js"></script>
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
-    <script>contextUrl("${pageContext.servletContext.contextPath}")</script>
+    <jsp:include page="../../jsp/scripts.jsp"></jsp:include>
 </head>
 <body>
 <div id="fon">
@@ -57,5 +50,10 @@
         </div>
     </div>
 </div>
+<footer>
+    <div id="script">
+        <tiles:putAttribute name="script"/>
+    </div>
+</footer>
 </body>
 </html>

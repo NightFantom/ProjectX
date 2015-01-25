@@ -32,7 +32,7 @@
                 type="action.SearchAction"
                 name="StandardSearchForm"
                 scope="request">
-            <forward name="start" path="/jsp/resultSet.jsp"/>
+            <forward name="start" path="/jsp/price.jsp"/>
             <forward name="listMedicament" path="/jsp/listMedicament.jsp"/>
         </action>
 
