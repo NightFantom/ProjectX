@@ -5,7 +5,7 @@
                xsd:schemaLocation = "http://www.w3.org/2001/XMLSchema  Log4j-config.xsd">
     <Appenders>
         <Appender type="Console" name="consoleOut">
-            <Layout Type="PatternLayout" Pattern="%d [%t] %c{3} [%level{length=5}]: %msg%throwable %n"/>
+            <Layout Type="PatternLayout" Pattern="%d [%level{length=5}] [%t] %c{3} : %msg%throwable %n"/>
         </Appender>
         <Appender type="Console" name="consoleHibernate">
             <Layout Type="PatternLayout" Pattern="Hibernate: %msg%n"/>
@@ -38,17 +38,12 @@
             <AppenderRef ref="consoleOut"/>
         </Logger>
 
-        <Logger level="info" name="DataLoader.src.main.java.queueService.QueueListener" additivity="false">
+        <Logger level="info" name="queueService" additivity="false">
             <AppenderRef ref="consoleOut"/>
             <AppenderRef ref="logFileUpload"/>
         </Logger>
 
-        <Logger level="info" name="DataLoader.src.main.java.queueService.QueueHandler" additivity="false">
-            <AppenderRef ref="consoleOut"/>
-            <AppenderRef ref="logFileUpload"/>
-        </Logger>
-
-        <Logger level="info" name="DataLoader.src.main.java.fileService.FileManager" additivity="false">
+        <Logger level="info" name="fileService.FileManager" additivity="false">
             <AppenderRef ref="consoleOut"/>
             <AppenderRef ref="logFileUpload"/>
         </Logger>
