@@ -22,6 +22,7 @@
                 <p class="smallItalicText marginBottom10">Лекарство <span class="doubleOrange"> "<bean:write name="form" property="fields(searchInput)"/>"</span> найдено в ${form.length} аптеках</p>
             </tiles:putAttribute>
             <tiles:putAttribute name="grid">
+                <div id="listButton" class="buttonPrice buttonCheck" >Список</div><div id="mapButton" class="buttonPrice buttonNotCheck shiftButton">Карта</div>
                <grid:table uid="price" name="${form.data}">
                    <grid:column property="pharmacy.name" title="Название аптеки" href="${pageContext.request.contextPath}/viewPharmacy.do" paramId="id" paramProperty="pharmacy.id" class="highlightLink"/>
                    <grid:column property="pharmacy.address" title="Адрес" href="${pageContext.request.contextPath}/viewPharmacy.do" paramId="id" paramProperty="pharmacy.id" class="highlightLink"/>
@@ -31,13 +32,30 @@
                         ${helper:getDateUpdate(price.dateUpdate)}
                    </grid:column>
                </grid:table>
-                <script>
-                    $(document).ready(function()
-                            {
-                                $("#price").tablesorter();
-                            }
-                    );
+                <div id="workArea" >
+                    <div id="map2"></div>
+                </div>
+               <script type="text/javascript">
+                    ymaps.ready(init);
+                    var myMap, myPlacemark, myCollection;
+                    function init() {
+                        myMap = new ymaps.Map("map2", {
+                            center: [59.224058, 39.891808],
+                            zoom: 12
+                        });
+                        myCollection = new ymaps.GeoObjectCollection({}, {});
+                        <c:forEach var="list" items="${form.data}" >
+                            myPlacemark = new ymaps.Placemark([${list.getPharmacy().getCoordinates()}], {
+                                balloonContentHeader: '<p class="bigText marginBottom30">${list.getCost()} руб. </p>',
+                                balloonContentBody: '<p class="bigText marginBottom30"><span class="orangeText"><bean:write name="form" property="fields(searchInput)"/></span></p>',
+                                balloonContentFooter: '<p class="smallItalicText">${list.getPharmacy().getName()}</p>' ,
+                                hintContent: '<p class="smallItalicText">${list.getCost()} руб.</p>'
 
+                            });
+                            myCollection.add(myPlacemark);
+                        </c:forEach>
+                        myMap.geoObjects.add(myCollection);
+                    }
                 </script>
             </tiles:putAttribute>
         </tiles:insertDefinition>

@@ -5,5 +5,5 @@
 <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <script type="text/javascript" src="${path}/js/jquery-2.1.3.js"></script>
 <script type="text/javascript" src="${path}/js/jquery.tablesorter.js"></script>
-<script type="text/javascript" src="${path}/js/jquery-2.1.1.js"></script>
 <script type="text/javascript" src="${path}/js/jquery-ui.js"></script>
+<script type="text/javascript" src="${path}/js/sortPriceTable.js"></script>
