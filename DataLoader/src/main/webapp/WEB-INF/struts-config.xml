@@ -42,8 +42,8 @@
                 scope="request"
                 name="fileForm"
                 validate="true">
-            <forward name="success" path="/suc.jsp"/>
-            <forward name="userIsNotExist" path="/error.jsp"/>
+            <forward name="success" path="/jsp/successful.jsp"/>
+            <forward name="userIsNotExist" path="/jsp/error.jsp"/>
          </action>
     </action-mappings>
 
