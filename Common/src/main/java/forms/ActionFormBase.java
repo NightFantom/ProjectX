@@ -35,7 +35,7 @@ public class ActionFormBase extends ActionForm {
 
     public String getLength(){
         if (data != null){
-            return new Integer(data.size()).toString();
+            return Integer.toString(data.size());
         }
         return "0";
     }
