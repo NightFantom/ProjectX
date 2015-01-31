@@ -36,14 +36,16 @@
 
         <action path="/private/myPharmacies"
                 type="action.ViewPharmaciesAction"
-                name="DefaultForm">
+                name="DefaultForm"
+                scope="request">
             <forward name="success" path="/jsp/myPharmacies.jsp"/>
         </action>
 
         <action path="/private/viewPharmacy"
                 type="action.ViewPharmaciesAction"
                 name="ViewPharmacy"
-                parameter="viewPharmacy">
+                parameter="viewPharmacy"
+                scope="request">
             <forward name="success" path="/jsp/viewPharmacy.jsp"/>
             <forward name="error" path="/private/rejectAccess.do" redirect="true"/>
         </action>
@@ -51,13 +53,15 @@
         <action path="/private/exit"
                 name="LoginForm"
                 type="login.LoginAction"
-                parameter="exit">
+                parameter="exit"
+                scope="request">
             <forward name="success" path="/jsp/index.jsp"/>
         </action>
 
         <action path="/private/pharmaciesStatistic"
                 name="DefaultForm"
-                type="action.StatisticViewAction">
+                type="action.StatisticViewAction"
+                scope="request">
             <forward name="success" path="/jsp/pharmaciesStatistic.jsp"/>
         </action>
 
