@@ -46,8 +46,8 @@
                         myCollection = new ymaps.GeoObjectCollection({}, {});
                         <c:forEach var="list" items="${form.data}" >
                             myPlacemark = new ymaps.Placemark([${list.getPharmacy().getCoordinates()}], {
-                                balloonContentHeader: '<p class="bigText marginBottom30">${list.getCost()} руб. </p>',
-                                balloonContentBody: '<p class="bigText marginBottom30"><span class="orangeText"><bean:write name="form" property="fields(searchInput)"/></span></p>',
+                                balloonContentBody: '<p class="bigText marginBottom30">${list.getCost()} руб. </p>',
+                                balloonContentHeader: '<p class="bigText marginBottom30"><span class="orangeText"><bean:write name="form" property="fields(searchInput)"/></span></p>',
                                 balloonContentFooter: '<p class="smallItalicText">${list.getPharmacy().getName()}</p>' ,
                                 hintContent: '<p class="smallItalicText">${list.getCost()} руб.</p>'
 

@@ -217,23 +217,20 @@ body {
 }
 
 .tablesorter-headerUnSorted {
-    background-image: url("../images/tableSort/bg.gif");
-    background-repeat: no-repeat;
-    background-position: center right;
+    background: url("../images/tableSort/bg.gif") center right no-repeat ;
     cursor: pointer;
+    padding: 0 10px 0 0;
 }
 
 .tablesorter-headerAsc {
-    background-image: url('../images/tableSort/asc.gif');
-    background-repeat: no-repeat;
-    background-position: center right;
+    background: url("../images/tableSort/asc.gif") center right no-repeat ;
     cursor: pointer;
+    padding: 0 10px 0 0;
 }
 .tablesorter-headerDesc {
-    background-image: url('../images/tableSort/desc.gif');
-    background-repeat: no-repeat;
-    background-position: center right;
+    background: url("../images/tableSort/desc.gif") center right no-repeat ;
     cursor: pointer;
+    padding: 0 10px 0 0;
 }
 
 .row1 {
