@@ -36,14 +36,6 @@
             <forward name="listMedicament" path="/jsp/listMedicament.jsp"/>
         </action>
 
-        <action path="/autoComplete"
-                type="action.AutoCompleteAction"
-                name="SearchForm"
-                parameter="autoComplete"
-                scope="request">
-
-        </action>
-
         <action path="/viewPharmacy"
                 type="action.ViewPharmacyAction"
                 name="ViewPharmacyForm"
