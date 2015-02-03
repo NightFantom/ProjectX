@@ -53,6 +53,7 @@
 <footer>
     <div id="script">
         <tiles:putAttribute name="script"/>
+        <jsp:include page="../../jsp/yandexMetrica.jsp"></jsp:include>
     </div>
 </footer>
 </body>
