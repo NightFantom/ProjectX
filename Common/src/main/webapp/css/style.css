@@ -56,7 +56,7 @@ body {
 }
 
 #logo {
-    width: 300px;
+    width: 309px;
 }
 
 .item {
@@ -410,11 +410,11 @@ body {
     cursor: pointer;
     color: white;
     width: 75px;
-    font-family: Intro;
+    font: 20px Intro;
     border-radius: 10px 10px 0 0;
     display: inline;
     border: none;
-    padding: 4px 25px 0px;
+    padding: 6px 25px 0;
     position: relative;
 }
 
