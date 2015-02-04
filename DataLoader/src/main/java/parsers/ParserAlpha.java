@@ -5,12 +5,16 @@ package parsers;
 
 import fileService.FileManager;
 import form.UpdateRecord;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.PatternSyntaxException;
 
 /**
  * Парсер для внутреннего тестирования системы.
@@ -19,28 +23,38 @@ import java.util.Scanner;
  */
 public class ParserAlpha implements Parser {
 
-    private List<UpdateRecord> list = new LinkedList<>();
-    private int fromIndex = 0;
+    private List<UpdateRecord> list = new LinkedList<UpdateRecord>();
+    private final int nameIndex = 0;
+    private final int amountIndex = 1;
+    private final int costIndex = 2;
     private String s;
     private UpdateRecord parseRecord;
     private Scanner scanner;
+    private final String separator = "\\^";
+    protected final Logger LOG = LogManager.getLogger(ParserAlpha.class);
+
+    private Integer getNumber(String number) {
+        return Integer.parseInt(number);
+    }
+
+    private Double getRealNumber(String real) {
+        return Double.parseDouble(real);
+    }
 
     /**
      * @return обновленные данные из распарсенной строки, где все распарсенные данные являются типом String
      */
-    private UpdateRecord getParseRecord() {
+    private UpdateRecord getParseRecord() throws ParsingException {
+
         try {
             parseRecord = new UpdateRecord();
-            fromIndex = 0;
-            parseRecord.setName(s.substring(fromIndex, s.indexOf(' ')));
-            fromIndex = s.indexOf(' ') + 1;
-            parseRecord.setAmount(Integer.parseInt(s.substring(fromIndex, s.indexOf(' ', fromIndex))));
-            fromIndex = s.indexOf(' ', fromIndex) + 1;
-            parseRecord.setCost(Double.parseDouble(s.substring(fromIndex, s.indexOf(';', fromIndex))));
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        } catch (IndexOutOfBoundsException e) {
-            e.printStackTrace();
+            parseRecord.setName(s.split(separator)[nameIndex]);
+            parseRecord.setAmount(getNumber(s.split(separator)[amountIndex]));
+            parseRecord.setCost(getRealNumber(s.split(separator)[costIndex]));
+        } catch (PatternSyntaxException e) {
+            throw new ParsingException("Не могу распарсить строку " + s + " " + e.toString());
+        }catch (IndexOutOfBoundsException e){
+            throw new ParsingException("Не могу распарсить строку " + s + " " + e.toString());
         }
         return parseRecord;
     }
@@ -58,7 +72,9 @@ public class ParserAlpha implements Parser {
             try {
                 list.add(getParseRecord());
             } catch (NullPointerException e) {
-                e.printStackTrace();
+                LOG.error("Ошибка при попытке поместить строку в лист распарсенных данных " + e.toString());
+            } catch (ParsingException e) {
+                LOG.error(e.toString());
             }
         }
 

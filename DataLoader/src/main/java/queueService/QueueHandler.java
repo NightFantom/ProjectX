@@ -2,6 +2,7 @@ package queueService;
 /**
  * Created by Виктор on 06.11.2014.
  */
+
 import fileService.FileManager;
 import form.LodedData;
 import entities.DescriptionParser;
@@ -22,8 +23,10 @@ public class QueueHandler implements Runnable {
     private boolean running;
     private final int SLEEP_TIME = 5000;
     private UpdateDataHandler updateData = new UpdateDataHandler();
+
     /**
      * проверка на дестрой
+     *
      * @return
      */
     public boolean isRunning() {
@@ -31,7 +34,6 @@ public class QueueHandler implements Runnable {
     }
 
     /**
-     *
      * @param running
      */
     public void setRunning(boolean running) {
@@ -40,27 +42,25 @@ public class QueueHandler implements Runnable {
 
     /**
      * Извлечение, обработка и обновление в бд данных, пришедших из очереди
+     *
      * @param queue
      */
-    private void processData(Queue queue){
-        try{
+    private void processData(Queue queue) {
+        try {
             LodedData lodedData = (LodedData) queue.poll();
             DescriptionParser descriptionParser = new HibernateService<DescriptionParser>(DescriptionParser.class).getById(lodedData.getPharmacy().getId());
-            if(descriptionParser == null){
+            if (descriptionParser == null) {
                 LOG.error("Не найден парсер для аптеки с id = " + lodedData.getPharmacy().getId());
-                throw new Exception();
             }
             Parser parser = new ParserFactory().getParser(descriptionParser.getParser());
             //TODO: Нужно реализовать обработку исключения "Не удалось распарсить"
             try {
-                updateData.updateData(parser.getRecords(lodedData.getPathToFile(),lodedData.getEncoding()), lodedData);
-            }catch (ParsingException e){
-                LOG.error("Не удалось распарсить файл" );
-                throw new Exception(e);
+                updateData.updateData(parser.getRecords(lodedData.getPathToFile(), lodedData.getEncoding()), lodedData);
+            } catch (ParsingException e) {
+                LOG.error(e.toString());
             }
-        }catch (Exception e){
-            LOG.error("Ошибка при обработке очереди" );
-            e.printStackTrace();
+        } catch (Exception e) {
+            LOG.error("Ошибка при обработке очереди " + e.toString());
         }
 
     }
@@ -75,12 +75,11 @@ public class QueueHandler implements Runnable {
         while (running) {
             if (!queue.isEmpty()) {
                 processData(queue);
-            }else{
+            } else {
                 try {
                     Thread.currentThread().sleep(SLEEP_TIME);
                 } catch (InterruptedException e) {
                     LOG.warn("Прерван поток обработки очереди " + e.toString());
-                    e.printStackTrace();
                 }
             }
         }
