@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE struts-config PUBLIC
-        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
-        "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<!DOCTYPE struts-config>
 <struts-config>
 
     <form-beans>
@@ -20,27 +18,27 @@
 
     <action-mappings>
         <action path="/index"
-                forward="/jsp/index.jsp"
+                forward="/WEB-INF/jsp/index.jsp"
                 name="StandardSearchForm"
                 scope="request"/>
 
-        <action path="/ourContacts" forward="/jsp/ourContacts.jsp"/>
+        <action path="/ourContacts" forward="/WEB-INF/jsp/ourContacts.jsp"/>
 
-        <action path="/error" forward="/jsp/error.jsp"/>
+        <action path="/error" forward="/WEB-INF/jsp/error.jsp"/>
 
         <action path="/search"
                 type="action.SearchAction"
                 name="StandardSearchForm"
                 scope="request">
-            <forward name="start" path="/jsp/price.jsp"/>
-            <forward name="listMedicament" path="/jsp/listMedicament.jsp"/>
+            <forward name="start" path="/WEB-INF/jsp/price.jsp"/>
+            <forward name="listMedicament" path="/WEB-INF/jsp/listMedicament.jsp"/>
         </action>
 
         <action path="/viewPharmacy"
                 type="action.ViewPharmacyAction"
                 name="ViewPharmacyForm"
                 scope="request">
-            <forward name="start" path="/jsp/viewPharmacy.jsp"/>
+            <forward name="start" path="/WEB-INF/jsp/viewPharmacy.jsp"/>
         </action>
 
         <action path="/listPharmacy"
@@ -48,7 +46,7 @@
                 name="ViewPharmacyForm"
                 scope="request"
                 parameter="list">
-            <forward name="start" path="/jsp/listPharmacy.jsp"/>
+            <forward name="start" path="/WEB-INF/jsp/listPharmacy.jsp"/>
         </action>
     </action-mappings>
 

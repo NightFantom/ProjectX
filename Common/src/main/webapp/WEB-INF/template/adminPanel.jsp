@@ -16,7 +16,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset = UTF-8">
     <meta http-equiv="Content-language" content="ru">
-    <jsp:include page="../../jsp/scriptsProtected.jsp"></jsp:include>
+    <jsp:include page="../jsp/scriptsProtected.jsp"></jsp:include>
     <link rel="stylesheet" type="text/css" href="${path}/css/style.css"/>
     <title>${title}</title>
 </head>
