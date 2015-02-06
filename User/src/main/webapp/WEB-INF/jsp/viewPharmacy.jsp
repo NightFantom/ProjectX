@@ -11,7 +11,7 @@
 <c:set var="form" value="${helper:getCurrentForm(pageContext)}" scope="request"/>
 <c:set var="pharmacy" value="${form.pharmacy}" scope="request"/>
 
-<tiles:insertDefinition name="main">
+<tiles:insertDefinition name="main" flush="true">
     <tiles:putAttribute name="title" value="Информация об аптеке"/>
     <tiles:putAttribute name="content">
         <tiles:insertDefinition name="viewPharmacy">

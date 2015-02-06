@@ -11,7 +11,7 @@
 <c:set var="form" value="${helper:getCurrentForm(pageContext)}" scope="request"/>
 <c:set var="path" value="${helper:getPath(pageContext)}"/>
 
-<tiles:insertDefinition name="adminPanel">
+<tiles:insertDefinition name="adminPanel" flush="true">
     <tiles:putAttribute name="title" value="Список аптек"/>
     <tiles:putAttribute name="contentHeader">
         <p class="bigText marginBottom10">Клиенты</p>

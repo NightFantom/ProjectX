@@ -13,7 +13,7 @@
 <c:set var="path" value="${helper:getPath(pageContext)}"/>
 <c:set var="client" value="${form.client}"/>
 
-<tiles:insertDefinition name="adminPanel">
+<tiles:insertDefinition name="adminPanel" flush="true">
     <tiles:putAttribute name="title" value="Админка"/>
     <tiles:putAttribute name="contentHeader">
         <p class="bigText marginBottom10">Клиент</p>

@@ -10,7 +10,7 @@
 
 <c:set var="form" value="${helper:getCurrentForm(pageContext)}" scope="request"/>
 
-<tiles:insertDefinition name="main">
+<tiles:insertDefinition name="main" flush="true">
     <tiles:putAttribute name="title" value="Медсправка"/>
     <tiles:putAttribute name="content">
         <tiles:insertDefinition name="searchTool" flush="false">
