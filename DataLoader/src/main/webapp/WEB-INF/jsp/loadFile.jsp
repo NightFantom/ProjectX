@@ -8,7 +8,7 @@
 <c:set var="form" value="${helper:getCurrentForm(pageContext)}"/>
 <c:set var="path" value="${helper:getPath(pageContext)}"/>
 
-<tiles:insertDefinition name="loaderPanel">
+<tiles:insertDefinition name="loaderPanel" flush="true">
     <tiles:putAttribute name="title" value="Админка"/>
     <tiles:putAttribute name="contentHeader">
         <p class="bigText marginBottom10">Загрузка <span class="orangeText">файла</span></p>

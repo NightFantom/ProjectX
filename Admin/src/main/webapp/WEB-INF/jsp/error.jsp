@@ -8,7 +8,7 @@
 <%@taglib uri="http://helper" prefix="helper"%>
 <c:set var="path" value="${helper:getPath(pageContext)}"/>
 
-<tiles:insertDefinition name="onlyFon">
+<tiles:insertDefinition name="onlyFon" flush="true">
     <tiles:putAttribute name="title" value="Ошибка"/>
     <tiles:putAttribute name="content">
         <div class="errorBlock">

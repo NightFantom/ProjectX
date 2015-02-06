@@ -14,7 +14,7 @@
 <c:set var="pharmacy" value="${form.pharmacy}"/>
 <c:set var="listCities" value="${helper:getListCities()}"/>
 
-<tiles:insertDefinition name="adminPanel">
+<tiles:insertDefinition name="adminPanel" flush="true">
     <tiles:putAttribute name="title" value="Админка"/>
     <tiles:putAttribute name="contentHeader">
          <p class="bigText marginBottom10">Редактирование <span class="orangeText">аптеки</span></p>
