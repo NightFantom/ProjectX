@@ -22,7 +22,7 @@
     <meta http-equiv="Content-language" content="ru">
     <link rel="stylesheet" type="text/css" href="${path}/css/style.css"/>
     <title><tiles:getAsString name="title"/></title>
-    <jsp:include page="../../jsp/scripts.jsp"/>
+    <jsp:include page="../jsp/scripts.jsp"/>
 </head>
 <body>
 <div id="fon">
@@ -53,7 +53,7 @@
 <footer>
     <div id="script">
         <tiles:putAttribute name="script"/>
-        <jsp:include page="../../jsp/yandexMetrica.jsp"/>
+        <jsp:include page="../jsp/yandexMetrica.jsp"/>
     </div>
 </footer>
 </body>

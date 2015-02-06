@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE struts-config PUBLIC
-        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
-        "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<!DOCTYPE struts-config>
 <struts-config>
 
     <form-beans>
@@ -19,22 +17,22 @@
     <action-mappings>
         <action path="/index"
                 name="LoginForm"
-                forward="/jsp/index.jsp"/>
-        <action path="/private/loadFilePage" forward="/jsp/loadFile.jsp"/>
-        <action path="/error" forward="/jsp/error.jsp"/>
-        <action path="/private/welcomePage" forward="/jsp/welcomePage.jsp"/>
+                forward="/WEB-INF/jsp/index.jsp"/>
+        <action path="/private/loadFilePage" forward="/WEB-INF/jsp/loadFile.jsp"/>
+        <action path="/error" forward="/WEB-INF/jsp/error.jsp"/>
+        <action path="/private/welcomePage" forward="/WEB-INF/jsp/welcomePage.jsp"/>
         <action path="/login"
                 name="LoginForm"
                 type="action.LoginAction"
                 scope="request">
             <forward name="success" path="/private/welcomePage.do" redirect="true"/>
-            <forward name="error" path="/jsp/index.jsp"/>
+            <forward name="error" path="/WEB-INF/jsp/index.jsp"/>
         </action>
         <action path="/private/exit"
                 name="LoginForm"
                 type="action.LoginAction"
                 parameter="exit">
-            <forward name="success" path="/jsp/index.jsp"/>
+            <forward name="success" path="/WEB-INF/jsp/index.jsp"/>
         </action>
         <action path="/save"
                 type="action.FileUploadAction"
@@ -42,8 +40,8 @@
                 scope="request"
                 name="fileForm"
                 validate="true">
-            <forward name="success" path="/jsp/successful.jsp"/>
-            <forward name="userIsNotExist" path="/jsp/error.jsp"/>
+            <forward name="success" path="/WEB-INF/jsp/successful.jsp"/>
+            <forward name="userIsNotExist" path="/WEB-INF/jsp/error.jsp"/>
          </action>
     </action-mappings>
 

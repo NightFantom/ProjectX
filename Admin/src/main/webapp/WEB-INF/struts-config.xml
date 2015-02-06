@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE struts-config PUBLIC
-        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
-        "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<!DOCTYPE struts-config>
 <struts-config>
 
     <form-beans>
@@ -25,11 +23,11 @@
     <action-mappings>
         <action path="/index"
                 name="LoginForm"
-                forward="/jsp/index.jsp"/>
+                forward="/WEB-INF/jsp/index.jsp"/>
 
-        <action path="/error" forward="/jsp/error.jsp"/>
-        <action path="/private/rejectAccess" forward="/jsp/rejectAccess.jsp"/>
-        <action path="/private/welcomePage" forward="/jsp/welcomePage.jsp"/>
+        <action path="/error" forward="/WEB-INF/jsp/error.jsp"/>
+        <action path="/private/rejectAccess" forward="/WEB-INF/jsp/rejectAccess.jsp"/>
+        <action path="/private/welcomePage" forward="/WEB-INF/jsp/welcomePage.jsp"/>
 
 
         <action path="/login"
@@ -37,7 +35,7 @@
                 type="actions.LoginAction"
                 scope="request">
             <forward name="success" path="/private/welcomePage.do" redirect="true"/>
-            <forward name="error" path="/jsp/index.jsp"/>
+            <forward name="error" path="/WEB-INF/jsp/index.jsp"/>
         </action>
 
         <action path="/private/viewPharmacies"
@@ -45,34 +43,34 @@
                 type="actions.PharmacyAction"
                 scope="request"
                 parameter="filter">
-            <forward name="success" path="/jsp/allPharmacy.jsp"/>
+            <forward name="success" path="/WEB-INF/jsp/allPharmacy.jsp"/>
         </action>
 
         <action path="/private/viewPharmacy"
                 name="ViewPharmacy"
                 type="actions.PharmacyAction"
                 scope="request">
-            <forward name="success" path="/jsp/viewPharmacy.jsp"/>
+            <forward name="success" path="/WEB-INF/jsp/viewPharmacy.jsp"/>
         </action>
 
         <action path="/private/editPharmacy"
                 name="ViewPharmacy"
                 type="actions.PharmacyAction"
                 scope="request">
-            <forward name="success" path="/jsp/editPharmacy.jsp"/>
+            <forward name="success" path="/WEB-INF/jsp/editPharmacy.jsp"/>
         </action>
 
         <action path="/private/createPharmacy"
                 name="ViewPharmacy"
-                forward="/jsp/editPharmacy.jsp"/>
+                forward="/WEB-INF/jsp/editPharmacy.jsp"/>
 
         <action path="/private/savePharmacy"
                 name="CreatePharmacy"
                 type="actions.PharmacyAction"
                 scope="request"
                 parameter="edit">
-            <forward name="success" path="/jsp/successSave.jsp"/>
-            <forward name="error" path="/jsp/editPharmacy.jsp"/>
+            <forward name="success" path="/WEB-INF/jsp/successSave.jsp"/>
+            <forward name="error" path="/WEB-INF/jsp/editPharmacy.jsp"/>
         </action>
 
         <action path="/private/saveEditPharmacy"
@@ -80,8 +78,8 @@
                 type="actions.PharmacyAction"
                 scope="request"
                 parameter="edit">
-            <forward name="success" path="/jsp/successSave.jsp"/>
-            <forward name="error" path="/jsp/editPharmacy.jsp"/>
+            <forward name="success" path="/WEB-INF/jsp/successSave.jsp"/>
+            <forward name="error" path="/WEB-INF/jsp/editPharmacy.jsp"/>
         </action>
 
         <action path="/private/exit"
@@ -89,7 +87,7 @@
                 type="actions.LoginAction"
                 scope="request"
                 parameter="exit">
-            <forward name="success" path="/jsp/index.jsp"/>
+            <forward name="success" path="/WEB-INF/jsp/index.jsp"/>
         </action>
 
         <action path="/private/listClient"
@@ -97,19 +95,19 @@
                 scope="request"
                 type="actions.ClientAction"
                 parameter="filter">
-            <forward name="success" path="/jsp/listClients.jsp"/>
+            <forward name="success" path="/WEB-INF/jsp/listClients.jsp"/>
         </action>
 
         <action path="/private/createClient"
                 name="ViewClient"
                 scope="request"
-                forward="/jsp/viewClient.jsp"/>
+                forward="/WEB-INF/jsp/viewClient.jsp"/>
 
         <action path="/private/viewClient"
                 name="ViewClient"
                 scope="request"
                 type="actions.ClientAction">
-            <forward name="success" path="/jsp/viewClient.jsp"/>
+            <forward name="success" path="/WEB-INF/jsp/viewClient.jsp"/>
         </action>
 
         <action path="/private/saveEditClient"
@@ -117,8 +115,8 @@
                 scope="request"
                 type="actions.ClientAction"
                 parameter="edit">
-            <forward name="success" path="/jsp/successSave.jsp"/>
-            <forward name="error" path="/jsp/viewClient.jsp"/>
+            <forward name="success" path="/WEB-INF/jsp/successSave.jsp"/>
+            <forward name="error" path="/WEB-INF/jsp/viewClient.jsp"/>
         </action>
 
         <action path="/private/saveClient"
@@ -126,8 +124,8 @@
                 scope="request"
                 type="actions.ClientAction"
                 parameter="edit">
-            <forward name="success" path="/jsp/successSave.jsp"/>
-            <forward name="error" path="/jsp/viewClient.jsp"/>
+            <forward name="success" path="/WEB-INF/jsp/successSave.jsp"/>
+            <forward name="error" path="/WEB-INF/jsp/viewClient.jsp"/>
         </action>
 
         <action path="/private/listStatisticPharmacy"
@@ -135,7 +133,7 @@
                 scope="request"
                 type="actions.StatisticPharmacyAction"
                 parameter="filter">
-            <forward name="success" path="/jsp/listStatisticPharmacy.jsp"/>
+            <forward name="success" path="/WEB-INF/jsp/listStatisticPharmacy.jsp"/>
         </action>
 
     </action-mappings>

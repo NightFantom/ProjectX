@@ -21,7 +21,7 @@
     <meta http-equiv="content-type" content="text/html; charset = UTF-8">
     <meta http-equiv="Content-language" content="ru">
     <link rel="stylesheet" type="text/css" href="${path}/css/style.css"/>
-    <jsp:include page="../../jsp/scripts.jsp"></jsp:include>
+    <jsp:include page="../jsp/scripts.jsp"></jsp:include>
     <title><tiles:getAsString name="title"/></title>
 </head>
 <body>

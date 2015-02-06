@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE struts-config PUBLIC
-        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
-        "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<!DOCTYPE struts-config>
 <struts-config>
 
     <form-beans>
@@ -20,25 +18,25 @@
     <action-mappings>
         <action path="/index"
                 name="LoginForm"
-                forward="/jsp/index.jsp"/>
+                forward="/WEB-INF/jsp/index.jsp"/>
 
-        <action path="/error" forward="/jsp/error.jsp"/>
-        <action path="/private/rejectAccess" forward="/jsp/rejectAccess.jsp"/>
-        <action path="/private/welcomePage" forward="/jsp/welcomePage.jsp"/>
+        <action path="/error" forward="/WEB-INF/jsp/error.jsp"/>
+        <action path="/private/rejectAccess" forward="/WEB-INF/jsp/rejectAccess.jsp"/>
+        <action path="/private/welcomePage" forward="/WEB-INF/jsp/welcomePage.jsp"/>
 
         <action path="/login"
                 name="LoginForm"
                 type="login.LoginAction"
                 scope="request">
             <forward name="success" path="/private/welcomePage.do" redirect="true"/>
-            <forward name="error" path="/jsp/index.jsp"/>
+            <forward name="error" path="/WEB-INF/jsp/index.jsp"/>
         </action>
 
         <action path="/private/myPharmacies"
                 type="action.ViewPharmaciesAction"
                 name="DefaultForm"
                 scope="request">
-            <forward name="success" path="/jsp/myPharmacies.jsp"/>
+            <forward name="success" path="/WEB-INF/jsp/myPharmacies.jsp"/>
         </action>
 
         <action path="/private/viewPharmacy"
@@ -46,7 +44,7 @@
                 name="ViewPharmacy"
                 parameter="viewPharmacy"
                 scope="request">
-            <forward name="success" path="/jsp/viewPharmacy.jsp"/>
+            <forward name="success" path="/WEB-INF/jsp/viewPharmacy.jsp"/>
             <forward name="error" path="/private/rejectAccess.do" redirect="true"/>
         </action>
 
@@ -55,14 +53,14 @@
                 type="login.LoginAction"
                 parameter="exit"
                 scope="request">
-            <forward name="success" path="/jsp/index.jsp"/>
+            <forward name="success" path="/WEB-INF/jsp/index.jsp"/>
         </action>
 
         <action path="/private/pharmaciesStatistic"
                 name="DefaultForm"
                 type="action.StatisticViewAction"
                 scope="request">
-            <forward name="success" path="/jsp/pharmaciesStatistic.jsp"/>
+            <forward name="success" path="/WEB-INF/jsp/pharmaciesStatistic.jsp"/>
         </action>
 
     </action-mappings>
