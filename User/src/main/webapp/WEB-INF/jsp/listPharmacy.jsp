@@ -11,7 +11,7 @@
 <c:set var="form" value="${helper:getCurrentForm(pageContext)}" scope="request"/>
 <c:set var="path" value="${helper:getPath(pageContext)}"/>
 
-<tiles:insertDefinition name="main" flush="true">
+<tiles:insertDefinition name="main">
     <tiles:putAttribute name="title" value="Список аптек"/>
     <tiles:putAttribute name="content">
         <grid:table name="${form.data}">

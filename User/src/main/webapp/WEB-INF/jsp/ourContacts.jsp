@@ -6,6 +6,6 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@taglib uri="http://helper" prefix="helper"%>
 
-<tiles:insertDefinition name="main" flush="true">
+<tiles:insertDefinition name="main">
     <tiles:putAttribute name="title" value="Наши контакты"/>
 </tiles:insertDefinition>

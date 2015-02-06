@@ -9,7 +9,7 @@
 
 <c:set var="form" value="${helper:getCurrentForm(pageContext)}"/>
 
-<tiles:insertDefinition name="onlyFon" flush="true">
+<tiles:insertDefinition name="onlyFon">
     <tiles:putAttribute name="title" value="Загрузка файла"/>
     <tiles:putAttribute name="content">
         <div id="formDL">

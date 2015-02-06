@@ -5,9 +5,6 @@
  */
 package helpers;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 public class PasswordHelper {
 
     /**
@@ -15,24 +12,7 @@ public class PasswordHelper {
      * @param password Пароль для шифрования
      * @return Зашифрованный пароль
      */
-    public static String encrypt(String password)  {
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            md.update(password.getBytes());
-            byte byteData[] = md.digest();
-            StringBuilder hexString = new StringBuilder();
-            for (byte b : byteData) {
-                String hex = Integer.toHexString(0xff & b);
-                if (hex.length() == 1) {
-                    hexString.append('0');
-                }
-                hexString.append(hex);
-            }
-            password = hexString.toString();
-        }catch (NoSuchAlgorithmException e){
-            e.printStackTrace();
-        }
-
+    public static String encrypt(String password){
         return password;
     }
 

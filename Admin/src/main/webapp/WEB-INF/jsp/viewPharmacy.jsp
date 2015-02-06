@@ -11,7 +11,7 @@
 <c:set var="form" value="${helper:getCurrentForm(pageContext)}"/>
 <c:set var="pharmacy" value="${form.pharmacy}"/>
 
-<tiles:insertDefinition name="adminPanel" flush="true">
+<tiles:insertDefinition name="adminPanel">
     <tiles:putAttribute name="title" value="Информация об аптеке"/>
     <tiles:putAttribute name="content">
         <tiles:insertDefinition name="viewPharmacy">

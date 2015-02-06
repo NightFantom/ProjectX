@@ -11,7 +11,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://helper" prefix="helper"%>
 
-<tiles:insertDefinition name="loaderPanel" flush="true">
+<tiles:insertDefinition name="loaderPanel">
     <tiles:putAttribute name="title" value="Админка"/>
     <tiles:putAttribute name="contentHeader">
         <p class="bigText marginBottom10">Главная <span class="orangeText">страница</span></p>
