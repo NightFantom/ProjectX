@@ -447,3 +447,16 @@ body {
 .notFoundPage{
     padding: 200px 0 0;
 }
+
+.ui-menu {
+    list-style:none;
+    padding: 2px;
+    margin: 0;
+    display:block;
+    float: left;
+    border: solid;
+    border-width: 1px;
+    border-color: black;
+    background: white;
+    cursor: pointer;
+}

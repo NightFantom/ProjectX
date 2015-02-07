@@ -7,3 +7,4 @@
 <script type="text/javascript" src="${path}/js/jquery.tablesorter.js"></script>
 <script type="text/javascript" src="${path}/js/jquery-ui.js"></script>
 <script type="text/javascript" src="${path}/js/sortPriceTable.js"></script>
+<script type="text/javascript" src="${path}/js/autoComplete.js"></script>

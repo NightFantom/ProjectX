@@ -34,6 +34,12 @@
             <forward name="listMedicament" path="/WEB-INF/jsp/listMedicament.jsp"/>
         </action>
 
+        <action path="/autoComplete"
+                type="action.CompleteAction"
+                scope="request">
+        </action>
+
+
         <action path="/viewPharmacy"
                 type="action.ViewPharmacyAction"
                 name="ViewPharmacyForm"
