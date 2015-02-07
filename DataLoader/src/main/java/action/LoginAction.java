@@ -41,7 +41,7 @@ public class LoginAction extends LogDispatchAction {
             List<Pharmacy> list = service.getList(queryMap, "getByLoginAndPassword");
             if (!list.isEmpty()) {
                 log.info("Аптека " + login + " авторизована в системе");
-                request.getSession().setAttribute(GlobalConstants.IS_LOGIN_PHARMACY, Boolean.TRUE);
+                request.getSession().setAttribute(GlobalConstants.IS_LOGIN_USER, Boolean.TRUE);
                 request.getSession().setAttribute(GlobalConstants.PHARMACY, list.get(0));
                 return mapping.findForward(SUCCESS);
             }
