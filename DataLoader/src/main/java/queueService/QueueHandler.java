@@ -57,10 +57,10 @@ public class QueueHandler implements Runnable {
             try {
                 updateData.updateData(parser.getRecords(lodedData.getPathToFile(), lodedData.getEncoding()), lodedData);
             } catch (ParsingException e) {
-                LOG.error(e.toString());
+                LOG.error(e);
             }
         } catch (Exception e) {
-            LOG.error("Ошибка при обработке очереди " + e.toString());
+            LOG.error("Ошибка при обработке очереди: " + e.toString(), e);
         }
 
     }
