@@ -7,13 +7,12 @@ jQuery(document).ready(function($){
             jQuery.ajax({
                 url: "/user/autoComplete.do" ,
                 type: "POST",
-                data: $search.attr("value"),// по идее должна отправиться строка, которую ввел человек в поиск
+                data: "searchString=" + $search.val(),
                 dataType: "json",
                 success: function(data){
-                    var items = data.value; // data.value =  массив из строк, можно наверно убрать эту переменную
-                    response(items);
+                    response(data);
                 }
-        })},
+            })},
         delay: 300,
         minLength: 3
     })

@@ -116,7 +116,7 @@ public class HibernateService<E> {
 
     /**
      * Возращает список сущностей, соответствующих указанным критериям
-     * @param criteria  критерии? по которым будет производиться поиск
+     * @param criteria  критерии, по которым будет производиться поиск
      * @param nameQuery имя запроса
      * @return список сущностей, соответствующих критериям
      * @throws HibernateException
