@@ -31,7 +31,7 @@ public class EditPharmacyWU implements EditWorkUnit{
     }
 
     @Override
-    public void updateEntity(Map<String, Object> values) {
+    public void updateEntity(Map<String, Object> values) throws Exception{
         pharmacy.setName((String)values.get("name"));
         pharmacy.setAddress((String) values.get("address"));
         pharmacy.setPhone((String) values.get("phone"));
