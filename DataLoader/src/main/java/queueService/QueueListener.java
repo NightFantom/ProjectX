@@ -11,6 +11,7 @@ import javax.servlet.ServletContextListener;
 
 public class QueueListener implements ServletContextListener {
 
+    private static final String NAME_THREAD = "queueHandlerThread";
     protected final Logger LOG = LogManager.getLogger(QueueListener.class);
     private QueueHandler queueHandler;
     private Thread queueHandlerThread;
@@ -20,12 +21,12 @@ public class QueueListener implements ServletContextListener {
      * @param servletContextEvent
      */
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        LOG.info("Запуск потока для обработки очереди");
+        LOG.info("Запуск потока " + NAME_THREAD + " для обработки очереди");
         queueHandler = new QueueHandler();
         queueHandler.setRunning(true);
-        queueHandlerThread = new Thread(queueHandler, "queueHandlerThread");
+        queueHandlerThread = new Thread(queueHandler, NAME_THREAD);
         queueHandlerThread.start();
-        LOG.info("Поток запущен");
+        LOG.info("Поток " + NAME_THREAD + " запущен");
     }
 
     /**

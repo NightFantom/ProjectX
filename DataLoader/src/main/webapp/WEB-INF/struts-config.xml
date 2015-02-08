@@ -18,9 +18,11 @@
         <action path="/index"
                 name="LoginForm"
                 forward="/WEB-INF/jsp/index.jsp"/>
+
         <action path="/private/loadFilePage" forward="/WEB-INF/jsp/loadFile.jsp"/>
-        <action path="/error" forward="/WEB-INF/jsp/error.jsp"/>
         <action path="/private/welcomePage" forward="/WEB-INF/jsp/welcomePage.jsp"/>
+        <action path="/error" forward="/WEB-INF/jsp/error.jsp"/>
+
         <action path="/login"
                 name="LoginForm"
                 type="action.LoginAction"
@@ -34,9 +36,8 @@
                 parameter="exit">
             <forward name="success" path="/WEB-INF/jsp/index.jsp"/>
         </action>
-        <action path="/save"
+        <action path="/private/save"
                 type="action.FileUploadAction"
-                parameter="loadMultipartContent"
                 scope="request"
                 name="fileForm"
                 validate="true">

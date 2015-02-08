@@ -4,12 +4,12 @@ package parsers;
  * Created by Виктор on 26.11.2014.
  */
 public class ParsingException extends Exception {
-    private String message = null;
 
     public ParsingException(String message) {
-        this.message = message;
+        super(message);
     }
-    public String toString(){
-        return "Не удалось распарсить файл: " + message;
+
+    public ParsingException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

@@ -1,9 +1,8 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://displaytag.sf.net" prefix="grid"%>
-<%@taglib uri="http://helper" prefix="helper"%>
+<%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://displaytag.sf.net" prefix="grid" %>
+<%@taglib uri="http://helper" prefix="helper" %>
 
 <c:set var="form" value="${helper:getCurrentForm(pageContext)}"/>
 <c:set var="path" value="${helper:getPath(pageContext)}"/>
@@ -15,10 +14,9 @@
     </tiles:putAttribute>
     <tiles:putAttribute name="content">
         <div id="formDL">
-            <form method="POST" enctype="multipart/form-data" action="${helper:getPath(pageContext)}/save.do">
-                <input type="hidden" name="login" class="inputDL" value="${helper:getPharmacyLogin(pageContext)}"/>
+            <form method="POST" enctype="multipart/form-data" action="${path}/private/save.do">
                 <table class="tableDL">
-                  <tr>
+                    <tr>
                         <td class="leftColumnDL">Файл для загрузки:</td>
                         <td><input type="file" name="upfile"/></td>
                     </tr>

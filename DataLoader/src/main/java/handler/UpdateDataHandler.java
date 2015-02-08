@@ -3,7 +3,7 @@ package handler;
  * Created by Виктор on 09.11.2014.
  */
 
-import form.LodedData;
+import form.LoadedData;
 import form.UpdateRecord;
 import entities.Medicament;
 import entities.Pharmacy;
@@ -19,28 +19,28 @@ import java.util.*;
  */
 public class UpdateDataHandler {
 
-    private HibernateService<Price> servicePrice = new HibernateService<Price>(Price.class);
-    private HibernateService<Medicament> serviceMedicament = new HibernateService<Medicament>(Medicament.class);
-    protected final Logger LOG = LogManager.getLogger(UpdateDataHandler.class);
+    private static final HibernateService<Price> servicePrice = new HibernateService<Price>(Price.class);
+    private static final HibernateService<Medicament> serviceMedicament = new HibernateService<Medicament>(Medicament.class);
+    private static final Logger LOG = LogManager.getLogger(UpdateDataHandler.class);
 
     /**
-     * Обновить данные
+     * Обновление прайса аптеки
      *
-     * @param list      лист распарсенных данных
-     * @param lodedData
+     * @param list       Лист распарсенных данных
+     * @param loadedData Данные по загрузке
      */
-    public void updateData(List<UpdateRecord> list, LodedData lodedData) {
+    public void updateData(List<UpdateRecord> list, LoadedData loadedData) {
 
         Medicament medicament = null;
         for (UpdateRecord updateRecord : list) {
             medicament = getMedicamentByName(updateRecord.getName());
-            if(medicament!=null) {
+            if (medicament != null) {
                 Map<Object, Object> hashMap = new HashMap<>();
                 hashMap.put("cost", updateRecord.getCost());
                 hashMap.put("amount", updateRecord.getAmount());
-                hashMap.put("pharmacy", lodedData.getPharmacy());
+                hashMap.put("pharmacy", loadedData.getPharmacy());
                 hashMap.put("idMedicament", medicament.getId());
-                hashMap.put("idCity", lodedData.getPharmacy().getCity().getId());
+                hashMap.put("idCity", loadedData.getPharmacy().getCity().getId());
                 hashMap.put("dateUpdate", new GregorianCalendar());
 
                 int amountUpdateRecords = servicePrice.update(hashMap, "updatePrice");
@@ -52,19 +52,19 @@ public class UpdateDataHandler {
 
     }
 
-    private Price getPrice(Map<Object, Object> map){
-        Price price= new Price();
+    private Price getPrice(Map<Object, Object> map) {
+        Price price = new Price();
         price.setAmount((Integer) map.get("amount"));
-        price.setCost((Double)map.get("cost"));
-        price.setPharmacy((Pharmacy)map.get("pharmacy"));
-        price.setDateUpdate((GregorianCalendar)map.get("dateUpdate"));
-        price.setIdCity((Integer)map.get("idCity"));
+        price.setCost((Double) map.get("cost"));
+        price.setPharmacy((Pharmacy) map.get("pharmacy"));
+        price.setDateUpdate((GregorianCalendar) map.get("dateUpdate"));
+        price.setIdCity((Integer) map.get("idCity"));
         price.setIdMedicament((Integer) map.get("idMedicament"));
         return price;
     }
 
-    private Medicament getMedicamentByName(String name){
-        Map<Object, Object> map = new HashMap<Object, Object>();
+    private Medicament getMedicamentByName(String name) {
+        Map<Object, Object> map = new HashMap<>();
         map.put("name", name);
         List<Medicament> medicaments = serviceMedicament.getList(map, "getByName");
         Medicament medicament = null;
