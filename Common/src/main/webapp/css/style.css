@@ -460,3 +460,8 @@ body {
     background: white;
     cursor: pointer;
 }
+
+/*Автозаполнение*/
+.ui-state-focus{
+    background: #e2efd9;
+}
