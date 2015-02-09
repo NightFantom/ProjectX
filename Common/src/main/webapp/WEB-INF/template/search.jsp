@@ -19,7 +19,7 @@
 
 <div id="fieldSearch">
     <html:form action="${action}" method="post">
-        <html:hidden  name="form" property="id"/>
+        <html:hidden  name="form" property="id" styleId="inputID"/>
         <img id = "iconSearch" src="${path}/images/iconSearch.png">
         <div id="searchLine">
             <p class="additionText bigText">поиск <span class="doubleOrange">лекарств</span></p>

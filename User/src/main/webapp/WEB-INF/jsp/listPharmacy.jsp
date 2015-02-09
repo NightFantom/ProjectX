@@ -15,6 +15,9 @@
     <tiles:putAttribute name="title" value="Список аптек"/>
     <tiles:putAttribute name="content">
         <grid:table name="${form.data}">
+            <grid:column href="${path}/viewPharmacy.do" paramId="id" paramProperty="id">
+                <div class = "map"></div>
+            </grid:column>
             <grid:column property="name" title="Название" href="${path}/viewPharmacy.do" paramId="id" paramProperty="id" class="highlightLink"/>
             <grid:column property="address" title="Адрес" href="${path}/viewPharmacy.do" paramId="id" paramProperty="id" class="highlightLink"/>
             <grid:column property="phone" title="Телефон"/>

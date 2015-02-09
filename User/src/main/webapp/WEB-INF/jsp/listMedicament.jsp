@@ -25,7 +25,7 @@
                     </tiles:putAttribute>
                     <tiles:putAttribute name="grid">
                         <grid:table uid="medicaments" name="${form.data}">
-                            <grid:column property="name" title="Название лекарства"
+                            <grid:column property="name" title="Выберите лекарство"
                                          href="${pageContext.request.contextPath}/search.do" paramId="id"
                                          paramProperty="id"
                                          class="highlightLink"/>
