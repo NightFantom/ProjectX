@@ -7,11 +7,12 @@ jQuery(document).ready(function ($) {
     $workArea.css("display","none");
 
     $price.tablesorter({
-        sortList: [[3,0]],
+        sortList: [[4,0]],
         headers: {
             0: {sorter: false},
             1: {sorter: false},
-            4: {sorter: false}
+            2: {sorter: false},
+            5: {sorter: false}
         },
         widgets: ["zebra"],
         widgetOptions : {

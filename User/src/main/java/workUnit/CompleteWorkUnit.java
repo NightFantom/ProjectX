@@ -1,7 +1,12 @@
 package workUnit;
 
 import entities.Medicament;
+import hibernateService.GenerallyHibernateQuery;
 import hibernateService.HibernateService;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +18,7 @@ import java.util.Map;
  */
 
 public class CompleteWorkUnit {
+    public static final int MAX_RESULTS = 10;
     private static HibernateService<Medicament> service = new HibernateService<Medicament>(Medicament.class);
     public List<Medicament> list;
 
@@ -23,7 +29,15 @@ public class CompleteWorkUnit {
     public void init(String val){
         Map<Object, Object> map = new HashMap<>();
         map.put("name", val+"%");
-        list = service.getList(map, "getByNameLike");
+        list = service.execute(new GenerallyHibernateQuery(){
+            @Override
+            public List run(Session session) throws HibernateException {
+                Query query = session.getNamedQuery(Medicament.class.getName() + ".getByNameLike");
+                query.setProperties(map);
+                query.setMaxResults(MAX_RESULTS);
+                return query.list();
+            }
+        });
     }
 
     /**

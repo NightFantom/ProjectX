@@ -13,6 +13,9 @@ jQuery(document).ready(function($){
                     response(data);
                 }
             })},
+        select: function( event, ui ) {
+            $("#inputID").val(ui.item.id);
+        },
         delay: 300,
         minLength: 3
     })
