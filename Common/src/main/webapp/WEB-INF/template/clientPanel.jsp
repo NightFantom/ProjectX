@@ -17,6 +17,7 @@
     <meta http-equiv="Content-language" content="ru">
     <jsp:include page="../jsp/scriptsProtected.jsp"></jsp:include>
     <link rel="stylesheet" type="text/css" href="${path}/css/style.css"/>
+    <link rel="shortcut icon" href="${path}/favicon.ico" type="image/x-icon"/>
     <title>${title}</title>
 </head>
 <body>
