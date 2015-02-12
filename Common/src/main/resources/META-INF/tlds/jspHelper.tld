@@ -42,4 +42,9 @@
         <function-class>helpers.SessionAndRequestHelper</function-class>
         <function-signature>java.lang.String getPharmacyAddressAndPhone(javax.servlet.jsp.PageContext)</function-signature>
     </function>
+    <function>
+        <name>getAmountMedicament</name>
+        <function-class>helpers.NumberHelper</function-class>
+        <function-signature>java.lang.String getAmountMedicament(java.lang.Integer)</function-signature>
+    </function>
 </taglib>

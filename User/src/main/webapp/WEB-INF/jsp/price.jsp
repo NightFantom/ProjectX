@@ -40,11 +40,9 @@
                             <grid:column property="pharmacy.address" title="Адрес"
                                          href="${path}/viewPharmacy.do" paramId="id"
                                          paramProperty="pharmacy.id" class="highlightLink"/>
-                            <grid:column property="amount" title="Количество"/>
+                            <grid:column title="Количество">${helper:getAmountMedicament(price.amount)}</grid:column>
                             <grid:column property="cost" title="Стоимость"/>
-                            <grid:column title="Дата обновления">
-                                ${helper:getDateUpdate(price.dateUpdate)}
-                            </grid:column>
+                            <grid:column title="Дата обновления">${helper:getDateUpdate(price.dateUpdate)}</grid:column>
                         </grid:table>
                         <div id="workArea">
                             <div id="map2"></div>
