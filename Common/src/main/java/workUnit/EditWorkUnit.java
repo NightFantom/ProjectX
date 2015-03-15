@@ -20,7 +20,7 @@ public interface EditWorkUnit {
      * Обновление данных сущности
      * @param values Новые данные
      */
-    public void updateEntity(Map<String, Object> values);
+    public void updateEntity(Map<String, Object> values) throws Exception;
 
     /**
      * Дополнительные действия

@@ -10,9 +10,10 @@
 <%@taglib uri="http://helper" prefix="helper" %>
 
 <c:set var="form" value="${helper:getCurrentForm(pageContext)}" scope="request"/>
+<c:set var="path" value="${helper:getPath(pageContext)}"/>
 
 <tiles:insertDefinition name="main" flush="true">
-    <tiles:putAttribute name="title" value="Медсправка"/>
+    <tiles:putAttribute name="title" value="Аптечная справка"/>
     <tiles:putAttribute name="content">
         <tiles:insertDefinition name="searchLine" flush="false">
             <tiles:putAttribute name="action" value="search"/>
@@ -29,11 +30,15 @@
                         <div id="listButton" class="buttonPrice buttonCheck">Список</div>
                         <div id="mapButton" class="buttonPrice buttonNotCheck shiftButton">Карта</div>
                         <grid:table uid="price" name="${form.data}">
+                            <grid:column href="${path}/viewPharmacy.do" paramId="id"
+                                         paramProperty="pharmacy.id">
+                                <div class = "map"></div>
+                            </grid:column>
                             <grid:column property="pharmacy.name" title="Название аптеки"
-                                         href="${pageContext.request.contextPath}/viewPharmacy.do" paramId="id"
+                                         href="${path}/viewPharmacy.do" paramId="id"
                                          paramProperty="pharmacy.id" class="highlightLink"/>
                             <grid:column property="pharmacy.address" title="Адрес"
-                                         href="${pageContext.request.contextPath}/viewPharmacy.do" paramId="id"
+                                         href="${path}/viewPharmacy.do" paramId="id"
                                          paramProperty="pharmacy.id" class="highlightLink"/>
                             <grid:column property="amount" title="Количество"/>
                             <grid:column property="cost" title="Стоимость"/>

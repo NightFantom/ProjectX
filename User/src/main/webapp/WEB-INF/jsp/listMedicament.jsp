@@ -12,7 +12,7 @@
 <c:set var="form" value="${helper:getCurrentForm(pageContext)}" scope="request"/>
 
 <tiles:insertDefinition name="main" flush="true">
-    <tiles:putAttribute name="title" value="Медсправка"/>
+    <tiles:putAttribute name="title" value="Аптечная справка"/>
     <tiles:putAttribute name="content">
         <tiles:insertDefinition name="searchLine" flush="false">
             <tiles:putAttribute name="action" value="search"/>
@@ -25,7 +25,7 @@
                     </tiles:putAttribute>
                     <tiles:putAttribute name="grid">
                         <grid:table uid="medicaments" name="${form.data}">
-                            <grid:column property="name" title="Название лекарства"
+                            <grid:column property="name" title="Выберите лекарство"
                                          href="${pageContext.request.contextPath}/search.do" paramId="id"
                                          paramProperty="id"
                                          class="highlightLink"/>

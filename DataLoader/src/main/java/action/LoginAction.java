@@ -56,7 +56,7 @@ public class LoginAction extends LogDispatchAction {
     public ActionForward exit(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
         Pharmacy pharmacy = (Pharmacy)session.getAttribute(GlobalConstants.PHARMACY);
-        session.removeAttribute(GlobalConstants.IS_LOGIN_PHARMACY);
+        session.removeAttribute(GlobalConstants.IS_LOGIN_USER);
         session.removeAttribute(GlobalConstants.PHARMACY);
         log.info("Пользователь " + pharmacy.getLogin() + " вышел из системы");
         return mapping.findForward(SUCCESS);

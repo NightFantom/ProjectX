@@ -465,3 +465,11 @@ body {
 .ui-state-focus{
     background: #e2efd9;
 }
+/*Конец Автозаполнение*/
+
+.map{
+    background: url(../images/map.png) no-repeat center;
+    width: 40px;
+    height: 20px;
+    margin: 0 auto;
+}

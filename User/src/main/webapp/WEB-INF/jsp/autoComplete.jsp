@@ -9,7 +9,7 @@
 <c:set var = "form" value="${helper:getCurrentForm(pageContext)}"/>
 {
 <c:forEach items="${form.data}"  var="medicament" varStatus="status">
-    "item${status.count}": "${medicament.name}"
+    "item${status.count}": {"id":"${medicament.id}", "label":"${medicament.name}"}
     <c:if test="${!status.last}">,</c:if>
 </c:forEach>
 }

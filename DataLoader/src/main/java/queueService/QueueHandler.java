@@ -2,9 +2,7 @@ package queueService;
 /**
  * Created by Виктор on 06.11.2014.
  */
-
-import fileService.FileManager;
-import form.LodedData;
+import form.LoadedData;
 import entities.DescriptionParser;
 import handler.UpdateDataHandler;
 import hibernateService.HibernateService;
@@ -14,15 +12,18 @@ import parsers.Parser;
 import parsers.ParserFactory;
 import parsers.ParsingException;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 /**
  * Обработчик очереди
  */
 public class QueueHandler implements Runnable {
 
     protected final Logger LOG = LogManager.getLogger(QueueHandler.class);
+    private static final int SLEEP_TIME = 5000;
+    private static final UpdateDataHandler updateData = new UpdateDataHandler();
     private boolean running;
-    private final int SLEEP_TIME = 5000;
-    private UpdateDataHandler updateData = new UpdateDataHandler();
 
     /**
      * проверка на дестрой
@@ -46,23 +47,21 @@ public class QueueHandler implements Runnable {
      * @param queue
      */
     private void processData(Queue queue) {
+        LoadedData loadedData = (LoadedData) queue.poll();
         try {
-            LodedData lodedData = (LodedData) queue.poll();
-            DescriptionParser descriptionParser = new HibernateService<DescriptionParser>(DescriptionParser.class).getById(lodedData.getPharmacy().getId());
+            DescriptionParser descriptionParser = new HibernateService<DescriptionParser>(DescriptionParser.class).getById(loadedData.getPharmacy().getId());
             if (descriptionParser == null) {
-                LOG.error("Не найден парсер для аптеки с id = " + lodedData.getPharmacy().getId());
+                throw new Exception("Не найден парсер для аптеки с id = " + loadedData.getPharmacy().getId());
             }
-            Parser parser = new ParserFactory().getParser(descriptionParser.getParser());
-            //TODO: Нужно реализовать обработку исключения "Не удалось распарсить"
+            Parser parser = ParserFactory.getParser(descriptionParser.getParser());
             try {
-                updateData.updateData(parser.getRecords(lodedData.getPathToFile(), lodedData.getEncoding()), lodedData);
+                updateData.updateData(parser.getRecords(loadedData.getPathToFile(), loadedData.getEncoding()), loadedData);
             } catch (ParsingException e) {
-                LOG.error(e);
+                LOG.error("Ошибка парсинга: ",e);
             }
         } catch (Exception e) {
-            LOG.error("Ошибка при обработке очереди: " + e.toString(), e);
+            LOG.error("Ошибка при обработке очереди для аптеки с ID = "+ loadedData.getPharmacy().getId() +": ", e);
         }
-
     }
 
     /**
@@ -77,9 +76,9 @@ public class QueueHandler implements Runnable {
                 processData(queue);
             } else {
                 try {
-                    Thread.currentThread().sleep(SLEEP_TIME);
+                    Thread.sleep(SLEEP_TIME);
                 } catch (InterruptedException e) {
-                    LOG.warn("Прерван поток обработки очереди " + e.toString());
+                    LOG.warn("Прерван поток обработки очереди " + e.toString(), e);
                 }
             }
         }

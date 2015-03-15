@@ -17,7 +17,7 @@ public class CompleteAction extends LogDispatchAction {
     public ActionForward start(ActionMapping mapping, ActionForm form, HttpServletRequest request,HttpServletResponse response){
         AutoCompleteForm frm = (AutoCompleteForm) form;
         String search = frm.getSearchString();
-        if (search != null && search.length() > 3){
+        if (search != null && search.length() >= 3){
             CompleteWorkUnit workUnit = new CompleteWorkUnit();
             workUnit.init(search);
             frm.setData(workUnit.getList());

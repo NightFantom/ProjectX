@@ -36,7 +36,7 @@ public class EditClientWU implements EditWorkUnit {
     }
 
     @Override
-    public void updateEntity(Map<String, Object> values) {
+    public void updateEntity(Map<String, Object> values)throws Exception {
         userAccount.setFirstName((String) values.get("firstName"));
         userAccount.setSecondName((String) values.get("secondName"));
         userAccount.setFatherName((String) values.get("fatherName"));

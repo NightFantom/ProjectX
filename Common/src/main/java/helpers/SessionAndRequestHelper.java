@@ -117,4 +117,14 @@ public class SessionAndRequestHelper {
         return pharmacy.getLogin();
     }
 
+    /**
+     * Получение учётной записи аптеки
+     * @param request Запрос пользователя
+     * @return Аккаут аптеки
+     */
+    public static Pharmacy getPharmacy(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        return (Pharmacy) session.getAttribute(GlobalConstants.PHARMACY);
+    }
+
 }

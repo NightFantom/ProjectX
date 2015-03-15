@@ -9,7 +9,7 @@ import entities.Pharmacy;
  * Класс загруженных в экшене данных.
  * Экземпляры класса помещаются в статик очередь на обработку
  */
-public class LodedData {
+public class LoadedData {
 
     private String pathToFile;
     private Pharmacy pharmacy;

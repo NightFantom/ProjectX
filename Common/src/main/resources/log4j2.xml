@@ -43,6 +43,10 @@
             <AppenderRef ref="logFileUpload"/>
         </Logger>
 
+        <Logger level="info" name="handler" additivity="false">
+            <AppenderRef ref="logFileUpload"/>
+        </Logger>
+
         <Logger level="info" name="fileService.FileManager" additivity="false">
             <AppenderRef ref="consoleOut"/>
             <AppenderRef ref="logFileUpload"/>

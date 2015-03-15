@@ -21,6 +21,7 @@
     <meta http-equiv="content-type" content="text/html; charset = UTF-8">
     <meta http-equiv="Content-language" content="ru">
     <link rel="stylesheet" type="text/css" href="${path}/css/style.css"/>
+    <link rel="shortcut icon" href="${path}/favicon.ico" type="image/x-icon"/>
     <title><tiles:getAsString name="title"/></title>
     <jsp:include page="../jsp/scripts.jsp"/>
 </head>
