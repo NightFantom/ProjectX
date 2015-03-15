@@ -19,6 +19,7 @@
             <tiles:putAttribute name="address" value="${pharmacy.address}"/>
             <tiles:putAttribute name="phone" value="${pharmacy.phone}"/>
             <tiles:putAttribute name="coordinates" value="${pharmacy.coordinates}"/>
+            <tiles:putAttribute name="workTime" value="${pharmacy.workTime}"/>
         </tiles:insertDefinition>
     </tiles:putAttribute>
 </tiles:insertDefinition>

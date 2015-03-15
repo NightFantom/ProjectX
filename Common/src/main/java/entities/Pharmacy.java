@@ -14,6 +14,15 @@ public class Pharmacy{
     private String password;
     private Integer codeNetwork;
     private String coordinates;
+    private String workTime;
+
+    public String getWorkTime() {
+        return workTime;
+    }
+
+    public void setWorkTime(String workTime) {
+        this.workTime = workTime;
+    }
 
     public String getCoordinates() {
         return coordinates;

@@ -91,6 +91,13 @@ public class CreatePharmacyForm extends ViewPharmacyForm {
         field.setParser(new EmptyParser());
         form.addField(field);
 
+        field = new FieldImp();
+        field.setName("workTime");
+        field.setDescription("Время работы");
+        field.setValidators(new NotEmptyValidator());
+        field.setParser(new EmptyParser());
+        form.addField(field);
+
         form.addValidators(new PasswordValidator());
 
         return form;

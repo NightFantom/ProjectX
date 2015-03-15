@@ -14,6 +14,7 @@ import checkForm.parsers.EmptyParser;
 import checkForm.parsers.IntegerParser;
 import checkForm.validators.IntegerValidator;
 import checkForm.validators.NotEmptyValidator;
+import checkForm.validators.PasswordValidator;
 
 public class EditPharmacyForm extends ViewPharmacyForm {
     private static final Form FORM = create();
@@ -90,6 +91,15 @@ public class EditPharmacyForm extends ViewPharmacyForm {
         field.setNotRequired();
         field.setParser(new EmptyParser());
         form.addField(field);
+
+        field = new FieldImp();
+        field.setName("workTime");
+        field.setDescription("Время работы");
+        field.setValidators(new NotEmptyValidator());
+        field.setParser(new EmptyParser());
+        form.addField(field);
+
+        form.addValidators(new PasswordValidator());
 
         return form;
     }

@@ -62,6 +62,12 @@
                                    styleClass="inputDL"/></td>
                 </tr>
                 <tr>
+                    <td class="leftColumnDL">Время работы:</td>
+                    <td><html:text name="form" property="fields(workTime)"
+                                   value="${not empty pharmacy ? pharmacy.workTime :  empty mapFields['workTime']? '' : mapFields['workTime']}"
+                                   styleClass="inputDL"/></td>
+                </tr>
+                <tr>
                     <td class="leftColumnDL">Логин:</td>
                     <td><html:text name="form" property="fields(login)"
                                    value="${not empty pharmacy ? pharmacy.login :  empty mapFields['login']? '' : mapFields['login']}" styleClass="inputDL"/></td>

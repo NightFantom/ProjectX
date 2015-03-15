@@ -24,4 +24,14 @@ public class StringHelper {
     public static boolean isNotEmpty(String str){
         return !isEmpty(str);
     }
+
+    /**
+     * Разделение строки на части по разделителю
+     * @param str Строка
+     * @param delimiter Разделитель
+     * @return Массив из строк, полученный разделением входяшей строки через разделитель.
+     */
+    public static String[] slit(String str, String delimiter){
+        return str.split(delimiter);
+    }
 }
