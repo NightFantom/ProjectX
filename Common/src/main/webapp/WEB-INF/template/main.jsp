@@ -23,6 +23,7 @@
     <link rel="stylesheet" type="text/css" href="${path}/css/style.css"/>
     <link rel="shortcut icon" href="${path}/favicon.ico" type="image/x-icon"/>
     <title><tiles:getAsString name="title"/></title>
+    <script>var path = '${path}'</script>
     <jsp:include page="../jsp/scripts.jsp"/>
 </head>
 <body>
