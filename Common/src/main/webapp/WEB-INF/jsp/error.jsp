@@ -7,13 +7,16 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://helper" prefix="helper"%>
 <c:set var="path" value="${helper:getPath(pageContext)}"/>
-
-<tiles:insertDefinition name="onlyFon" flush="true">
+<c:set var="template" value="onlyFon"/>
+<c:if test="${empty path}">
+    <c:set var="template" value="main"/>
+</c:if>
+<tiles:insertDefinition name="${template}" flush="true">
     <tiles:putAttribute name="title" value="Ошибка"/>
     <tiles:putAttribute name="content">
         <div class="errorBlock">
             К сожалению, произошла ошибка. Повторите попытку позже.
+            <p><a href="${helper:getPath(pageContext)}/index.do"><span class="orangeText">На главную</span></a></p>
         </div>
-        <a href="${path}/index.do"><p class="submitDL">На главную</p></a>
     </tiles:putAttribute>
 </tiles:insertDefinition>
