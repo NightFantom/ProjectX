@@ -12,6 +12,6 @@
         <p class="bigText">Наши <span class="orangeText">контакты</span></p>
         <p class="fontSize20 usualText marginTop30">Если у вас есть вопросы, пожелания или предложения по работе сервиса,  напишите нам.</p>
         <p class="fontSize20 marginTop10">Почта: <span class="usualText">support@pharmacyref.ru</span></p>
-        <p class="fontSize20 marginTop10">Группа в ВК: <a href="https://vk.com/club74409851"><span class="usualText">vk.com/club</span></a></p>
+        <p class="fontSize20 marginTop10">Группа в ВК: <a href="https://vk.com/club74409851"><span class="usualText">vk.com/club74409851</span></a></p>
     </tiles:putAttribute>
 </tiles:insertDefinition>
