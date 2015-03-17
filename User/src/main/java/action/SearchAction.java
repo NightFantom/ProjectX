@@ -5,6 +5,7 @@
  */
 package action;
 
+import entities.City;
 import forms.ActionFormBase;
 import entities.Medicament;
 import entities.Price;
@@ -43,7 +44,9 @@ public class SearchAction extends LogDispatchAction {
         Integer id =  frm.getId();
         Map<Object, Object> map = new HashMap<>();
         map.put("idMedicament", id);
-        map.put(GlobalConstants.ID_USER_CITY, SessionAndRequestHelper.getCityId(request));
+        Integer cityId = SessionAndRequestHelper.getCityId(request);
+        cityId = cityId == null ? 1 : cityId;
+        map.put(GlobalConstants.ID_USER_CITY, cityId);
         List<Price> list = new HibernateService<Price>(Price.class).getList(map,"getPrice");
         Medicament medicament = new HibernateService<Medicament>(Medicament.class).getById(id);
         frm.setField("searchInput", medicament.getName());
