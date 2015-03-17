@@ -5,7 +5,7 @@ jQuery(document).ready(function($){
     $search.autocomplete({
         source:function(request, response){
             jQuery.ajax({
-                url: "/user/autoComplete.do" ,
+                url: path + "/autoComplete.do" ,
                 type: "POST",
                 data: "searchString=" + $search.val(),
                 dataType: "json",
