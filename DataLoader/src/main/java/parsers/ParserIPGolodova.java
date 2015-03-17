@@ -3,6 +3,7 @@ package parsers;
 
 import fileService.FileManager;
 import form.UpdateRecord;
+import helpers.StringHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,79 +18,76 @@ import java.util.regex.PatternSyntaxException;
  */
 public class ParserIPGolodova implements Parser {
 
+    private static final String EMPTY = "";
+    private static final String END_BODY = "<\\BODY>";
+    private static final String END_HTML = "<\\HTML>";
     private List<UpdateRecord> list = new LinkedList<UpdateRecord>();
     private String encoding;
-    private String s;
+    private String currentRow;
     private UpdateRecord parseRecord;
     private Scanner scanner;
 
     protected final Logger LOG = LogManager.getLogger(ParserIPGolodova.class);
 
-    private Integer getNumber(String number) {
-        return Integer.parseInt(number);
-    }
-
-    private Double getRealNumber(String real) {
-        return Double.parseDouble(real);
-    }
 
     private String nextTextStyle() {
         if (scanner.hasNextLine()) {
-            s = new String(scanner.nextLine().getBytes(), Charset.forName(encoding));
+            currentRow = new String(scanner.nextLine().getBytes(), Charset.forName(encoding));
         }
-        while (scanner.hasNextLine() && !s.contains("TextStyle")) {
-            s = new String(scanner.nextLine().getBytes(), Charset.forName(encoding));
+        while (scanner.hasNextLine() && !currentRow.contains("TextStyle")) {
+            currentRow = new String(scanner.nextLine().getBytes(), Charset.forName(encoding));
         }
-        return s;
+        return currentRow;
     }
 
     private void skipHeader() {
-        s = "";
-        while (scanner.hasNextLine() && !s.contains("Срок годн.")) {
-            s = new String(scanner.nextLine().getBytes(), Charset.forName(encoding));
+        currentRow = EMPTY;
+        while (scanner.hasNextLine() && !currentRow.contains("Срок годн.")) {
+            currentRow = new String(scanner.nextLine().getBytes(), Charset.forName(encoding));
         }
         if (scanner.hasNextLine()) {
-            s = scanner.nextLine();
+            currentRow = scanner.nextLine();
         }
     }
 
     private String getPrice() {
-        String price = new String();
+        String price = null;
         nextTextStyle();
         nextTextStyle();
-        s = nextTextStyle();
+        currentRow = nextTextStyle();
 
-        if (s.contains("TextStyle2") && s.contains(".") && !s.equals("<\\HTML>")&& !s.equals("")) {
-            price =  (s.substring(s.indexOf(">") + 1, s.indexOf("</SPAN>")).replaceAll(" ", ""));
+        if (currentRow.contains("TextStyle2") && currentRow.contains(".") && !currentRow.equals("<\\HTML>")&& !currentRow.equals("")) {
+            price =  (currentRow.substring(currentRow.indexOf(">") + 1, currentRow.indexOf("</SPAN>")).replaceAll(" ", ""));
             if(price.contains(",")) {
                 price = price.substring(0,price.indexOf(",")) +  price.substring(price.indexOf(",")+1);
             }
 
         }
-        s = nextTextStyle();
+        currentRow = nextTextStyle();
         return price;
     }
 
     private String getName() {
         String name = new String();
-        if (s.contains("TextStyle6")&& !s.equals("<\\HTML>")&& !s.equals("")) {
-            name = s.substring(s.indexOf(">") + 1, s.indexOf("</SPAN>")).toUpperCase();
+        if (currentRow.contains("TextStyle6")&& !currentRow.equals("<\\HTML>")&& !currentRow.equals("")) {
+            name = currentRow.substring(currentRow.indexOf(">") + 1, currentRow.indexOf("</SPAN>")).toUpperCase();
         }
-        s = nextTextStyle();
-        if (s.contains("TextStyle6")&& !s.equals("<\\HTML>")&& !s.equals("")) {
-            name = s.substring(s.indexOf(">") + 1, s.indexOf("</SPAN>")).toUpperCase();
-            s = nextTextStyle();
+        currentRow = nextTextStyle();
+        if (currentRow.contains("TextStyle6")&& !currentRow.equals("<\\HTML>")&& !currentRow.equals("")) {
+            name = currentRow.substring(currentRow.indexOf(">") + 1, currentRow.indexOf("</SPAN>")).toUpperCase();
+            currentRow = nextTextStyle();
         }
         return name;
     }
 
     private String getCount() {
         String count = new String();
-        if (s.contains("TextStyle5") && s.contains(".")&& !s.equals("<\\HTML>")&& !s.equals("")) {
-            count = s.substring(s.indexOf(">") + 1, s.indexOf("</SPAN>")).replaceAll(" ", "");
+        if (currentRow.contains("TextStyle5") && currentRow.contains(".")&& !currentRow.equals("<\\HTML>")&& !currentRow.equals("")) {
+            //Если нужно выводить колличество товара на складе, то требуется раскоментировать эту строчку:
+            //count = currentRow.substring(currentRow.indexOf(">") + 1, currentRow.indexOf("</SPAN>")).replaceAll(" ", "");
             count = "-1";
         }
-        s = nextTextStyle();
+        currentRow = nextTextStyle();
         return count;
     }
 
@@ -98,26 +96,21 @@ public class ParserIPGolodova implements Parser {
      * @return обновленные данные из распарсенной строки, где все распарсенные данные являются типом String
      */
     private UpdateRecord getParseRecord() throws ParsingException {
-        String price = "";
-        String name = "";
-        String count = "";
         try {
-            if(!s.equals("")&& !s.equals("<\\BODY>")&& !s.equals("<\\HTML>")) {
+            if(StringHelper.isNotEmpty(currentRow) && !END_BODY.equals(currentRow)&& !END_HTML.equals(currentRow)) {
                 parseRecord = new UpdateRecord();
-                price = getPrice();
-                name = getName();
-                count = getCount();
-                if(!price.equals("") && !name.equals("")&& !count.equals("")) {
-                    parseRecord.setCost(getRealNumber(price));
+                String price = getPrice();
+                String name = getName();
+                String count = getCount();
+                if(StringHelper.isNotEmpty(price) && StringHelper.isNotEmpty(name) && StringHelper.isNotEmpty(count)) {
+                    parseRecord.setCost(Double.parseDouble(price));
                     parseRecord.setName(name);
-                    parseRecord.setAmount(getNumber(count));
+                    parseRecord.setAmount(Integer.parseInt(count));
                 }
             }
 
-        } catch (PatternSyntaxException e) {
-            throw new ParsingException("Не могу распарсить строку " + s + " " + e.toString());
-        }catch (IndexOutOfBoundsException e){
-            throw new ParsingException("Не могу распарсить строку " + s + " " + e.toString());
+        } catch (PatternSyntaxException | IndexOutOfBoundsException e) {
+            throw new ParsingException("Не могу распарсить строку " + currentRow + " " + e.toString());
         }
         return parseRecord;
     }
@@ -131,24 +124,22 @@ public class ParserIPGolodova implements Parser {
         UpdateRecord updateRecord;
         scanner = new FileManager(pathToFile).getScanner();
         skipHeader();
-        while (scanner.hasNextLine() && !scanner.nextLine().equals("<\\BODY>")&& !scanner.nextLine().equals("<\\HTML>")) {
+        while (scanner.hasNextLine() && !END_BODY.equals(scanner.nextLine())&& !END_HTML.equals(scanner.nextLine())) {
 
             try {
                 updateRecord = getParseRecord();
                 if (updateRecord != null && updateRecord.getAmount() != null && updateRecord.getCost() != null && updateRecord.getName() != null){
                     list.add(updateRecord);
-            }
-            } catch (NullPointerException e) {
-                LOG.error("Ошибка при попытке поместить строку в лист распарсенных данных " + e.toString());
-            } catch (ParsingException e) {
-                LOG.error(e.toString());
+                }
+            }catch (ParsingException e) {
+                LOG.error(e);
             }
         }
 
     }
 
     public List<UpdateRecord> getRecords(String pathToFile, String encoding)throws ParsingException{
-        if (pathToFile != null && !pathToFile.equals("")) {
+        if (StringHelper.isNotEmpty(pathToFile)) {
             this.encoding = encoding;
             parseFile(pathToFile);
         } else {
