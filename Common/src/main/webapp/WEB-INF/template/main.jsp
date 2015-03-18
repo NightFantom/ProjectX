@@ -20,6 +20,8 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset = UTF-8">
     <meta http-equiv="Content-language" content="ru">
+    <meta name="description" content="Поиск лекарств в Вологде">
+    <meta name="keywords" content="аптечная справка,аптечная справка Вологда, купить лекарства, где купить лекарства, аптеки вологды">
     <link rel="stylesheet" type="text/css" href="${path}/css/style.css"/>
     <link rel="shortcut icon" href="${path}/favicon.ico" type="image/x-icon"/>
     <title><tiles:getAsString name="title"/></title>
@@ -49,6 +51,19 @@
             <div id="content">
                 ${content}
             </div>
+        </div>
+        <%--Слова для поисковых систем--%>
+        <div class="displayNone">
+            <p>Адрес: г.Вологда</p>
+            <p>Индекс: 160000</p>
+            <p>Аптечная справка</p>
+            <p>Аптечная справка Вологда</p>
+            <p>Аптечная справка.рф</p>
+            <p>Аптечная справка.рф Вологда</p>
+            <p>Вологда Аптечная справка</p>
+            <p>Вологда</p>
+            <p>аптеки вологды</p>
+            <p>антей аптека вологда</p>
         </div>
     </div>
 </div>
