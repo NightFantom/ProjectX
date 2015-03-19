@@ -5,62 +5,80 @@
  */
 package action;
 
-import entities.City;
+import checkForm.FormHandler;
+import exceptions.ParserException;
 import forms.ActionFormBase;
-import entities.Medicament;
-import entities.Price;
+import forms.SearchForm;
 import helpers.GlobalConstants;
 import helpers.SessionAndRequestHelper;
-import hibernateService.HibernateService;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import workUnit.ListMedicamentsWU;
+import workUnit.ListWorkUnit;
+import workUnit.PriceWU;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class SearchAction extends LogDispatchAction {
 
-    /**
-     * Метод диспетчер.
-     * Если к нам с формы пришла ID, то ищем лекарство в атеках.
-     * В противном случае
-     */
-    public ActionForward start(ActionMapping mapping, ActionForm form, HttpServletRequest request,HttpServletResponse response){
+    private static final String PRICE_FORWARD = "price";
+    private static final String MEDICAMENTS_FORWARD = "medicaments";
 
-        ActionFormBase frm = (ActionFormBase)form;
 
-        if (frm.getId() != null && frm.getId() > 0){
-            getMedicamentById(frm, request);
-            return mapping.findForward("start");
+    @Override
+    public ActionForward start(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        ActionFormBase frm = (ActionFormBase) form;
+        ActionForward forward;
+        Integer id = frm.getId();
+        if (id == null || id == 0) {
+            forward = getListMedicaments(frm, mapping, request);
+        } else {
+            forward = getPrice(frm, mapping, request);
         }
-        getListMedicamentSimilarByName(frm);
-        return mapping.findForward("listMedicament");
+        return forward;
     }
 
-    private void getMedicamentById(ActionFormBase frm, HttpServletRequest request){
-        Integer id =  frm.getId();
+    /**
+     * Получения списка лекарств
+     */
+    private ActionForward getListMedicaments(ActionFormBase form, ActionMapping mapping, HttpServletRequest request) throws ParserException {
+        FormHandler formHandler = new FormHandler(form.getFields(), form.getLogicForm());
+        if (!formHandler.handler()) {
+            request.setAttribute(GlobalConstants.ERROR_MESSAGE, formHandler.getErrorMessage());
+            return mapping.findForward(ERROR);
+        }
+
+        ListWorkUnit workUnit = new ListMedicamentsWU();
+        workUnit.setFilter(formHandler.getResult());
+        workUnit.filter();
+        form.setData(workUnit.getResult());
+
+        return mapping.findForward(MEDICAMENTS_FORWARD);
+    }
+
+    /**
+     * Получения прайса по городу
+     */
+    private ActionForward getPrice(ActionFormBase form, ActionMapping mapping, HttpServletRequest request) {
+
+        SearchForm frm = (SearchForm) form;
+
         Map<Object, Object> map = new HashMap<>();
-        map.put("idMedicament", id);
         Integer cityId = SessionAndRequestHelper.getCityId(request);
         cityId = cityId == null ? 1 : cityId;
         map.put(GlobalConstants.ID_USER_CITY, cityId);
-        List<Price> list = new HibernateService<Price>(Price.class).getList(map,"getPrice");
-        Medicament medicament = new HibernateService<Medicament>(Medicament.class).getById(id);
-        frm.setField("searchInput", medicament.getName());
+        map.put(GlobalConstants.ID_MEDICAMENT_FOR_QUERY, frm.getId());
+
+        PriceWU workUnit = new PriceWU();
+        workUnit.setFilter(map);
+        workUnit.filter();
+        frm.setData(workUnit.getResult());
+        frm.setMedicament(workUnit.getMedicament());
         frm.setId(null);
-        frm.setData(list);
+        return mapping.findForward(PRICE_FORWARD);
     }
-
-    private void getListMedicamentSimilarByName(ActionFormBase form){
-        Map<Object, Object> map = new HashMap<>();
-        String name =(String) form.getFields().get("searchInput");
-        map.put("name",name+"%");
-        List<Medicament> list = new HibernateService<Medicament>(Medicament.class).getList(map, "getByNameLike");
-        form.setData(list);
-    }
-
-
 }

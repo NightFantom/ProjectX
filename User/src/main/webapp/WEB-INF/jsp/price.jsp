@@ -23,7 +23,7 @@
                 <tiles:insertDefinition name="resultTable" flush="false">
                     <tiles:putAttribute name="message">
                         <p class="smallItalicText marginBottom10">Лекарство <span class="doubleOrange"> "<bean:write
-                                name="form" property="fields(searchInput)"/>"</span> найдено в ${form.length} аптеках
+                                name="form" property="medicament.name"/>"</span> найдено в ${form.length} аптеках
                         </p>
                     </tiles:putAttribute>
                     <tiles:putAttribute name="grid">

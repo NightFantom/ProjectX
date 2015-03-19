@@ -19,4 +19,5 @@ public class GlobalConstants {
     public static final String ERROR_MESSAGE = "ERROR_MESSAGE";
     public static final String PHARMACY = "pharmacy";
     public static final String IS_LOGIN_PHARMACY = "isLoginPharmacy";
+    public static final String ID_MEDICAMENT_FOR_QUERY = "idMedicament";
 }
