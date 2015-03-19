@@ -36,12 +36,12 @@ public abstract class BaseAction extends LogDispatchAction {
 
     public ActionForward edit(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         ActionFormBase frm = (ActionFormBase) form;
-        EditWorkUnit workUnit = createEditWorkUnit(frm);
         FormHandler formHandler = new FormHandler(frm.getFields(), frm.getLogicForm());
         if (!formHandler.handler()) {
             request.setAttribute(GlobalConstants.ERROR_MESSAGE, formHandler.getErrorMessage());
             return mapping.findForward(ERROR);
         }
+        EditWorkUnit workUnit = createEditWorkUnit(frm);
         workUnit.init(frm.getId());
         workUnit.updateEntity(formHandler.getResult());
         workUnit.addition(frm);
@@ -56,12 +56,30 @@ public abstract class BaseAction extends LogDispatchAction {
         return mapping.findForward(SUCCESS);
     }
 
+    //TODO: Метод требует тестирования
     public ActionForward filter(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         ActionFormBase frm = (ActionFormBase) form;
+        FormHandler formHandler = new FormHandler(frm.getFilters(), frm.getLogicForm());
+        if (!formHandler.handler()) {
+            request.setAttribute(GlobalConstants.ERROR_MESSAGE, formHandler.getErrorMessage());
+            return mapping.findForward(ERROR);
+        }
         ListWorkUnit list = createListWorkUnit(frm);
-        list.setFilter(frm.getFilters());
+        list.setFilter(formHandler.getResult());
         list.filter();
         frm.setData(list.getResult());
+        return filterForward(frm, list, mapping, request);
+    }
+
+    /**
+     * Получения forward'а
+     * @param form Форма
+     * @param list Модуль список
+     * @param mapping Маппинг
+     * @param request Запрос
+     * @return Forward на jsp
+     */
+    protected ActionForward filterForward(ActionFormBase form, ListWorkUnit list, ActionMapping mapping, HttpServletRequest request){
         return mapping.findForward(SUCCESS);
     }
 

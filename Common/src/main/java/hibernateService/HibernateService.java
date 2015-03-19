@@ -34,7 +34,7 @@ public class HibernateService<E> {
     /**
      * Получение сущности по ID
      *
-     * @param id - ID
+     * @param id ID
      * @return Сущность, с указанным ID
      * @throws HibernateException
      */
