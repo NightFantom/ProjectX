@@ -52,7 +52,7 @@ public class ViewPharmacyAction extends LogDispatchAction {
 
         ActionFormBase frm = (ActionFormBase)form;
         Map<Object, Object> map = new HashMap<>();
-        map.put(GlobalConstants.ID_USER_CITY, SessionAndRequestHelper.getCity(request));
+        map.put(GlobalConstants.USER_CITY, SessionAndRequestHelper.getCity(request));
         List<Pharmacy> list = new HibernateService<Pharmacy>(Pharmacy.class).getList(map, "getAllPharmacyOfCity");
         frm.setData(list);
         return mapping.findForward(FORWARD_START);

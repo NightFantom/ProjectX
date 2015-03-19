@@ -6,18 +6,19 @@
 package workUnit;
 
 import entities.Medicament;
+import entities.Pharmacy;
 import entities.Price;
+import helpers.CityHelper;
 import helpers.GlobalConstants;
 import hibernateService.HibernateService;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class PriceWU implements ListWorkUnit<Price> {
 
     private static HibernateService<Price> service = new HibernateService<>(Price.class);
-    private static HibernateService<Medicament> medicamentService = new HibernateService<Medicament>(Medicament.class);
+    private static HibernateService<Medicament> medicamentService = new HibernateService<>(Medicament.class);
+    private static HibernateService<Pharmacy> pharmacyService = new HibernateService<>(Pharmacy.class);
     private List<Price> list;
     private Map<Object, Object> map = new HashMap<>();
     private Medicament medicament;
@@ -29,6 +30,7 @@ public class PriceWU implements ListWorkUnit<Price> {
 
     public void filter() {
         list = service.getList(map, "getPrice");
+        list = getPriceWithFake(list);
         Integer idMedicament =(Integer) map.get(GlobalConstants.ID_MEDICAMENT_FOR_QUERY);
         medicament = medicamentService.getById(idMedicament);
     }
@@ -39,5 +41,40 @@ public class PriceWU implements ListWorkUnit<Price> {
 
     public Medicament getMedicament() {
         return medicament;
+    }
+
+    /**
+     * Получение прайса с "шумовыми" записями
+     * @param price Прайст без шума
+     * @return Прайс с "шумовыми" записями
+     */
+    private List<Price> getPriceWithFake(List<Price> price){
+        List<Integer> ids = new ArrayList<>(price.size());
+        for(Price item: price){
+            ids.add(item.getPharmacy().getId());
+        }
+        map.put("ids", ids);
+        Integer idCity = (Integer)map.get(GlobalConstants.ID_USER_CITY);
+        map.put("city", CityHelper.getCityById(idCity));
+        String queryName = ids.isEmpty() ? "getAllPharmacyOfCity" : "getAllPharmacyOutList";
+        List<Pharmacy> pharmacies = pharmacyService.getList(map, queryName);
+        for (Pharmacy pharmacy: pharmacies){
+            price.add(getFakePrice(pharmacy));
+        }
+        return price;
+    }
+
+    /**
+     * Создание "шумовой" записи в прайсе
+     * @param pharmacy Аптека, для которой нужно создать шум
+     * @return Прайс
+     */
+    private Price getFakePrice(Pharmacy pharmacy){
+        Price fakePrice = new Price();
+        fakePrice.setAmount(-2);
+        fakePrice.setCost(-10D);
+        fakePrice.setDateUpdate(new GregorianCalendar());
+        fakePrice.setPharmacy(pharmacy);
+        return fakePrice;
     }
 }

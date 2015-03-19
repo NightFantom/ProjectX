@@ -24,13 +24,16 @@
             select pharmacy from entities.Pharmacy as pharmacy where pharmacy.login = :login
         </query>
         <query name="getAllPharmacyOfCity">
-            select pharmacy from entities.Pharmacy as pharmacy where pharmacy.city = :idCity
+            select pharmacy from entities.Pharmacy as pharmacy where pharmacy.city = :city
         </query>
         <query name="getByCodeNetwork">
             select pharmacy from entities.Pharmacy as pharmacy where pharmacy.codeNetwork = :codeNetwork
         </query>
         <query name="getByLoginAndPassword">
             select pharmacy from entities.Pharmacy as pharmacy where pharmacy.login = :login and pharmacy.password = :password
+        </query>
+        <query name="getAllPharmacyOutList">
+            select pharmacy from entities.Pharmacy as pharmacy where pharmacy.city = :city and pharmacy.id not in (:ids)
         </query>
     </class>
 </hibernate-mapping>

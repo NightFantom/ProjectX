@@ -41,7 +41,7 @@
                                          href="${path}/viewPharmacy.do" paramId="id"
                                          paramProperty="pharmacy.id" class="highlightLink"/>
                             <grid:column title="Количество">${helper:getAmountMedicament(price.amount)}</grid:column>
-                            <grid:column property="cost" title="Стоимость"/>
+                            <grid:column title="Стоимость">${helper:getCostMedicament(price.cost)}</grid:column>
                             <grid:column title="Дата обновления">${helper:getDateUpdate(price.dateUpdate)}</grid:column>
                         </grid:table>
                         <div id="workArea">

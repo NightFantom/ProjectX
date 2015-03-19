@@ -52,4 +52,9 @@
         <function-class>helpers.StringHelper</function-class>
         <function-signature>java.lang.String[] slit(java.lang.String,java.lang.String)</function-signature>
     </function>
+    <function>
+        <name>getCostMedicament</name>
+        <function-class>helpers.NumberHelper</function-class>
+        <function-signature>java.lang.String getCostMedicament(java.lang.Double)</function-signature>
+    </function>
 </taglib>
