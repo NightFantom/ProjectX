@@ -52,7 +52,7 @@ public class ParserMedTechnic implements Parser {
             parseRecord = new UpdateRecord();
             parseRecord.setName(getName());
             parseRecord.setCost(getRealNumber(getPrice()));
-            parseRecord.setAmount(getNumber(getCount()));
+            parseRecord.setAmount(getNumber(getCount()) == 1 ? -1 : 0);
         } catch (PatternSyntaxException e) {
             throw new ParsingException("Не могу распарсить строку " + s + " " + e.toString());
         }
