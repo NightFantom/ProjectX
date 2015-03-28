@@ -488,3 +488,14 @@ body {
 .displayNone{
     display:none;
 }
+
+/*Стили для функционала по определению города*/
+
+.changeCityLink{
+    text-align:left;
+}
+
+.changeCityLink:hover{
+    color: #feb772;
+    cursor: pointer;
+}

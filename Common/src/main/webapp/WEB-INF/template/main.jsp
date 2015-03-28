@@ -43,6 +43,17 @@
                     <div>Город:</div>
                     <div id="selectCity"><span class="orangeText">Вологда</span>
                         <div id="popUpSelectCity">
+                            <table>
+                                <tr>
+                                    <td><a href="#" class="changeCityLink">Череповец</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="changeCityLink">Архангельск</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="changeCityLink">Киров</a></td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
