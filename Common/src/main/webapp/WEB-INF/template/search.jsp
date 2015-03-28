@@ -22,7 +22,7 @@
         <html:hidden  name="form" property="id" styleId="inputID"/>
         <img id = "iconSearch" src="${path}/images/iconSearch.png">
         <div id="searchLine">
-            <p class="additionText bigText">поиск <span class="doubleOrange">лекарств</span></p>
+            <p class="additionText bigText">поиск</p>
             <div class="floatLeft">
                 <html:text name="form" property="fields(searchInput)" styleId="searchText" styleClass="inputTextSearch" maxlength="40"/>
             </div>
