@@ -68,6 +68,22 @@
                                    styleClass="inputDL"/></td>
                 </tr>
                 <tr>
+                    <c:set var="checked" value=""/>
+                    <c:choose>
+                        <c:when test="${not empty pharmacy}">
+                            <c:if test="${pharmacy.fakePrice}">
+                                <c:set var="checked" value="checked"/>
+                            </c:if>
+                        </c:when>
+                        <c:when test="${not empty mapFields['fakePrice']}">
+
+                        </c:when>
+                    </c:choose>
+                    <td class="leftColumnDL">Активировать "Шум":</td>
+                    <td><input type="checkbox" class="inputDL" name="fields(fakePrice)" value="true" ${checked}/>
+                    </td>
+                </tr>
+                <tr>
                     <td class="leftColumnDL">Логин:</td>
                     <td><html:text name="form" property="fields(login)"
                                    value="${not empty pharmacy ? pharmacy.login :  empty mapFields['login']? '' : mapFields['login']}" styleClass="inputDL"/></td>

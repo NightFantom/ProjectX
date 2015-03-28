@@ -6,6 +6,7 @@
 package forms;
 
 import checkForm.Form;
+import checkForm.FormImp;
 import org.apache.struts.action.ActionForm;
 import java.util.HashMap;
 import java.util.List;
@@ -61,6 +62,6 @@ public class ActionFormBase extends ActionForm {
     }
 
     public Form getLogicForm(){
-        return null;
+        return new FormImp();
     }
 }

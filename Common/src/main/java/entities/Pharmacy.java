@@ -15,6 +15,7 @@ public class Pharmacy{
     private Integer codeNetwork;
     private String coordinates;
     private String workTime;
+    private Boolean fakePrice; // Флаг отвечает за показ "шума" в прайсе
 
     public String getWorkTime() {
         return workTime;
@@ -94,5 +95,13 @@ public class Pharmacy{
 
     public void setCodeNetwork(Integer codeNetwork) {
         this.codeNetwork = codeNetwork;
+    }
+
+    public Boolean getFakePrice() {
+        return fakePrice;
+    }
+
+    public void setFakePrice(Boolean fakePrice) {
+        this.fakePrice = fakePrice;
     }
 }

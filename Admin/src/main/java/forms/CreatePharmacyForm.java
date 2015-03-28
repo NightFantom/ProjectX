@@ -9,6 +9,7 @@ import checkForm.Form;
 import checkForm.FormImp;
 import checkForm.fields.Field;
 import checkForm.fields.FieldImp;
+import checkForm.parsers.BooleanParser;
 import checkForm.parsers.CityParser;
 import checkForm.parsers.EmptyParser;
 import checkForm.parsers.IntegerParser;
@@ -96,6 +97,14 @@ public class CreatePharmacyForm extends ViewPharmacyForm {
         field.setDescription("Время работы");
         field.setValidators(new NotEmptyValidator());
         field.setParser(new EmptyParser());
+        form.addField(field);
+
+        field = new FieldImp();
+        field.setName("fakePrice");
+        field.setDescription("Активировать Шум");
+        field.setNotRequired();
+        field.setValidators(new NotEmptyValidator());
+        field.setParser(new BooleanParser());
         form.addField(field);
 
         form.addValidators(new PasswordValidator());

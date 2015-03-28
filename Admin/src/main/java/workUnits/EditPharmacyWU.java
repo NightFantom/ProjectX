@@ -49,6 +49,9 @@ public class EditPharmacyWU implements EditWorkUnit{
         if (password != null){
             pharmacy.setPassword(PasswordHelper.encrypt(password));
         }
+        Boolean needFakePrice = (Boolean)values.get("fakePrice");
+        needFakePrice = needFakePrice == null ? Boolean.FALSE : needFakePrice;
+        pharmacy.setFakePrice(needFakePrice);
     }
 
     @Override

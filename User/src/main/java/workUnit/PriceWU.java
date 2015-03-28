@@ -53,11 +53,13 @@ public class PriceWU implements ListWorkUnit<Price> {
         for(Price item: price){
             ids.add(item.getPharmacy().getId());
         }
+        if  (ids.isEmpty()){
+            ids.add(0);
+        }
         map.put("ids", ids);
         Integer idCity = (Integer)map.get(GlobalConstants.ID_USER_CITY);
         map.put("city", CityHelper.getCityById(idCity));
-        String queryName = ids.isEmpty() ? "getAllPharmacyOfCity" : "getAllPharmacyOutList";
-        List<Pharmacy> pharmacies = pharmacyService.getList(map, queryName);
+        List<Pharmacy> pharmacies = pharmacyService.getList(map, "getAllPharmacyOutList");
         for (Pharmacy pharmacy: pharmacies){
             price.add(getFakePrice(pharmacy));
         }

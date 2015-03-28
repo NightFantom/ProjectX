@@ -20,6 +20,7 @@
         <property name="codeNetwork" column="CODE_NETWORK" type="java.lang.Integer" not-null="true"/>
         <property name="coordinates" column="COORDINATES" type="java.lang.String" not-null="true"/>
         <property name="workTime" column="WORK_TIME" type="java.lang.String" not-null="false"/>
+        <property name="fakePrice" column="FAKE_PRICE" type="java.lang.Boolean" not-null="true"/>
         <query name="getByLogin">
             select pharmacy from entities.Pharmacy as pharmacy where pharmacy.login = :login
         </query>
@@ -34,6 +35,7 @@
         </query>
         <query name="getAllPharmacyOutList">
             select pharmacy from entities.Pharmacy as pharmacy where pharmacy.city = :city and pharmacy.id not in (:ids)
+            and pharmacy.fakePrice = true
         </query>
     </class>
 </hibernate-mapping>
