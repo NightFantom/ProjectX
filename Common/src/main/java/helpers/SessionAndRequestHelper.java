@@ -29,6 +29,15 @@ public class SessionAndRequestHelper {
     }
 
     /**
+     * Установка в сессию города, в котором находиться пользователь
+     * @param request Запрос
+     * @param city Город
+     */
+    public static void setCity(HttpServletRequest request, City city) {
+        request.getSession().setAttribute(GlobalConstants.ID_USER_CITY, city);
+    }
+
+    /**
      * Возвращает id города, в котором находится пользователь
      *
      * @param request запрос

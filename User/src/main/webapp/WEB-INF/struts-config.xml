@@ -8,6 +8,7 @@
         <form-bean name="ViewPharmacyForm" type="forms.ViewPharmacyForm"/>
         <form-bean name="SearchForm" type="forms.FormForSearch"/>
         <form-bean name="AutoCompleteForm" type="forms.AutoCompleteForm"/>
+        <form-bean name="ChangeCityForm" type="forms.ChangeCityForm"/>
     </form-beans>
 
     <global-exceptions>
@@ -57,6 +58,13 @@
                 scope="request"
                 parameter="list">
             <forward name="start" path="/WEB-INF/jsp/listPharmacy.jsp"/>
+        </action>
+
+        <action path="/changeCity"
+                type="action.ChangeCity"
+                name="ChangeCityForm"
+                scope="request">
+            <forward name="success" path="/WEB-INF/jsp/changeCity.jsp"/>
         </action>
     </action-mappings>
 
