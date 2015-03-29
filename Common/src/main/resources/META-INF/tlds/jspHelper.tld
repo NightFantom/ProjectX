@@ -57,4 +57,14 @@
         <function-class>helpers.NumberHelper</function-class>
         <function-signature>java.lang.String getCostMedicament(java.lang.Double)</function-signature>
     </function>
+    <function>
+        <name>getCityStatus</name>
+        <function-class>helpers.SessionAndRequestHelper</function-class>
+        <function-signature> boolean changeCityStatus(javax.servlet.jsp.PageContext)</function-signature>
+    </function>
+    <function>
+        <name>getCurrentCity</name>
+        <function-class>helpers.SessionAndRequestHelper</function-class>
+        <function-signature> entities.City getCurrentCity(javax.servlet.jsp.PageContext)</function-signature>
+    </function>
 </taglib>

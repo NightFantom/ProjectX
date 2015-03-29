@@ -136,4 +136,23 @@ public class SessionAndRequestHelper {
         return (Pharmacy) session.getAttribute(GlobalConstants.PHARMACY);
     }
 
+    /**
+     * Изменяет статус просмотра всплывающего окна
+     * @return true - окно было просмотрено, иначе false
+     */
+    public static boolean changeCityStatus(PageContext pageContext) {
+        boolean status = (boolean)((HttpServletRequest) pageContext.getRequest()).getSession().getAttribute(GlobalConstants.FLAG_CITY_CHECK);
+        ((HttpServletRequest) pageContext.getRequest()).getSession().setAttribute(GlobalConstants.FLAG_CITY_CHECK, true);
+        return status;
+    }
+
+    /**
+     * Изменяет статус просмотра всплывающего окна
+     * @return true - окно было просмотрено, иначе false
+     */
+    public static City getCurrentCity(PageContext pageContext) {
+        return (City) ((HttpServletRequest) pageContext.getRequest()).getSession().getAttribute(GlobalConstants.ID_USER_CITY);
+    }
+
+
 }

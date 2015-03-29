@@ -14,6 +14,7 @@
 <tiles:importAttribute/>
 
 <c:set var="path" value="${helper:getPath(pageContext)}"/>
+<c:set var="status" value="${helper:getCityStatus(pageContext)}"/>
 
 <!DOCTYPE html>
 <html>
@@ -23,9 +24,10 @@
     <meta name="description" content="Поиск лекарств в Вологде">
     <meta name="keywords" content="аптечная справка,аптечная справка Вологда, купить лекарства, где купить лекарства, аптеки вологды">
     <link rel="stylesheet" type="text/css" href="${path}/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/css/jquery-ui-1.7.2.custom.css"/>
     <link rel="shortcut icon" href="${path}/favicon.ico" type="image/x-icon"/>
     <title><tiles:getAsString name="title"/></title>
-    <script>var path = '${path}'</script>
+    <script>var path = '${path}'; var status = '${status}'</script>
     <jsp:include page="../jsp/scripts.jsp"/>
 </head>
 <body>
@@ -41,18 +43,14 @@
                 <tiles:insertDefinition name="menu"/>
                 <div id="selectCityArea">
                     <div>Город:</div>
-                    <div id="selectCity"><span class="orangeText">Вологда</span>
+                    <div id="selectCity"><span class="orangeText">${helper:getCurrentCity(pageContext).getName()}</span>
                         <div id="popUpSelectCity">
                             <table>
-                                <tr>
-                                    <td><a href="#" class="changeCityLink">Череповец</a></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#" class="changeCityLink">Архангельск</a></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#" class="changeCityLink">Киров</a></td>
-                                </tr>
+                                <c:forEach items="${helper:getListCities()}"  var="city">
+                                    <tr>
+                                        <td><a href="${path}/changeCity.do?id=${city.getId()}" class="changeCityLink">${city.getName()}</a></td>
+                                    </tr>
+                                </c:forEach>
                             </table>
                         </div>
                     </div>
