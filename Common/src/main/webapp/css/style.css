@@ -101,7 +101,7 @@ body {
     font-family: Intro;
 }
 
-#selectCityArea > div {
+.displayInliveBlock {
     display: inline-block;
 }
 
@@ -124,6 +124,9 @@ body {
 
 .clear {
     clear: left;
+}
+.clearRight {
+    clear: right;
 }
 
 .doubleOrange {
@@ -415,6 +418,10 @@ body {
     text-align: center;
 }
 
+.textAlignRight{
+    text-align: right;
+}
+
 #map2{
     width: 100%;
     height: 400px;
@@ -444,7 +451,7 @@ body {
 }
 
 .buttonPrice:hover{
-   background:  #52aa52;
+    background:  #52aa52;
 }
 
 .shiftButton{
@@ -498,4 +505,60 @@ body {
 .changeCityLink:hover{
     color: #feb772;
     cursor: pointer;
+}
+
+#popUpCheckCity{
+    text-align: left;
+    margin: 10px 78px 0 0;
+    border: 1px solid #B6D79F;
+    border-radius: 5px;
+    font-family: Intro;
+    padding: 10px 20px;
+    box-shadow: 0px 5px 21px -10px #000;
+    opacity: 0;
+    width: 300px;
+    background: none repeat scroll 0% 0% #FFF;
+    float: right;
+}
+
+.popUpChangeCityAnswers{
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.popUpChangeCityHeader{
+    margin: 0 0 5px;
+    font-size: 18px;
+}
+
+.popUpChangeCityCity{
+    color: #feb772;
+    font-size: 20px;
+    margin: 0 0 4px 0;
+}
+
+#popUpChangeCityCross{
+    text-align: right;
+    cursor: pointer;
+}
+
+#toner{
+    display: none;
+    background-color: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    top: 0;
+    z-index: 10;
+    position: absolute;
+    left: 0;
+}
+
+#popUpSelectCityBig{
+    width:350px;
+    background:#fff;
+    border-radius:10px;
+    padding: 15px 0 25px 50px;
+    margin: 100px auto 0;
 }
