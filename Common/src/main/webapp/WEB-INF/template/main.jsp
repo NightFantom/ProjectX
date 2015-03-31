@@ -31,6 +31,11 @@
     <jsp:include page="../jsp/scripts.jsp"/>
 </head>
 <body>
+<div id="toner">
+    <div id="popUpSelectCityBig">
+        sdfsdfsdfdf
+    </div>
+</div>
 <div id="fon">
     <div id="basis">
         <div id="wrapper">
@@ -42,21 +47,37 @@
                 </div>
                 <tiles:insertDefinition name="menu"/>
                 <div id="selectCityArea">
-                    <div>Город:</div>
-                    <div id="selectCity"><span class="orangeText">${helper:getCurrentCity(pageContext).getName()}</span>
+                    <div class="displayInliveBlock">Город:</div>
+                    <c:set var="cityName" value="${helper:getCurrentCity(pageContext.request).name}"/>
+                    <div class="displayInliveBlock" id="selectCity"><span class="orangeText" id="currentCity">${cityName}</span>
                         <div id="popUpSelectCity">
                             <table>
                                 <c:forEach items="${helper:getListCities()}"  var="city">
                                     <tr>
-                                        <td><a href="${path}/changeCity.do?id=${city.getId()}" class="changeCityLink">${city.getName()}</a></td>
+                                        <td class="changeCityLink" id="${city.id}">${city.name}</td>
                                     </tr>
                                 </c:forEach>
                             </table>
                         </div>
                     </div>
                 </div>
+                <div id="popUpCheckCity">
+                    <div class="textAlignRight">
+                        <img id="popUpChangeCityCross" src="${path}/images/cross.png">
+                    </div>
+                    <div class="popUpChangeCityHeader">Ваш город</div>
+                    <div class="popUpChangeCityCity">${cityName}</div>
+                    <div class="popUpChangeCityAnswers">
+                        <span>Выбрать другой</span>
+                    </div>
+                    <div id="popUpChangeCityAnswerYes" class="popUpChangeCityAnswers marginLeft20">
+                        <span class="orangeText">Да, всё верно</span>
+                    </div>
+                </div>
                 <div class="clear"></div>
+
             </header>
+            <div class="clearRight"></div>
             <div id="content">
                 ${content}
             </div>
@@ -79,7 +100,7 @@
 <footer>
     <div id="script">
         <tiles:putAttribute name="script"/>
-        <jsp:include page="../jsp/yandexMetrica.jsp"/>
+        <%--<jsp:include page="../jsp/yandexMetrica.jsp"/>--%>
     </div>
 </footer>
 </body>

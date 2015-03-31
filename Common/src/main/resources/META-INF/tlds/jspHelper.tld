@@ -65,6 +65,6 @@
     <function>
         <name>getCurrentCity</name>
         <function-class>helpers.SessionAndRequestHelper</function-class>
-        <function-signature> entities.City getCurrentCity(javax.servlet.jsp.PageContext)</function-signature>
+        <function-signature> entities.City getCity(javax.servlet.http.HttpServletRequest)</function-signature>
     </function>
 </taglib>
