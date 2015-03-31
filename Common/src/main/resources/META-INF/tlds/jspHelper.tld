@@ -58,9 +58,9 @@
         <function-signature>java.lang.String getCostMedicament(java.lang.Double)</function-signature>
     </function>
     <function>
-        <name>getCityStatus</name>
+        <name>isViewChangeCityPopUp</name>
         <function-class>helpers.SessionAndRequestHelper</function-class>
-        <function-signature> boolean changeCityStatus(javax.servlet.jsp.PageContext)</function-signature>
+        <function-signature> boolean isViewChangeCityPopUp(javax.servlet.jsp.PageContext)</function-signature>
     </function>
     <function>
         <name>getCurrentCity</name>

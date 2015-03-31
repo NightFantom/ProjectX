@@ -14,7 +14,7 @@
 <tiles:importAttribute/>
 
 <c:set var="path" value="${helper:getPath(pageContext)}"/>
-<c:set var="status" value="${helper:getCityStatus(pageContext)}"/>
+<c:set var="isNotViewChangeCityPopUp" value="${!helper:isViewChangeCityPopUp(pageContext)}"/>
 
 <!DOCTYPE html>
 <html>
@@ -27,15 +27,22 @@
     <link rel="stylesheet" type="text/css" href="${path}/css/jquery-ui-1.7.2.custom.css"/>
     <link rel="shortcut icon" href="${path}/favicon.ico" type="image/x-icon"/>
     <title><tiles:getAsString name="title"/></title>
-    <script>var path = '${path}'; var status = '${status}'</script>
+    <script>var path = '${path}';</script>
     <jsp:include page="../jsp/scripts.jsp"/>
 </head>
 <body>
-<div id="toner">
-    <div id="popUpSelectCityBig">
-        sdfsdfsdfdf
+<c:if test="${isNotViewChangeCityPopUp}">
+    <div id="toner" class="windowMarker">
+        <div id="popUpSelectCityBig" class="windowMarker">
+            <div class="textAlignRight">
+                <img class="popUpChangeCityCross" src="${path}/images/cross.png">
+            </div>
+            <c:forEach items="${helper:getListCities()}"  var="city">
+                <p class="popUpSelectCityBigCity" id="${city.id}">${city.name}</p>
+            </c:forEach>
+        </div>
     </div>
-</div>
+</c:if>
 <div id="fon">
     <div id="basis">
         <div id="wrapper">
@@ -61,19 +68,21 @@
                         </div>
                     </div>
                 </div>
-                <div id="popUpCheckCity">
-                    <div class="textAlignRight">
-                        <img id="popUpChangeCityCross" src="${path}/images/cross.png">
+                <c:if test="${isNotViewChangeCityPopUp}">
+                    <div id="popUpCheckCity" class="windowMarker">
+                        <div class="textAlignRight">
+                            <img class="popUpChangeCityCross" src="${path}/images/cross.png">
+                        </div>
+                        <div class="popUpChangeCityHeader">Ваш город</div>
+                        <div class="popUpChangeCityCity">${cityName}</div>
+                        <div id="popUpChangeCityAnswerNo" class="popUpChangeCityAnswers">
+                            <span>Выбрать другой</span>
+                        </div>
+                        <div id="popUpChangeCityAnswerYes" class="popUpChangeCityAnswers marginLeft20">
+                            <span class="orangeText">Да, всё верно</span>
+                        </div>
                     </div>
-                    <div class="popUpChangeCityHeader">Ваш город</div>
-                    <div class="popUpChangeCityCity">${cityName}</div>
-                    <div class="popUpChangeCityAnswers">
-                        <span>Выбрать другой</span>
-                    </div>
-                    <div id="popUpChangeCityAnswerYes" class="popUpChangeCityAnswers marginLeft20">
-                        <span class="orangeText">Да, всё верно</span>
-                    </div>
-                </div>
+                </c:if>
                 <div class="clear"></div>
 
             </header>
@@ -100,7 +109,7 @@
 <footer>
     <div id="script">
         <tiles:putAttribute name="script"/>
-        <%--<jsp:include page="../jsp/yandexMetrica.jsp"/>--%>
+        <jsp:include page="../jsp/yandexMetrica.jsp"/>
     </div>
 </footer>
 </body>

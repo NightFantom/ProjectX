@@ -137,22 +137,16 @@ public class SessionAndRequestHelper {
     }
 
     /**
-     * Изменяет статус просмотра всплывающего окна
-     * @return true - окно было просмотрено, иначе false
+     * Показывали ли мы всплывающее окно выбора города.
+     * @return Да - окно было просмотрено. Нет, в противном случае.
      */
-    public static boolean changeCityStatus(PageContext pageContext) {
-        boolean status = (boolean)((HttpServletRequest) pageContext.getRequest()).getSession().getAttribute(GlobalConstants.FLAG_CITY_CHECK);
-        ((HttpServletRequest) pageContext.getRequest()).getSession().setAttribute(GlobalConstants.FLAG_CITY_CHECK, true);
-        return status;
+    public static boolean isViewChangeCityPopUp(PageContext pageContext) {
+        HttpSession session = ((HttpServletRequest) pageContext.getRequest()).getSession();
+        Boolean status = (Boolean)session.getAttribute(GlobalConstants.FLAG_CITY_CHECK);
+        if (status != null && status == Boolean.FALSE){
+            session.removeAttribute(GlobalConstants.FLAG_CITY_CHECK);
+            return false;
+        }
+        return true;
     }
-
-    /**
-     * Изменяет статус просмотра всплывающего окна
-     * @return true - окно было просмотрено, иначе false
-     */
-    public static City getCurrentCity(PageContext pageContext) {
-        return (City) ((HttpServletRequest) pageContext.getRequest()).getSession().getAttribute(GlobalConstants.ID_USER_CITY);
-    }
-
-
 }
