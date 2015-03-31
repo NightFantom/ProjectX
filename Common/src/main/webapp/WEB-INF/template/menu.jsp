@@ -17,11 +17,11 @@
                 <tiles:putAttribute name="imagePath" value="images/hederMenu/icon1.png"/>
                 <tiles:putAttribute name="text" value="поиск лекарств"/>
             </tiles:insertDefinition>
-            <tiles:insertDefinition name="menuItem">
-                <tiles:putAttribute name="link" value="listPharmacy.do"/>
-                <tiles:putAttribute name="imagePath" value="images/hederMenu/icon2.png"/>
-                <tiles:putAttribute name="text" value="список аптек"/>
-            </tiles:insertDefinition>
+            <%--<tiles:insertDefinition name="menuItem">--%>
+                <%--<tiles:putAttribute name="link" value="listPharmacy.do"/>--%>
+                <%--<tiles:putAttribute name="imagePath" value="images/hederMenu/icon2.png"/>--%>
+                <%--<tiles:putAttribute name="text" value="список аптек"/>--%>
+            <%--</tiles:insertDefinition>--%>
             <tiles:insertDefinition name="menuItem">
                 <tiles:putAttribute name="link" value="ourContacts.do"/>
                 <tiles:putAttribute name="imagePath" value="images/hederMenu/icon3.png"/>
