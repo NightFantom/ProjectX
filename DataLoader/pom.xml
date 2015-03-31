@@ -29,7 +29,10 @@
             <artifactId>juniversalchardet</artifactId>
             <version>1.0.3</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-csv</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
