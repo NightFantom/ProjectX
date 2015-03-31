@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>pharmacy</groupId>
-    <artifactId>pharmacy</artifactId>
+    <artifactId>pharmacys</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
     <name>Pharmacy</name>
@@ -165,6 +165,7 @@
 	</dependencyManagement>
 
 	<build>
+        <finalName>${project.artifactId}</finalName>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -217,8 +218,8 @@
 		<myapp.groupid>pharmacy</myapp.groupid>
 		<myapp.version>1.0</myapp.version>
 		<myapp.finalname>${project.artifactId}-${myapp.version}</myapp.finalname>
-        <project.pathServletApi>C:\Program Files\Tomcat\apache-tomcat-8.0.15-windows-x64\apache-tomcat-8.0.15\lib\servlet-api.jar</project.pathServletApi>
-        <project.pathJSPApi>C:\Program Files\Tomcat\apache-tomcat-8.0.15-windows-x64\apache-tomcat-8.0.15\lib\jsp-api.jar</project.pathJSPApi>
+        <project.pathServletApi>c:\My program\Tomcat 8\apache-tomcat-8.0.12\lib\servlet-api.jar</project.pathServletApi>
+        <project.pathJSPApi>c:\My program\Tomcat 8\apache-tomcat-8.0.12\lib\jsp-api.jar</project.pathJSPApi>
         <project.JDK>1.8</project.JDK>
 	</properties>
 </project>
