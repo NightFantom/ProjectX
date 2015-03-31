@@ -7,7 +7,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>admin</artifactId>
+    <artifactId>adminka</artifactId>
     <packaging>war</packaging>
     <name>Admin</name>
 
