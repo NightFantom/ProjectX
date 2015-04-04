@@ -22,4 +22,5 @@ public class GlobalConstants {
     public static final String IS_LOGIN_PHARMACY = "isLoginPharmacy";
     public static final String ID_MEDICAMENT_FOR_QUERY = "idMedicament";
     public static final String FLAG_CITY_CHECK = "flagCityCheck";
+    public static final String DEFAULT_CITY = "ВОЛОГДА";
 }

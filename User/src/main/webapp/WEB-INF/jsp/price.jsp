@@ -52,7 +52,7 @@
                             var myMap, myPlacemark, myCollection;
                             function init() {
                                 myMap = new ymaps.Map("map2", {
-                                    center: [59.224058, 39.891808],
+                                    center: [${helper:getCurrentCity(pageContext.request).coordinates}],
                                     zoom: 12
                                 });
                                 myCollection = new ymaps.GeoObjectCollection({}, {});

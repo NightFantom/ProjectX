@@ -1,7 +1,7 @@
 /**
  * Создано: Денис 
  * Дата: 08.01.15
- * Описание: 
+ * Описание: Класс-помошник для работы с сущностью город
  */
 package helpers;
 
@@ -15,19 +15,24 @@ import java.util.List;
 
 public class CityHelper {
     private static List<City> listCity;
+    private static City defaultCity;
 
     /**
      * Получение списка всех городов
      * @return Список городов
      */
-    public synchronized static List<City> getListCities() {
+    public static List<City> getListCities() {
         if (listCity == null) {
-            listCity = new HibernateService<City>(City.class).execute(new GenerallyHibernateQuery() {
-                @Override
-                public List<City> run(Session session) throws HibernateException {
-                    return session.createCriteria(City.class).list();
+            synchronized (CityHelper.class){
+                if (listCity == null) {
+                    listCity = new HibernateService<City>(City.class).execute(new GenerallyHibernateQuery() {
+                        @Override
+                        public List<City> run(Session session) throws HibernateException {
+                            return session.createCriteria(City.class).list();
+                        }
+                    });
                 }
-            });
+            }
         }
         return listCity;
     }
@@ -45,6 +50,27 @@ public class CityHelper {
             }
         }
         return null;
+    }
+
+    /**
+     * Получение города пользователя по умолчанию
+     * @return Город пользователя по умолчанию. На данный момент, это Вологда
+     */
+    public static City getDefaultCity(){
+        if(defaultCity == null){
+            synchronized (CityHelper.class){
+                if (defaultCity == null){
+                    List<City> list = getListCities();
+                    for(City city: list){
+                        if(GlobalConstants.DEFAULT_CITY.equals(city.getName())){
+                            defaultCity = city;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        return defaultCity;
     }
 
 }
