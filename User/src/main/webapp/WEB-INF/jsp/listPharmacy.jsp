@@ -38,8 +38,8 @@
                     zoom: 12
                 });
                 myCollection = new ymaps.GeoObjectCollection({}, {});
-                <c:forEach var="list" items="${form.data}" >
-                myPlacemark = new ymaps.Placemark([${list.coordinates}], {
+                <c:forEach var="pharm" items="${form.data}" >
+                myPlacemark = new ymaps.Placemark([${pharm.coordinates}], {
                     balloonContentHeader: '<a href="${path}/viewPharmacy.do?id=${pharm.id}">${pharm.name}</a>',
                     balloonContentBody: '<p>Телефон: ${pharm.phone}</p> '
                 });
