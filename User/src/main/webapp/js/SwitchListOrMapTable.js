@@ -2,32 +2,10 @@ jQuery(document).ready(function ($) {
 
     var $list = jQuery("#listButton");
     var $map = jQuery("#mapButton");
-    var $price = jQuery("#price");
+    var $table = jQuery(".tables");
     var $workArea = jQuery("#workArea");
     $workArea.css("display","none");
 
-    $price.tablesorter({
-        sortList: [[4,0]],
-        headers: {
-            0: {sorter: false},
-            1: {sorter: false},
-            2: {sorter: false},
-            5: {sorter: false}
-        },
-        widgets: ["zebra"],
-        widgetOptions : {
-            zebra :[ "row1", "row2" ]
-        },
-        sortReset   : true
-
-    });
-
-    var $sel = jQuery(".sorter-false");
-    $sel.removeClass("tablesorter-headerUnSorted");
-
-    $price.bind("sortEnd",function(e, table) {
-        $sel.removeClass("tablesorter-headerUnSorted");
-    });
 
 
 
@@ -37,9 +15,9 @@ jQuery(document).ready(function ($) {
             $list.addClass("buttonCheck");
             $map.removeClass("buttonCheck");
             $map.addClass("buttonNotCheck");
-            $price.removeAttr("style");
+            $table.removeAttr("style");
             $workArea.css("display","none");
-            $price.insertBefore($workArea);
+            $table.insertBefore($workArea);
         }
     });
 
@@ -50,8 +28,8 @@ jQuery(document).ready(function ($) {
             $list.removeClass("buttonCheck");
             $list.addClass("buttonNotCheck");
             $workArea.removeAttr("style");
-            $price.css("display","none");
-            $workArea.insertBefore($price);
+            $table.css("display","none");
+            $workArea.insertBefore($table);
         }
     });
 

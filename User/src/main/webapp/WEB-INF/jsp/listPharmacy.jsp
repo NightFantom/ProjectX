@@ -14,7 +14,9 @@
 <tiles:insertDefinition name="main" flush="true">
     <tiles:putAttribute name="title" value="Список аптек"/>
     <tiles:putAttribute name="content">
-        <grid:table name="${form.data}">
+        <div id="listButton" class="buttonPrice buttonCheck">Список</div>
+        <div id="mapButton" class="buttonPrice buttonNotCheck shiftButton">Карта</div>
+        <grid:table name="${form.data}" uid="listPharmaces" class="tables">
             <grid:column href="${path}/viewPharmacy.do" paramId="id" paramProperty="id">
                 <div class = "map"></div>
             </grid:column>
@@ -22,5 +24,29 @@
             <grid:column property="address" title="Адрес" href="${path}/viewPharmacy.do" paramId="id" paramProperty="id" class="highlightLink"/>
             <grid:column property="phone" title="Телефон"/>
         </grid:table>
+        <div id="workArea">
+            <div id="map2"></div>
+        </div>
+    </tiles:putAttribute>
+    <tiles:putAttribute name="script">
+        <script type="text/javascript">
+            ymaps.ready(init);
+            var myMap, myPlacemark, myCollection;
+            function init() {
+                myMap = new ymaps.Map("map2", {
+                    center: [${helper:getCurrentCity(pageContext.request).coordinates}],
+                    zoom: 12
+                });
+                myCollection = new ymaps.GeoObjectCollection({}, {});
+                <c:forEach var="list" items="${form.data}" >
+                myPlacemark = new ymaps.Placemark([${list.coordinates}], {
+                    balloonContentHeader: '<a href="${path}/viewPharmacy.do?id=${pharm.id}">${pharm.name}</a>',
+                    balloonContentBody: '<p>Телефон: ${pharm.phone}</p> '
+                });
+                myCollection.add(myPlacemark);
+                </c:forEach>
+                myMap.geoObjects.add(myCollection);
+            }
+        </script>
     </tiles:putAttribute>
 </tiles:insertDefinition>
