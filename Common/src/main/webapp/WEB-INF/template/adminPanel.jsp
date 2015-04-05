@@ -18,6 +18,7 @@
     <meta http-equiv="Content-language" content="ru">
     <jsp:include page="../jsp/scriptsProtected.jsp"></jsp:include>
     <link rel="stylesheet" type="text/css" href="${path}/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/css/jquery-ui.css"/>
     <link rel="shortcut icon" href="${path}/favicon.ico" type="image/x-icon"/>
     <title>${title}</title>
 </head>
@@ -43,6 +44,7 @@
                         <a href="${path}/private/listClient.do"><p class="leftMenu">Клиенты</p></a>
                         <a href="${path}/private/createClient.do"><p class="leftSubMenu">Создать</p></a>
                         <a href="${path}/private/listStatisticPharmacy.do"><p class="leftMenu">Статистика</p></a>
+                        <a href="${path}/private/statisticMedicament.do"><p class="leftSubMenu">Лекарства</p></a>
                         <a href="#"><p class="leftMenu">Настройки</p></a>
                         <a href="${path}/private/exit.do"><p class="leftMenu">Выход</p></a>
                     </div>
@@ -62,7 +64,7 @@
 </div>
 <footer>
     <div id="script">
-        <tiles:putAttribute name="script"/>
+        ${script}
     </div>
 </footer>
 </body>

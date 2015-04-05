@@ -23,4 +23,6 @@ public class GlobalConstants {
     public static final String ID_MEDICAMENT_FOR_QUERY = "idMedicament";
     public static final String FLAG_CITY_CHECK = "flagCityCheck";
     public static final String DEFAULT_CITY = "ВОЛОГДА";
+    public static final String START_DAY = "startDay";
+    public static final String END_DAY = "endDay";
 }
