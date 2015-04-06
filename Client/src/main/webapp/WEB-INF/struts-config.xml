@@ -6,6 +6,7 @@
         <form-bean name="LoginForm" type="forms.LoginForm"/>
         <form-bean name="DefaultForm" type="forms.ActionFormBase"/>
         <form-bean name="ViewPharmacy" type="forms.ViewPharmacyClientForm"/>
+        <form-bean name="MedStatForm" type="forms.MedicamentStatForm"/>
     </form-beans>
 
     <global-exceptions>
@@ -23,6 +24,9 @@
         <action path="/error" forward="/WEB-INF/jsp/error.jsp"/>
         <action path="/private/rejectAccess" forward="/WEB-INF/jsp/rejectAccess.jsp"/>
         <action path="/private/welcomePage" forward="/WEB-INF/jsp/welcomePage.jsp"/>
+        <action path="/private/statisticMedicament"
+                name="MedStatForm"
+                forward="/WEB-INF/jsp/medicamentsStat.jsp"/>
 
         <action path="/login"
                 name="LoginForm"
@@ -63,6 +67,13 @@
             <forward name="success" path="/WEB-INF/jsp/pharmaciesStatistic.jsp"/>
         </action>
 
+        <action path="/private/listStatisticMedicament"
+                name="MedStatForm"
+                scope="request"
+                type="action.MedicamentsStatAction"
+                parameter="filter">
+            <forward name="success" path="/WEB-INF/jsp/listMedStat.jsp"/>
+        </action>
     </action-mappings>
 
     <controller>

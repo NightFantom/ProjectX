@@ -27,7 +27,7 @@ public abstract class BaseStatistic implements Statistic {
     }
 
     protected BaseStatistic(int timeIntervalInHour, String name) {
-        this.INTERVAL = 5 * 60 * 1000;
+        this.INTERVAL = timeIntervalInHour * 3600000;
         this.STATISTIC_NAME = name;
         LOG.info("Установлен интервал " + timeIntervalInHour + "ч. для статистики \"" + this.STATISTIC_NAME + "\"");
     }

@@ -2,7 +2,7 @@
     Создано: Денис 
     Дата: 04.01.15.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true"%>
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://helper" prefix="helper"%>
@@ -43,7 +43,8 @@
                         <a href="${path}/private/createPharmacy.do"><p class="leftSubMenu">Создать</p></a>
                         <a href="${path}/private/listClient.do"><p class="leftMenu">Клиенты</p></a>
                         <a href="${path}/private/createClient.do"><p class="leftSubMenu">Создать</p></a>
-                        <a href="${path}/private/listStatisticPharmacy.do"><p class="leftMenu">Статистика</p></a>
+                        <a><p class="leftMenu">Статистика</p></a>
+                        <a href="${path}/private/listStatisticPharmacy.do"><p class="leftSubMenu">Аптеки</p></a>
                         <a href="${path}/private/statisticMedicament.do"><p class="leftSubMenu">Лекарства</p></a>
                         <a href="#"><p class="leftMenu">Настройки</p></a>
                         <a href="${path}/private/exit.do"><p class="leftMenu">Выход</p></a>
