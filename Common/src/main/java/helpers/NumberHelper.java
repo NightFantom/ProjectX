@@ -7,6 +7,9 @@ package helpers;
 
 public class NumberHelper {
 
+    public static final int Available_To_Order = -2;
+    public static final int Not_Available = 0;
+
     /**
      * Получение количества единиц товара с учётом наличия и скрытности данных о количестве товара
      * @param count Количество единиц товара
@@ -14,11 +17,11 @@ public class NumberHelper {
      */
     public static String getAmountMedicament(Integer count){
         switch (count){
-            case 0:
+            case Not_Available:
                 return "Нет в наличии";
             case -1:
                 return "Есть в наличии";
-            case -2:
+            case Available_To_Order:
                 return "Доступно под заказ";
         }
         return count.toString();

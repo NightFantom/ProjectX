@@ -10,6 +10,7 @@ import entities.Pharmacy;
 import entities.Price;
 import helpers.CityHelper;
 import helpers.GlobalConstants;
+import helpers.NumberHelper;
 import hibernateService.HibernateService;
 
 import java.util.*;
@@ -73,7 +74,8 @@ public class PriceWU implements ListWorkUnit<Price> {
      */
     private Price getFakePrice(Pharmacy pharmacy){
         Price fakePrice = new Price();
-        fakePrice.setAmount(-2);
+        int amount = pharmacy.getFakePrice() ? NumberHelper.Available_To_Order : NumberHelper.Not_Available;
+        fakePrice.setAmount(amount);
         fakePrice.setCost(-10D);
         fakePrice.setDateUpdate(new GregorianCalendar());
         fakePrice.setPharmacy(pharmacy);
