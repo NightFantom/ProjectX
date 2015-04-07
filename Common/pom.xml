@@ -22,9 +22,9 @@
         <dependency>
             <groupId>${myapp.groupid}</groupId>
             <artifactId>jsp-api</artifactId>
-            <version>1.0.0</version>
-            <scope>system</scope>
-            <systemPath>${project.pathJSPApi}</systemPath>
+            <!--<version>1.0.0</version>-->
+            <!--<scope>system</scope>-->
+            <!--<systemPath>${project.pathJSPApi}</systemPath>-->
         </dependency>
 
         <dependency>
