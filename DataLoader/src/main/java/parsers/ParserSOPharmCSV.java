@@ -2,6 +2,7 @@ package parsers;
 
 import fileService.FileManager;
 import form.UpdateRecord;
+import helpers.StringHelper;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.apache.logging.log4j.LogManager;
@@ -79,7 +80,7 @@ public class ParserSOPharmCSV implements Parser{
     }
 
     public List<UpdateRecord> getRecords(String pathToFile, String encoding) throws ParsingException {
-        if (!EMPTY.equals(pathToFile)) {
+        if (StringHelper.isNotEmpty(pathToFile)) {
             this.encoding = encoding;
             parseFile(pathToFile);
         } else {
