@@ -7,7 +7,6 @@ import org.apache.commons.csv.CSVRecord;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringReader;
 import java.nio.charset.Charset;
@@ -16,9 +15,10 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Created by Виктор on 30.03.2015.
+ * Created by Виктор on 07.04.2015.
  */
-public class ParserIPGolodovaCSV implements Parser {
+public class ParserSOPharmCSV implements Parser{
+
     private List<UpdateRecord> list = new LinkedList<UpdateRecord>();
     private String encoding;
     private String s;
@@ -31,14 +31,14 @@ public class ParserIPGolodovaCSV implements Parser {
     private final String QUOTE = "\"";
     private final String EMPTY = "";
     private CSVRecord csvRecord;
-    private final int NAME = 1;
-    private final int COST = 3;
+    private final int NAME = 2;
+    private final int COST = 5;
 
-    protected final Logger LOG = LogManager.getLogger(ParserIPGolodovaCSV.class);
+    protected final Logger LOG = LogManager.getLogger(ParserSOPharmCSV.class);
 
     private void skipHeader() {
         s = new String(scanner.nextLine().getBytes(), Charset.forName(encoding));
-        while (s.charAt(0) != '1') {
+        while (s.charAt(0) != '8') {
             s = new String(scanner.nextLine().getBytes(), Charset.forName(encoding));
         }
         stringReader = new StringReader(s);
@@ -64,7 +64,7 @@ public class ParserIPGolodovaCSV implements Parser {
                     list.add(parseRecord);
                 }
 
-                //TODO Почему-то не считывается в нужной кодировке буква 'И'
+               //TODO Почему-то не считывается в нужной кодировке буква 'И'
                 s = new String(scanner.nextLine().getBytes(), Charset.forName(encoding));
                 if (s.indexOf((char) 65533) > -1) {
                     s = s.replace(s.charAt(s.indexOf((char) 65533)), 'И').replace("?", EMPTY);
