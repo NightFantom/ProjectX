@@ -74,7 +74,7 @@ public class PriceWU implements ListWorkUnit<Price> {
      */
     private Price getFakePrice(Pharmacy pharmacy){
         Price fakePrice = new Price();
-        int amount = pharmacy.getFakePrice() ? NumberHelper.Available_To_Order : NumberHelper.Not_Available;
+        int amount = pharmacy.getFakePrice() ? NumberHelper.AVAILABLE_TO_ORDER : NumberHelper.NOT_DATA;
         fakePrice.setAmount(amount);
         fakePrice.setCost(-10D);
         fakePrice.setDateUpdate(new GregorianCalendar());

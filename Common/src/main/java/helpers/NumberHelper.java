@@ -7,8 +7,9 @@ package helpers;
 
 public class NumberHelper {
 
-    public static final int Available_To_Order = -2;
-    public static final int Not_Available = 0;
+    public static final int AVAILABLE_TO_ORDER = -2;
+    public static final int NOT_AVAILABLE = 0;
+    public static final int NOT_DATA = -3;
 
     /**
      * Получение количества единиц товара с учётом наличия и скрытности данных о количестве товара
@@ -17,12 +18,14 @@ public class NumberHelper {
      */
     public static String getAmountMedicament(Integer count){
         switch (count){
-            case Not_Available:
+            case NOT_AVAILABLE:
                 return "Нет в наличии";
             case -1:
                 return "Есть в наличии";
-            case Available_To_Order:
+            case AVAILABLE_TO_ORDER:
                 return "Доступно под заказ";
+            case NOT_DATA:
+                return "Нет данных";
         }
         return count.toString();
     }
