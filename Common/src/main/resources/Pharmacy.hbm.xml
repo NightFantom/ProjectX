@@ -35,7 +35,6 @@
         </query>
         <query name="getAllPharmacyOutList">
             select pharmacy from entities.Pharmacy as pharmacy where pharmacy.city = :city and pharmacy.id not in (:ids)
-            and pharmacy.fakePrice = true
         </query>
     </class>
 </hibernate-mapping>

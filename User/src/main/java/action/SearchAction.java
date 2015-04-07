@@ -14,6 +14,8 @@ import helpers.SessionAndRequestHelper;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import statistic.MedicamentStatistic;
+import statistic.StatisticUtil;
 import workUnit.ListMedicamentsWU;
 import workUnit.ListWorkUnit;
 import workUnit.PriceWU;
@@ -69,10 +71,10 @@ public class SearchAction extends LogDispatchAction {
 
         Map<Object, Object> map = new HashMap<>();
         Integer cityId = SessionAndRequestHelper.getCityId(request);
-        cityId = cityId == null ? 1 : cityId;
         map.put(GlobalConstants.ID_USER_CITY, cityId);
         map.put(GlobalConstants.ID_MEDICAMENT_FOR_QUERY, frm.getId());
 
+        StatisticUtil.getStatistic(MedicamentStatistic.class).increment(frm.getId());
         PriceWU workUnit = new PriceWU();
         workUnit.setFilter(map);
         workUnit.filter();

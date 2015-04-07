@@ -2,7 +2,7 @@
     Создано: Денис 
     Дата: 04.01.15.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true"%>
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://helper" prefix="helper"%>
@@ -17,6 +17,7 @@
     <meta http-equiv="Content-language" content="ru">
     <jsp:include page="../jsp/scriptsProtected.jsp"></jsp:include>
     <link rel="stylesheet" type="text/css" href="${path}/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/css/jquery-ui.css"/>
     <link rel="shortcut icon" href="${path}/favicon.ico" type="image/x-icon"/>
     <title>${title}</title>
 </head>
@@ -38,7 +39,9 @@
                 <div class="twoColumn">
                     <div class="leftColumnAdmin">
                         <a href="${path}/private/myPharmacies.do"><p class="leftMenu">Мои аптеки</p></a>
-                        <a href="${path}/private/pharmaciesStatistic.do"><p class="leftMenu">Статистика</p></a>
+                        <a><p class="leftMenu">Статистика</p></a>
+                        <a href="${path}/private/pharmaciesStatistic.do"><p class="leftSubMenu">Аптеки</p></a>
+                        <a href="${path}/private/statisticMedicament.do"><p class="leftSubMenu">Лекарства</p></a>
                         <a href="${path}/private/exit.do"><p class="leftMenu">Выход</p></a>
                     </div>
                     <div class="wrapperAdmin">
@@ -54,7 +57,7 @@
 </div>
 <footer>
     <div id="script">
-        <tiles:putAttribute name="script"/>
+        ${script}
     </div>
 </footer>
 </body>

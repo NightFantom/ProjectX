@@ -1,21 +1,21 @@
 /**
  * Создано: Денис 
  * Дата: 24.01.15
- * Описание: 
+ * Описание: Класс для инициализации сесси
  */
 package listeners;
 
-import entities.City;
+import helpers.CityHelper;
 import helpers.GlobalConstants;
 
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
 public class SessionInit implements HttpSessionListener {
-    private static final City DEFAULT_CITY = new City("Вологда", 1);
+
 
     public void sessionCreated(HttpSessionEvent httpSessionEvent) {
-        httpSessionEvent.getSession().setAttribute(GlobalConstants.ID_USER_CITY, DEFAULT_CITY);
+        httpSessionEvent.getSession().setAttribute(GlobalConstants.ID_USER_CITY, CityHelper.getDefaultCity());
         httpSessionEvent.getSession().setAttribute(GlobalConstants.FLAG_CITY_CHECK,Boolean.FALSE);
     }
 

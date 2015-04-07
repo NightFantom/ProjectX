@@ -1,7 +1,7 @@
 /**
  * Создано: Денис 
  * Дата: 07.01.15
- * Описание: 
+ * Описание: Базовый класс для сбора статистики
  */
 package statistic;
 
@@ -16,7 +16,7 @@ import java.util.Map;
 public abstract class BaseStatistic implements Statistic {
 
     private static final int DEFAULT_INTERVAL_IN_HOUR = 1;
-    protected Map<Integer, Integer> map = new HashMap<>();
+    protected Map<Integer, LightInteger> map = new HashMap<>();
     protected Calendar lastUpdateTime = new GregorianCalendar();
     protected final long INTERVAL;
     protected final Logger LOG = LogManager.getLogger(BaseStatistic.class);
@@ -31,10 +31,13 @@ public abstract class BaseStatistic implements Statistic {
         this.STATISTIC_NAME = name;
         LOG.info("Установлен интервал " + timeIntervalInHour + "ч. для статистики \"" + this.STATISTIC_NAME + "\"");
     }
-    //TODO:Возможно, очень накладно так хранить статистику. Много мусора создаётся. В дальнейшём, улутшить.
+
     public synchronized void increment(Integer id) {
-        Integer count = map.get(id);
-        count = count == null ? 1 : ++count;
+        LightInteger count = map.get(id);
+        if (count == null){
+            count = new LightInteger();
+        }
+        count.incrementOn(1);
         map.put(id, count);
     }
 

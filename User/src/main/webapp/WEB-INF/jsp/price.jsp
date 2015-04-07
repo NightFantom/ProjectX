@@ -29,7 +29,7 @@
                     <tiles:putAttribute name="grid">
                         <div id="listButton" class="buttonPrice buttonCheck">Список</div>
                         <div id="mapButton" class="buttonPrice buttonNotCheck shiftButton">Карта</div>
-                        <grid:table uid="price" name="${form.data}">
+                        <grid:table uid="price" name="${form.data}" class="tables">
                             <grid:column href="${path}/viewPharmacy.do" paramId="id"
                                          paramProperty="pharmacy.id">
                                 <div class = "map"></div>
@@ -52,22 +52,48 @@
                             var myMap, myPlacemark, myCollection;
                             function init() {
                                 myMap = new ymaps.Map("map2", {
-                                    center: [59.224058, 39.891808],
+                                    center: [${helper:getCurrentCity(pageContext.request).coordinates}],
                                     zoom: 12
                                 });
                                 myCollection = new ymaps.GeoObjectCollection({}, {});
                                 <c:forEach var="list" items="${form.data}" >
                                 myPlacemark = new ymaps.Placemark([${list.getPharmacy().getCoordinates()}], {
-                                    balloonContentBody: '<p class="bigText marginBottom30">${list.getCost()} руб. </p>',
+                                    balloonContentBody: '<p class="bigText marginBottom30">${helper:getCostMedicament(price.cost)} руб. </p>',
                                     balloonContentHeader: '<p class="bigText marginBottom30"><span class="orangeText"><bean:write name="form" property="fields(searchInput)"/></span></p>',
                                     balloonContentFooter: '<p class="smallItalicText">${list.getPharmacy().getName()}</p>',
-                                    hintContent: '<p class="smallItalicText">${list.getCost()} руб.</p>'
+                                    hintContent: '<p class="smallItalicText">${helper:getCostMedicament(price.cost)} руб.</p>'
 
                                 });
                                 myCollection.add(myPlacemark);
                                 </c:forEach>
                                 myMap.geoObjects.add(myCollection);
                             }
+                            $(document).ready(function(){
+                                var $price = jQuery("#price");
+                                $price.tablesorter({
+                                    sortList: [[4,0]],
+                                    headers: {
+                                        0: {sorter: false},
+                                        1: {sorter: false},
+                                        2: {sorter: false},
+                                        5: {sorter: false}
+                                    },
+                                    widgets: ["zebra"],
+                                    widgetOptions : {
+                                        zebra :[ "row1", "row2" ]
+                                    },
+                                    sortReset   : true
+
+                                });
+
+                                var $sel = jQuery(".sorter-false");
+                                $sel.removeClass("tablesorter-headerUnSorted");
+
+                                $price.bind("sortEnd",function(e, table) {
+                                    $sel.removeClass("tablesorter-headerUnSorted");
+                                });
+
+                            });
                         </script>
                     </tiles:putAttribute>
                 </tiles:insertDefinition>

@@ -3,7 +3,7 @@
     Date: 02.11.14.
 --%>
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true"%>
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://helper" prefix="helper"%>
@@ -24,7 +24,7 @@
     <meta name="description" content="Поиск лекарств в Вологде">
     <meta name="keywords" content="аптечная справка,аптечная справка Вологда, купить лекарства, где купить лекарства, аптеки вологды">
     <link rel="stylesheet" type="text/css" href="${path}/css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="${path}/css/jquery-ui-1.7.2.custom.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/css/jquery-ui.css"/>
     <link rel="shortcut icon" href="${path}/favicon.ico" type="image/x-icon"/>
     <title><tiles:getAsString name="title"/></title>
     <script>var path = '${path}';</script>
@@ -108,7 +108,7 @@
 </div>
 <footer>
     <div id="script">
-        <tiles:putAttribute name="script"/>
+        ${script}
         <jsp:include page="../jsp/yandexMetrica.jsp"/>
     </div>
 </footer>
