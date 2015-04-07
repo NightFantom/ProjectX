@@ -10,6 +10,7 @@ public class NumberHelper {
     public static final int AVAILABLE_TO_ORDER = -2;
     public static final int NOT_AVAILABLE = 0;
     public static final int NOT_DATA = -3;
+    public static final int AVAILABLE = -1;
 
     /**
      * Получение количества единиц товара с учётом наличия и скрытности данных о количестве товара
@@ -20,7 +21,7 @@ public class NumberHelper {
         switch (count){
             case NOT_AVAILABLE:
                 return "Нет в наличии";
-            case -1:
+            case AVAILABLE:
                 return "Есть в наличии";
             case AVAILABLE_TO_ORDER:
                 return "Доступно под заказ";
