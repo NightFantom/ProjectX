@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE struts-config>
+<!DOCTYPE struts-config SYSTEM "../META-INF/struts-config_1_2.dtd">
 <struts-config>
 
     <form-beans>
