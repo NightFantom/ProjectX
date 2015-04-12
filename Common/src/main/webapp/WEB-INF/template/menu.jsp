@@ -28,12 +28,13 @@
                 <tiles:putAttribute name="link" value="medicalInstitutions.do"/>
                 <tiles:putAttribute name="imagePath" value="images/hederMenu/icon4.png"/>
                 <tiles:putAttribute name="text" value="мед учреждения"/>
+                <tiles:putAttribute name="alt" value="мед учреждения"/>
             </tiles:insertDefinition>
-            <tiles:insertDefinition name="menuItem">
-                <tiles:putAttribute name="link" value="ourContacts.do"/>
-                <tiles:putAttribute name="imagePath" value="images/hederMenu/icon3.png"/>
-                <tiles:putAttribute name="text" value="наши контакты"/>
-                <tiles:putAttribute name="alt" value="наши контакты"/>
+             <tiles:insertDefinition name="menuItem">
+                <tiles:putAttribute name="link" value="posts.do"/>
+                <tiles:putAttribute name="imagePath" value="images/hederMenu/icon5.png"/>
+                <tiles:putAttribute name="text" value="полезная информация"/>
+                <tiles:putAttribute name="alt" value="полезная информация"/>
             </tiles:insertDefinition>
             <tiles:insertDefinition name="menuItem">
                 <tiles:putAttribute name="link" value="aboutProject.do"/>
@@ -42,11 +43,12 @@
                 <tiles:putAttribute name="alt" value="о проекте"/>
             </tiles:insertDefinition>
             <tiles:insertDefinition name="menuItem">
-                <tiles:putAttribute name="link" value="posts.do"/>
+                <tiles:putAttribute name="link" value="ourContacts.do"/>
                 <tiles:putAttribute name="imagePath" value="images/hederMenu/icon3.png"/>
-                <tiles:putAttribute name="text" value="полезная инфа"/>
-                <tiles:putAttribute name="alt" value="полезная инфа"/>
+                <tiles:putAttribute name="text" value="наши контакты"/>
+                <tiles:putAttribute name="alt" value="наши контакты"/>
             </tiles:insertDefinition>
+
         </tr>
     </table>
 </div>
