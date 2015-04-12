@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE struts-config>
+<!DOCTYPE struts-config SYSTEM "../META-INF/struts-config_1_2.dtd">
 <struts-config>
 
     <form-beans>
@@ -32,6 +32,8 @@
         <action path="/MythsAboutAntibiotics" forward="/WEB-INF/jsp/posts/MythsAboutAntibiotics.jsp"/>
 
         <action path="/error" forward="/WEB-INF/jsp/error.jsp"/>
+
+        <action path="/medicalInstitutions" forward="/WEB-INF/jsp/medicalInstitutions.jsp"/>
 
         <action path="/search"
                 type="action.SearchAction"

@@ -205,6 +205,10 @@
                             <resource>
                                 <directory>../Common/src/main/webapp</directory>
                             </resource>
+                            <resource>
+                                <directory>../Common/src/main/resources/META-INF/</directory>
+                                <targetPath>/META-INF</targetPath>
+                            </resource>
                         </webResources>
                     </configuration>
                 </plugin>
