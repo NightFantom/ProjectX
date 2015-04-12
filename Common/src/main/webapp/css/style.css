@@ -19,12 +19,13 @@ body {
     background: #52aa52;
     height: 100%;
     min-height: 850px;
-    min-width: 1024px;
+    min-width: 1132px;
     padding: 20px;
 }
 
 .headerUser{
     margin: 0 0 100px;
+    position: relative;
 }
 
 .headerAdmin{
@@ -519,6 +520,8 @@ body {
     width: 300px;
     background: #FFF;
     float: right;
+    position: absolute;
+    right: 0;
 }
 
 .popUpChangeCityAnswers{
