@@ -23,6 +23,11 @@
                 <tiles:putAttribute name="text" value="список аптек"/>
             </tiles:insertDefinition>
             <tiles:insertDefinition name="menuItem">
+                <tiles:putAttribute name="link" value="medicalInstitutions.do"/>
+                <tiles:putAttribute name="imagePath" value="images/hederMenu/icon4.png"/>
+                <tiles:putAttribute name="text" value="мед учреждения"/>
+            </tiles:insertDefinition>
+            <tiles:insertDefinition name="menuItem">
                 <tiles:putAttribute name="link" value="ourContacts.do"/>
                 <tiles:putAttribute name="imagePath" value="images/hederMenu/icon3.png"/>
                 <tiles:putAttribute name="text" value="наши контакты"/>

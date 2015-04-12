@@ -28,6 +28,8 @@
 
         <action path="/error" forward="/WEB-INF/jsp/error.jsp"/>
 
+        <action path="/medicalInstitutions" forward="/WEB-INF/jsp/medicalInstitutions.jsp"/>
+
         <action path="/search"
                 type="action.SearchAction"
                 name="StandardSearchForm"
