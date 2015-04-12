@@ -36,12 +36,12 @@
                 <tiles:putAttribute name="text" value="полезная информация"/>
                 <tiles:putAttribute name="alt" value="полезная информация"/>
             </tiles:insertDefinition>
-            <tiles:insertDefinition name="menuItem">
-                <tiles:putAttribute name="link" value="aboutProject.do"/>
-                <tiles:putAttribute name="imagePath" value="images/hederMenu/icon3.png"/>
-                <tiles:putAttribute name="text" value="о проекте"/>
-                <tiles:putAttribute name="alt" value="о проекте"/>
-            </tiles:insertDefinition>
+            <%--<tiles:insertDefinition name="menuItem">--%>
+                <%--<tiles:putAttribute name="link" value="aboutProject.do"/>--%>
+                <%--<tiles:putAttribute name="imagePath" value="images/hederMenu/icon3.png"/>--%>
+                <%--<tiles:putAttribute name="text" value="о проекте"/>--%>
+                <%--<tiles:putAttribute name="alt" value="о проекте"/>--%>
+            <%--</tiles:insertDefinition>--%>
             <tiles:insertDefinition name="menuItem">
                 <tiles:putAttribute name="link" value="ourContacts.do"/>
                 <tiles:putAttribute name="imagePath" value="images/hederMenu/icon3.png"/>
