@@ -12,6 +12,7 @@
 
 <tiles:insertDefinition name="main" flush="true">
     <tiles:putAttribute name="title" value="Аптечная справка"/>
+    <tiles:putAttribute name="description" value="Поиск лекарства в сервисе Аптечная справка Вологда Череповец"/>
     <tiles:putAttribute name="content">
         <tiles:insertDefinition name="searchTool" flush="false">
             <tiles:putAttribute name="action" value="search"/>

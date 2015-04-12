@@ -21,7 +21,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset = UTF-8">
     <meta http-equiv="Content-language" content="ru">
-    <meta name="description" content="Поиск лекарств в Вологде">
+    <meta name="description" content="<tiles:getAsString name="description"/>">
     <meta name="keywords" content="аптечная справка,аптечная справка Вологда, купить лекарства, где купить лекарства, аптеки вологды">
     <link rel="stylesheet" type="text/css" href="${path}/css/style.css"/>
     <link rel="stylesheet" type="text/css" href="${path}/css/jquery-ui.css"/>
@@ -49,7 +49,7 @@
             <header class="headerUser">
                 <div id="logo" class="floatLeft">
                     <a href="${path}/index.do">
-                        <img src="${path}/images/logo.png">
+                        <img src="${path}/images/logo.png" alt="Аптечная справка">
                     </a>
                 </div>
                 <tiles:insertDefinition name="menu"/>

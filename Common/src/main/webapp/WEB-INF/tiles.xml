@@ -8,6 +8,7 @@
         <put-attribute name="title" value=""/>
         <put-attribute name="content" value=""/>
         <put-attribute name="script" value=""/>
+        <put-attribute name="description" value="Поиск лекарств в Вологде"/>
     </definition>
 
     <definition name="onlyFon" template="/WEB-INF/template/onlyFon.jsp">
@@ -27,6 +28,7 @@
         <put-attribute name="link"  type="string"/>
         <put-attribute name="imagePath" type="string"/>
         <put-attribute name="text" type="string"/>
+        <put-attribute name="alt" type="string"/>
     </definition>
 
     <definition name="searchTool" template="/WEB-INF/template/searchTool.jsp">

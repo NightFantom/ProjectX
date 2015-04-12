@@ -16,16 +16,31 @@
                 <tiles:putAttribute name="link" value="index.do"/>
                 <tiles:putAttribute name="imagePath" value="images/hederMenu/icon1.png"/>
                 <tiles:putAttribute name="text" value="поиск лекарств"/>
+                <tiles:putAttribute name="alt" value="поиск лекарств"/>
             </tiles:insertDefinition>
             <tiles:insertDefinition name="menuItem">
                 <tiles:putAttribute name="link" value="listPharmacy.do"/>
                 <tiles:putAttribute name="imagePath" value="images/hederMenu/icon2.png"/>
                 <tiles:putAttribute name="text" value="список аптек"/>
+                <tiles:putAttribute name="alt" value="список аптек"/>
             </tiles:insertDefinition>
             <tiles:insertDefinition name="menuItem">
                 <tiles:putAttribute name="link" value="ourContacts.do"/>
                 <tiles:putAttribute name="imagePath" value="images/hederMenu/icon3.png"/>
                 <tiles:putAttribute name="text" value="наши контакты"/>
+                <tiles:putAttribute name="alt" value="наши контакты"/>
+            </tiles:insertDefinition>
+            <tiles:insertDefinition name="menuItem">
+                <tiles:putAttribute name="link" value="aboutProject.do"/>
+                <tiles:putAttribute name="imagePath" value="images/hederMenu/icon3.png"/>
+                <tiles:putAttribute name="text" value="о проекте"/>
+                <tiles:putAttribute name="alt" value="о проекте"/>
+            </tiles:insertDefinition>
+            <tiles:insertDefinition name="menuItem">
+                <tiles:putAttribute name="link" value="posts.do"/>
+                <tiles:putAttribute name="imagePath" value="images/hederMenu/icon3.png"/>
+                <tiles:putAttribute name="text" value="полезная инфа"/>
+                <tiles:putAttribute name="alt" value="полезная инфа"/>
             </tiles:insertDefinition>
         </tr>
     </table>

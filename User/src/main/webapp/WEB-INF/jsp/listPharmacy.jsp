@@ -13,6 +13,7 @@
 
 <tiles:insertDefinition name="main" flush="true">
     <tiles:putAttribute name="title" value="Список аптек"/>
+    <tiles:putAttribute name="description" value="Список аптек Аптечная справка Вологда Череповец"/>
     <tiles:putAttribute name="content">
         <div id="listButton" class="buttonPrice buttonCheck">Список</div>
         <div id="mapButton" class="buttonPrice buttonNotCheck shiftButton">Карта</div>

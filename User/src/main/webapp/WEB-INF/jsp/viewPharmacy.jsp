@@ -13,6 +13,7 @@
 
 <tiles:insertDefinition name="main" flush="true">
     <tiles:putAttribute name="title" value="Информация об аптеке"/>
+    <tiles:putAttribute name="description" value="Информация об аптеке Аптечная справка "/>
     <tiles:putAttribute name="content">
         <tiles:insertDefinition name="viewPharmacy">
             <tiles:putAttribute name="name" value="${pharmacy.name}"/>

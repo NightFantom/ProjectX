@@ -25,6 +25,11 @@
                 scope="request"/>
 
         <action path="/ourContacts" forward="/WEB-INF/jsp/ourContacts.jsp"/>
+        <action path="/aboutProject" forward="/WEB-INF/jsp/aboutProject.jsp"/>
+        <action path="/posts" forward="/WEB-INF/jsp/postList.jsp"/>
+        <action path="/timeToThrowMedicament" forward="/WEB-INF/jsp/posts/timeToThrowMedicament.jsp"/>
+        <action path="/pharmacyFacts" forward="/WEB-INF/jsp/posts/pharmacyFacts.jsp"/>
+        <action path="/MythsAboutAntibiotics" forward="/WEB-INF/jsp/posts/MythsAboutAntibiotics.jsp"/>
 
         <action path="/error" forward="/WEB-INF/jsp/error.jsp"/>
 

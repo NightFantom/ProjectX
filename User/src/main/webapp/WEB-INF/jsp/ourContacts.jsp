@@ -8,6 +8,7 @@
 
 <tiles:insertDefinition name="main" flush="true">
     <tiles:putAttribute name="title" value="Наши контакты"/>
+    <tiles:putAttribute name="description" value="Наши контакты Аптечная справка"/>
     <tiles:putAttribute name="content">
         <p class="bigText">Наши <span class="orangeText">контакты</span></p>
         <p class="fontSize20 usualText marginTop30">Если у вас есть вопросы, пожелания или предложения по работе сервиса,  напишите нам.</p>

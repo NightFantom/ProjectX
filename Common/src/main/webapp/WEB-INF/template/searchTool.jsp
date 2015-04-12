@@ -12,7 +12,7 @@
 <div id="searchTool">
     <table id="startSearch">
         <tr>
-            <td><img src="${helper:getPath(pageContext)}/images/bigArrow.png"></td>
+            <td><img src="${helper:getPath(pageContext)}/images/bigArrow.png" alt="Найти лекарство просто"></td>
             <td style="width: 720px;">
                <tiles:insertDefinition name="searchLine" flush="false">
                    <tiles:putAttribute name="action" value="${action}"/>

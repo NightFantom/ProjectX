@@ -596,3 +596,89 @@ body {
     color: #52aa52;
     font-size: 16px;
 }
+
+.smallPost {
+    width: 360px;
+    height: 240px;
+    text-align: center;
+    border-bottom: 1px dotted #bbb;
+    font-size: 9pt;
+    padding-bottom: 10px;
+    color:#555555;
+}
+
+.imageSmallPost {
+    width: 360px;
+    height: 240px;
+    opacity: 1.0;
+}
+
+.imageSmallPost:hover {
+    opacity:0.5;
+    cursor: pointer;
+}
+
+
+.headerTextPost {
+    text-transform: uppercase;
+    font-family: sans-serif;
+    color:#555555;
+}
+
+.textSmallPost {
+    padding-bottom: 20px;
+    padding-top: 10px ;
+    text-align: left;
+    font-size: 15px;
+    color:#555555;
+}
+
+.tablePost{
+    border-collapse: separate;
+    border-spacing: 30px 30px;
+}
+
+.textSmallPost {
+    padding-top: 10px;
+    height: 170px;
+    color:#555555;
+}
+
+.imageViewPost {
+    width: 720px;
+    height: 480px;
+}
+
+.viewPost {
+    margin: 0 auto;
+    width: 720px;
+    color:#555555;
+}
+
+.headerViewPost{
+    padding: 10px 0;
+    color:#555555;
+}
+
+.smallHeader{
+   font-size: 20px;
+    padding: 10px 0;
+    color:#555555;
+}
+
+.basicPoint{
+    text-decoration: underline;
+    font-weight: 600;
+    color:#555555;
+}
+
+.explanation{
+    font-style: italic;
+    color:#555555;
+}
+
+.headerExplanation{
+    text-decoration: underline;
+    font-weight: 600;
+    color:#555555;
+}

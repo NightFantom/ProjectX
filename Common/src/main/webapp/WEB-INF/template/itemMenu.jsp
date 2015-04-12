@@ -26,7 +26,7 @@ text - текст пункта меню--%>
 <td class="${st}">
     <a href="${helper:getPath(pageContext)}/${link}">
         <div>
-            <img src="${helper:getPath(pageContext)}/${imagePath}">
+            <img src="${helper:getPath(pageContext)}/${imagePath}" alt="${alt}">
             <p>${text}</p>
         </div>
     </a>
