@@ -14,9 +14,9 @@
 <tiles:insertDefinition name="loaderPanel" flush="true">
     <tiles:putAttribute name="title" value="Админка"/>
     <tiles:putAttribute name="contentHeader">
-        <p class="bigText marginBottom10">Главная <span class="orangeText">страница</span></p>
+        Главная <span class="orangeText">страница</span>
     </tiles:putAttribute>
     <tiles:putAttribute name="content">
-        <p>Рады приветствовать Вас на нашем сайте!</p>
+        <p class="usualText">Рады приветствовать Вас на нашем сайте!</p>
     </tiles:putAttribute>
 </tiles:insertDefinition>

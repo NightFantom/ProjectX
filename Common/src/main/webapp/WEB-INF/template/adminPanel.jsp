@@ -35,7 +35,7 @@
                 <div class="clear"></div>
             </header>
             <div id="content">
-                <p class="bigText">Личный <span class="doubleOrange">кабинет</span></p>
+                <p class="bigText colorGreen">Личный <span class="doubleOrange">кабинет</span></p>
                 <p><span class="doubleOrange">Добро пожаловать, Админ!</span></p>
                 <div class="twoColumn">
                     <div class="leftColumnAdmin">
@@ -51,7 +51,7 @@
                     </div>
                     <div class="wrapperAdmin">
                         <div class="workAreaAdmin">
-                            ${contentHeader}
+                            <p class="contentHeaderAdminPanel">${contentHeader}</p>
                             <c:if test="${not empty errorMessage}">
                                 <p class="errorMessage marginBottom10">${errorMessage}</p>
                             </c:if>

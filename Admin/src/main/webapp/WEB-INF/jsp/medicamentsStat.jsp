@@ -13,7 +13,7 @@
 <tiles:insertDefinition name="adminPanel" flush="true">
     <tiles:putAttribute name="title" value="Статистика по запрашиваемым лекарствам"/>
     <tiles:putAttribute name="contentHeader">
-        <p class="bigText marginBottom10">Статистика по <span class="orangeText">Лекарствам</span></p>
+        Статистика по <span class="orangeText">Лекарствам</span>
     </tiles:putAttribute>
     <tiles:putAttribute name="content">
         <p class="description">Выберите временной промежуток для просмотра статистики</p>

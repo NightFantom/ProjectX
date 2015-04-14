@@ -14,10 +14,10 @@
 <tiles:insertDefinition name="adminPanel" flush="true">
     <tiles:putAttribute name="title" value="Информация об аптеке"/>
     <tiles:putAttribute name="contentHeader">
-        <p class="bigText marginBottom10">Статистика <span class="orangeText">посещаемости</span></p>
+        Статистика <span class="orangeText">посещаемости</span>
     </tiles:putAttribute>
     <tiles:putAttribute name="content">
-        <grid:table name="${form.data}">
+        <grid:table name="${form.data}" class="colorGreen">
             <grid:column property="pharmacy.name" title="Аптека"/>
             <grid:column property="countVisitOverDay" title="За день" />
             <grid:column property="countVisitOverWeek" title="За 7 дней"/>

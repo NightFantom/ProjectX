@@ -10,7 +10,7 @@
 <tiles:insertDefinition name="adminPanel" flush="true">
     <tiles:putAttribute name="title" value="Админка"/>
     <tiles:putAttribute name="contentHeader" >
-        <p class="bigText marginBottom10">Главная <span class="orangeText">страница</span></p>
+        Главная <span class="orangeText">страница</span>
     </tiles:putAttribute>
     <tiles:putAttribute name="content">
         <p>Данные обновлены!</p>

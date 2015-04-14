@@ -10,7 +10,7 @@
 <tiles:insertDefinition name="loaderPanel" flush="true">
     <tiles:putAttribute name="title" value="Админка"/>
     <tiles:putAttribute name="contentHeader">
-        <p class="bigText marginBottom10">Загрузка <span class="orangeText">файла</span></p>
+        Загрузка <span class="orangeText">файла</span>
     </tiles:putAttribute>
     <tiles:putAttribute name="content">
         <div id="formDL">

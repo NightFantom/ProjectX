@@ -14,10 +14,10 @@
 <tiles:insertDefinition name="clientPanel" flush="true">
     <tiles:putAttribute name="title" value="Админка"/>
     <tiles:putAttribute name="contentHeader">
-        <p class="bigText marginBottom10">Мои <span class="orangeText">аптеки</span></p>
+        Мои <span class="orangeText">аптеки</span>
     </tiles:putAttribute>
     <tiles:putAttribute name="content">
-        <grid:table name="${form.data}">
+        <grid:table name="${form.data}" class="colorGreen">
             <grid:column property="name" title="Название" href="${path}/private/viewPharmacy.do" paramId="id" paramProperty="id" class="highlightLink"/>
             <grid:column property="address" title="Адрес" href="${path}/private/viewPharmacy.do" paramId="id" paramProperty="id" class="highlightLink"/>
             <grid:column property="city.name" title="Город"/>

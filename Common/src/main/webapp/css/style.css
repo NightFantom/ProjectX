@@ -333,12 +333,14 @@ body {
     text-align: center;
     font-size: 16pt;
     width: 700px;
+    color: #52aa52;
 }
 
 .inputDL{
     width: 300px;
     font-size: 14pt;
     border: solid 1px #555555;
+    color: #52aa52;
 }
 
 .leftColumnDL{
@@ -349,6 +351,7 @@ body {
 .submitDL{
     background: white;
     font-size: 16pt;
+    color: #52aa52;
 }
 
 .submitDL:hover{
@@ -721,5 +724,12 @@ body {
 }
 
 .colorGreen{
+    color: #52aa52;
+}
+
+.contentHeaderAdminPanel{
+    font-size: 18pt;
+    font-family: Intro;
+    margin: 0 0 10px;
     color: #52aa52;
 }

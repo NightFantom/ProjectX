@@ -17,12 +17,12 @@
 <tiles:insertDefinition name="adminPanel" flush="true">
     <tiles:putAttribute name="title" value="Админка"/>
     <tiles:putAttribute name="contentHeader">
-         <p class="bigText marginBottom10">Редактирование <span class="orangeText">аптеки</span></p>
+         Редактирование <span class="orangeText">аптеки</span>
     </tiles:putAttribute>
     <tiles:putAttribute name="content">
         <html:form method="POST" action="/private/${not empty pharmacy? 'saveEditPharmacy' : 'savePharmacy'}.do">
             <html:hidden name="form" property="id"/>
-            <table>
+            <table class="colorGreen">
                 <tr>
                     <td class="leftColumnDL">Название:</td>
                     <td><html:text name="form" property="fields(name)"

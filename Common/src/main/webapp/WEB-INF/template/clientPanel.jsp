@@ -34,7 +34,7 @@
                 <div class="clear"></div>
             </header>
             <div id="content">
-                <p class="bigText">Личный <span class="doubleOrange">кабинет</span></p>
+                <p class="bigText colorGreen">Личный <span class="doubleOrange">кабинет</span></p>
                 <p><span class="doubleOrange">Добро пожаловать, ${helper:getPersonName(pageContext)}!</span></p>
                 <div class="twoColumn">
                     <div class="leftColumnAdmin">
@@ -46,7 +46,7 @@
                     </div>
                     <div class="wrapperAdmin">
                         <div class="workAreaAdmin">
-                            ${contentHeader}
+                            <p class="contentHeaderAdminPanel">${contentHeader}</p>
                             ${content}
                         </div>
                     </div>

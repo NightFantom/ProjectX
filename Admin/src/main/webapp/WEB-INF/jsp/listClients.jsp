@@ -13,11 +13,9 @@
 
 <tiles:insertDefinition name="adminPanel" flush="true">
     <tiles:putAttribute name="title" value="Список аптек"/>
-    <tiles:putAttribute name="contentHeader">
-        <p class="bigText marginBottom10">Клиенты</p>
-    </tiles:putAttribute>
+    <tiles:putAttribute name="contentHeader" value="Клиенты"/>
     <tiles:putAttribute name="content">
-        <grid:table name="${form.data}">
+        <grid:table name="${form.data}" class="colorGreen">
             <grid:column value="Ред" href="${path}/private/viewClient.do" paramId="id" paramProperty="id" class="highlightLink"/>
             <grid:column property="FIO" title="ФИО" href="${path}/private/viewClient.do" paramId="id" paramProperty="id" class="highlightLink"/>
             <grid:column property="email" title="E-mail"/>
