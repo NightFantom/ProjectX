@@ -733,3 +733,17 @@ body {
     margin: 0 0 10px;
     color: #52aa52;
 }
+
+.standardLink{
+    color: #52aa52;
+}
+
+.standardLink:hover{
+    cursor: pointer;
+    color: #feb772;
+}
+
+.balloonPriceBody{
+    font-size: 16px;
+    font-family: Intro;
+}

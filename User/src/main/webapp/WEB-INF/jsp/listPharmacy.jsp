@@ -41,8 +41,8 @@
                 myCollection = new ymaps.GeoObjectCollection({}, {});
                 <c:forEach var="pharm" items="${form.data}" >
                 myPlacemark = new ymaps.Placemark([${pharm.coordinates}], {
-                    balloonContentHeader: '<a href="${path}/viewPharmacy.do?id=${pharm.id}">${pharm.name}</a>',
-                    balloonContentBody: '<p>Телефон: ${pharm.phone}</p> '
+                    balloonContentHeader: '<a class="standardLink" href="${path}/viewPharmacy.do?id=${pharm.id}">${pharm.name}</a>',
+                    balloonContentBody: '<p class="usualText">Телефон: ${pharm.phone}</p> '
                 });
                 myCollection.add(myPlacemark);
                 </c:forEach>

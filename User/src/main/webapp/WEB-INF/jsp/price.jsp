@@ -57,12 +57,11 @@
                                     zoom: 12
                                 });
                                 myCollection = new ymaps.GeoObjectCollection({}, {});
-                                <c:forEach var="list" items="${form.data}" >
-                                myPlacemark = new ymaps.Placemark([${list.getPharmacy().getCoordinates()}], {
-                                    balloonContentBody: '<p class="bigText marginBottom30">${helper:getCostMedicament(price.cost)} руб. </p>',
-                                    balloonContentHeader: '<p class="bigText marginBottom30"><span class="orangeText"><bean:write name="form" property="fields(searchInput)"/></span></p>',
-                                    balloonContentFooter: '<p class="smallItalicText">${list.getPharmacy().getName()}</p>',
-                                    hintContent: '<p class="smallItalicText">${helper:getCostMedicament(price.cost)} руб.</p>'
+                                <c:forEach var="price" items="${form.data}" >
+                                myPlacemark = new ymaps.Placemark([${price.pharmacy.coordinates}], {
+                                    balloonContentBody: '<a class="balloonPriceBody standardLink" href=\'${path}/viewPharmacy.do?id=${price.pharmacy.id}\'>${helper:getCostMedicament(price.cost)} руб. </a>',
+                                    balloonContentFooter: '<a class="balloonPriceBody standardLink" href=\'${path}/viewPharmacy.do?id=${price.pharmacy.id}\'>${price.pharmacy.name}</a>',
+                                    hintContent: '<p class="smallItalicText colorGreen">${helper:getCostMedicament(price.cost)} руб.</p>'
 
                                 });
                                 myCollection.add(myPlacemark);
