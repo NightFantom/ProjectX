@@ -23,7 +23,7 @@ text - текст пункта меню--%>
     </c:otherwise>
 </c:choose>
 
-<td class="${st}">
+<td class="${st} colorGreen">
     <a href="${helper:getPath(pageContext)}/${link}">
         <div>
             <img src="${helper:getPath(pageContext)}/${imagePath}" alt="${alt}">

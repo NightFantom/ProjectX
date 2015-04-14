@@ -11,7 +11,7 @@
     <tiles:putAttribute name="title" value="Мед учреждения"/>
     <tiles:putAttribute name="content">
         <div class="textAlignCenter">
-            <p class="fontSize35">Раздел находится на этапе наполнения.</p>
+            <p class="fontSize35 colorGreen">Раздел находится на этапе наполнения.</p>
             <p class="fontSize50"><a href="${path}/index.do"><span class="orangeText">На главную</span></a></p>
         </div>
     </tiles:putAttribute>

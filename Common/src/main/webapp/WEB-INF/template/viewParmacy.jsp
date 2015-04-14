@@ -9,7 +9,7 @@
 
 <tiles:importAttribute ignore="true"/>
 
-<p class="bigText marginBottom30">Аптека <span class="orangeText"><tiles:insertAttribute name="name"/></span></p>
+<p class="bigText marginBottom30 colorGreen">Аптека <span class="orangeText"><tiles:insertAttribute name="name"/></span></p>
 <div class="leftColumn">
     <p class="bigText marginBottom30"><span class="orangeText">Контактная</span> информация</p>
     <p>Адрес: <span class="usualText"><tiles:insertAttribute name="address"/></span></p>

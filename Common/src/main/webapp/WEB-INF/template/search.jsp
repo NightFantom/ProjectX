@@ -21,7 +21,7 @@
     <html:form action="${action}" method="post">
         <html:hidden  name="form" property="id" styleId="inputID"/>
         <img id = "iconSearch" src="${path}/images/iconSearch.png" alt="лекарство">
-        <div id="searchLine">
+        <div id="searchLine" class="colorGreen">
             <p class="additionText bigText">поиск</p>
             <div class="floatLeft">
                 <html:text name="form" property="fields(searchInput)" styleId="searchText" styleClass="inputTextSearch" maxlength="40"/>

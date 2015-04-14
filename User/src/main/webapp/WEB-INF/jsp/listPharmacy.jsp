@@ -17,7 +17,7 @@
     <tiles:putAttribute name="content">
         <div id="listButton" class="buttonPrice buttonCheck">Список</div>
         <div id="mapButton" class="buttonPrice buttonNotCheck shiftButton">Карта</div>
-        <grid:table name="${form.data}" uid="listPharmaces" class="tables">
+        <grid:table name="${form.data}" uid="listPharmaces" class="tables colorGreen">
             <grid:column href="${path}/viewPharmacy.do" paramId="id" paramProperty="id">
                 <div class = "map"></div>
             </grid:column>

@@ -14,7 +14,7 @@
 <tiles:insertDefinition name="${template}" flush="true">
     <tiles:putAttribute name="title" value="Ошибка"/>
     <tiles:putAttribute name="content">
-        <div class="errorBlock">
+        <div class="errorBlock colorGreen">
             К сожалению, произошла ошибка. Повторите попытку позже.
             <p><a href="${helper:getPath(pageContext)}/index.do"><span class="orangeText">На главную</span></a></p>
         </div>
