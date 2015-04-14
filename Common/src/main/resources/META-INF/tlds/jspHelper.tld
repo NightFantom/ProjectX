@@ -67,4 +67,9 @@
         <function-class>helpers.SessionAndRequestHelper</function-class>
         <function-signature> entities.City getCity(javax.servlet.http.HttpServletRequest)</function-signature>
     </function>
+    <function>
+        <name>declension</name>
+        <function-class>helpers.StringHelper</function-class>
+        <function-signature>java.lang.String declension(java.lang.Long) </function-signature>
+    </function>
 </taglib>
