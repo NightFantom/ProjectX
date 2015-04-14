@@ -33,7 +33,7 @@
 <body>
 <c:if test="${isNotViewChangeCityPopUp}">
     <div id="toner" class="windowMarker">
-        <div id="popUpSelectCityBig" class="windowMarker">
+        <div id="popUpSelectCityBig" class="windowMarker colorGreen">
             <div class="textAlignRight">
                 <img class="popUpChangeCityCross" src="${path}/images/cross.png">
             </div>
@@ -54,7 +54,7 @@
                 </div>
                 <tiles:insertDefinition name="menu"/>
                 <div id="selectCityArea">
-                    <div class="displayInliveBlock">Город:</div>
+                    <div class="displayInliveBlock colorGreen">Город:</div>
                     <c:set var="cityName" value="${helper:getCurrentCity(pageContext.request).name}"/>
                     <div class="displayInliveBlock" id="selectCity"><span class="orangeText" id="currentCity">${cityName}</span>
                         <div id="popUpSelectCity">
@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <c:if test="${isNotViewChangeCityPopUp}">
-                    <div id="popUpCheckCity" class="windowMarker">
+                    <div id="popUpCheckCity" class="windowMarker colorGreen">
                         <div class="textAlignRight">
                             <img class="popUpChangeCityCross" src="${path}/images/cross.png">
                         </div>
