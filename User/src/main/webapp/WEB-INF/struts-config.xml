@@ -44,6 +44,14 @@
             <forward name="error" path="/index.do" redirect="true"/>
         </action>
 
+        <action path="/price"
+                type="action.SearchAction"
+                name="StandardSearchForm"
+                scope="request"
+                parameter="showPrice">
+            <forward name="success" path="/WEB-INF/jsp/price.jsp"/>
+        </action>
+
         <action path="/autoComplete"
                 type="action.CompleteAction"
                 name="AutoCompleteForm"

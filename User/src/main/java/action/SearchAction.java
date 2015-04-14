@@ -34,14 +34,14 @@ public class SearchAction extends LogDispatchAction {
     public ActionForward start(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         ActionFormBase frm = (ActionFormBase) form;
-        ActionForward forward;
-        Integer id = frm.getId();
-        if (id == null || id == 0) {
-            forward = getListMedicaments(frm, mapping, request);
-        } else {
-            forward = getPrice(frm, mapping, request);
-        }
-        return forward;
+        return getListMedicaments(frm, mapping, request);
+    }
+
+    /**
+     * Получение прайса
+     */
+    public ActionForward showPrice(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        return getPrice((ActionFormBase)form, mapping, request);
     }
 
     /**
@@ -54,10 +54,20 @@ public class SearchAction extends LogDispatchAction {
             return mapping.findForward(ERROR);
         }
 
+        Map<String, Object> map = formHandler.getResult();
+        Integer cityId = SessionAndRequestHelper.getCityId(request);
+        Integer medicamentId = form.getId();
+        map.put(GlobalConstants.ID_USER_CITY, cityId);
+        if (medicamentId != null && medicamentId > 0){
+            map.put(ListMedicamentsWU.TARGET_MEDICAMENT_ID, medicamentId);
+        }
         ListWorkUnit workUnit = new ListMedicamentsWU();
-        workUnit.setFilter(formHandler.getResult());
+        workUnit.setFilter(map);
         workUnit.filter();
+
         form.setData(workUnit.getResult());
+        SearchForm frm = (SearchForm) form;
+        frm.setTargetMedicament(((ListMedicamentsWU)workUnit).getTargetMedicament());
 
         return mapping.findForward(MEDICAMENTS_FORWARD);
     }
@@ -81,6 +91,6 @@ public class SearchAction extends LogDispatchAction {
         frm.setData(workUnit.getResult());
         frm.setMedicament(workUnit.getMedicament());
         frm.setId(null);
-        return mapping.findForward(PRICE_FORWARD);
+        return mapping.findForward(SUCCESS);
     }
 }

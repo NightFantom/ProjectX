@@ -67,4 +67,10 @@
         <put-attribute name="content" value=""/>
         <put-attribute name="script" value=""/>
     </definition>
+    <definition name="itemMedicament" template="/WEB-INF/template/itemMedicament.jsp">
+        <put-attribute name="medicament" value=""/>
+        <put-attribute name="countOffer" value=""/>
+        <put-attribute name="showBackground" value="true"/>
+    </definition>
+
 </tiles-definitions>

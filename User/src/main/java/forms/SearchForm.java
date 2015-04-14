@@ -13,11 +13,13 @@ import checkForm.parsers.EmptyParser;
 import checkForm.validators.NotEmptyValidator;
 import checkForm.validators.RegExpValidator;
 import entities.Medicament;
+import entities.Pair;
 
 public class SearchForm extends ActionFormBase {
 
     private static final Form FORM = getForm();
     private Medicament medicament;
+    private Pair<Medicament, Long> targetMedicament;
 
     public Medicament getMedicament() {
         return medicament;
@@ -42,5 +44,13 @@ public class SearchForm extends ActionFormBase {
     @Override
     public Form getLogicForm() {
         return FORM;
+    }
+
+    public Pair<Medicament, Long> getTargetMedicament() {
+        return targetMedicament;
+    }
+
+    public void setTargetMedicament(Pair<Medicament, Long> targetMedicament) {
+        this.targetMedicament = targetMedicament;
     }
 }

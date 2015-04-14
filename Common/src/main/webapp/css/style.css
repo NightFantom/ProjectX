@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     border: 0;
-    color: #52aa52;
 }
 
 @font-face {
@@ -12,6 +11,7 @@
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
 
@@ -149,6 +149,7 @@ body {
     border: 3px solid #ff7e00;
     padding-left: 20px;
     height: 34px;
+    color: #52aa52;
 }
 
 #searchButton {
@@ -269,6 +270,7 @@ body {
 .blockResult{
     width: 90%;
     margin: 0 auto;
+    color: #52aa52;
 }
 
 #popUpSelectCity{
@@ -291,6 +293,7 @@ body {
     float: left;
     width: 400px;
     font-size: 16pt;
+    color: #52aa52;
 }
 
 .leftColumnAdmin{
@@ -304,6 +307,7 @@ body {
 .workArea{
     margin-left: 410px;
     height: 500px;
+    color: #52aa52;
 }
 
 .workAreaAdmin{
@@ -501,6 +505,7 @@ body {
 
 .changeCityLink{
     text-align:left;
+    color: #52aa52;
 }
 
 .changeCityLink:hover{
@@ -664,7 +669,7 @@ body {
 }
 
 .smallHeader{
-   font-size: 20px;
+    font-size: 20px;
     padding: 10px 0;
     color:#555555;
 }
@@ -684,4 +689,37 @@ body {
     text-decoration: underline;
     font-weight: 600;
     color:#555555;
+}
+
+.youSearch{
+    font-size: 24px;
+    width: 700px;
+    margin: 30px auto 10px;
+    font-family: Intro;
+}
+
+.itemMedicament{
+    margin: 5px auto;
+    width: 695px;
+    padding: 5px 0 5px 5px;
+    font-size: 19px;
+    color: #52aa52;
+}
+
+.itemMedicamentName{
+    width: 400px;
+    float: left;
+}
+
+.itemMedicamentPrice{
+    width: 200px;
+    float: left;
+}
+
+.itemMedicamentLink:hover > *{
+    color: #feb772;
+}
+
+.colorGreen{
+    color: #52aa52;
 }
