@@ -68,6 +68,7 @@ public class SearchAction extends LogDispatchAction {
         form.setData(workUnit.getResult());
         SearchForm frm = (SearchForm) form;
         frm.setTargetMedicament(((ListMedicamentsWU)workUnit).getTargetMedicament());
+        frm.setId(null);
 
         return mapping.findForward(MEDICAMENTS_FORWARD);
     }

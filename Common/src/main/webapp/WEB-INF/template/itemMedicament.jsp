@@ -16,7 +16,14 @@
             ${medicament.name}
         </div>
         <div class="itemMedicamentPrice">
-            ${countOffer}
+            <c:choose>
+                <c:when test="${countOffer != 0}">
+                    <b>${countOffer}</b> ${helper:declension(countOffer)}
+                </c:when>
+                <c:otherwise>
+                    Нет предложений
+                </c:otherwise>
+            </c:choose>
         </div>
         <div class="clear"></div>
     </div>
